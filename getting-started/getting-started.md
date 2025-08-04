@@ -1,8 +1,9 @@
 ---
 description: Building your first Component
+icon: bolt
 ---
 
-# Getting Started
+# Quickstart
 
 In this getting started guide we'll learn how to create a Component inside an Element DevPack, and then edit it and see the updates live in Elements.
 
@@ -28,7 +29,7 @@ The boilerplate code for an Element Dev Pack (and Component) can be created insi
 
 Go to Elements > Settings > Addons and click the "Create Pack" button in the bottom left had corner of the window. You will then be prompted to enter information about your pack, such as developer name and title, along with a location to save the Dev Pack.
 
-Watch the short video below to see how to create an Element  Dev Pack including a Component.
+Watch the short video below to see how to create an Element Dev Pack including a Component.
 
 {% embed url="https://youtu.be/wFXaFmr4kmg?si=QJDFotPPgf6Lb7ZZ" %}
 
@@ -42,13 +43,13 @@ The following video will show you how to edit your newely created component with
 
 The following video shows how you can add extra files for use in your Component. This videos shows adding a JS file and linking to it from the page template.
 
-You can also [add shared files](../bundle-structure/components/shared-files/) that can be used by all the components in a pack. This videos focuses on [page level Assets](../bundle-structure/components/assets.md).
+You can also [add shared files](../elements-language/bundle-structure/components/shared-files/) that can be used by all the components in a pack. This videos focuses on [page level Assets](../elements-language/bundle-structure/components/assets.md).
 
 {% embed url="https://youtu.be/zegch8Rd4uw" %}
 
 ### Add a Custom Icon to your Component
 
-Adding a custom icon to your Components gives them an extra level of polish, while making them easier to find visual in Elements.&#x20;
+Adding a custom icon to your Components gives them an extra level of polish, while making them easier to find visual in Elements.
 
 Watch the short video below to learn more about adding custom icons to your Components.
 

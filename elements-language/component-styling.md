@@ -28,20 +28,20 @@ The component doesn’t concern itself with the specific values of these propert
 
 When designing your Component, you should always use the Theme-based UI Controls wherever possible; these include the following:
 
-* [Theme Border Width](../bundle-structure/components/properties.json/ui-controls/theme-border-width.md)
-* [Theme Border Radius](../bundle-structure/components/properties.json/ui-controls/theme-border-radius.md)
-* [Theme Color](../bundle-structure/components/properties.json/ui-controls/theme-color.md)
-* [Theme Font](../bundle-structure/components/properties.json/ui-controls/theme-font.md)
-* [Theme Spacing](../bundle-structure/components/properties.json/ui-controls/theme-spacing.md)
-* [Theme Shadow](../bundle-structure/components/properties.json/ui-controls/theme-shadow.md)
-* [Theme Text Style](../bundle-structure/components/properties.json/ui-controls/theme-text-style.md)
-* [Theme Typography](../bundle-structure/components/properties.json/ui-controls/theme-typography.md)
+* [Theme Border Width](bundle-structure/components/properties.json/ui-controls/theme-border-width.md)
+* [Theme Border Radius](bundle-structure/components/properties.json/ui-controls/theme-border-radius.md)
+* [Theme Color](bundle-structure/components/properties.json/ui-controls/theme-color.md)
+* [Theme Font](bundle-structure/components/properties.json/ui-controls/theme-font.md)
+* [Theme Spacing](bundle-structure/components/properties.json/ui-controls/theme-spacing.md)
+* [Theme Shadow](bundle-structure/components/properties.json/ui-controls/theme-shadow.md)
+* [Theme Text Style](bundle-structure/components/properties.json/ui-controls/theme-text-style.md)
+* [Theme Typography](bundle-structure/components/properties.json/ui-controls/theme-typography.md)
 
 ### Default Colours
 
 Tailwind (and Elements) includes an expertly-crafted default color palette out-of-the-box - you should take advantage of that and use it.
 
-All components **need to work out of the box**.  A good guide is to use "Brand" for things like buttons, and "Text" for the text colours, and "Surface" for background colours.
+All components **need to work out of the box**. A good guide is to use "Brand" for things like buttons, and "Text" for the text colours, and "Surface" for background colours.
 
 ### Utility-First Approach
 
