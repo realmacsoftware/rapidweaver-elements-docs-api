@@ -1,8 +1,9 @@
 ---
-icon: box
+description: Learn more about the Element Pack format
+icon: circle-question
 ---
 
-# Element Pack
+# What is an Element Pack?
 
 ### What Is an Element Pack?
 

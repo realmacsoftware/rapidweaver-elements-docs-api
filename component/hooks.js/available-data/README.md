@@ -4,7 +4,7 @@ description: Access Project Properties
 
 # Available Data
 
-Properties from the current environment can be used within templates but most of them need to be passed through using the `setProps` command in the [hooks.js](broken-reference) file first. The node object is always available.
+Properties from the current environment can be used within templates but most of them need to be passed through using the `setProps` command in the [hooks.js](../../../elements-language/bundle-structure/components/hooks.js/available-data/broken-reference/) file first. The node object is always available.
 
 ```
 const transformHook = (rw) => {    
@@ -44,4 +44,3 @@ The node object is always passed into templates and contains the following prope
 ### Component Properties
 
 <table><thead><tr><th width="249">Property Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>{{component.title}}</code></td><td>String</td><td></td></tr><tr><td><code>{{component.group}}</code></td><td>String</td><td></td></tr><tr><td><code>{{component.version}}</code></td><td>Integer</td><td></td></tr><tr><td><code>{{component.build}}</code></td><td>Integer</td><td></td></tr><tr><td><code>{{component.assetPath}}</code></td><td>String</td><td>Path to component assets</td></tr><tr><td><code>{{component.siteAssetPath}}</code></td><td>String</td><td>Path to component site assets</td></tr><tr><td><code>{{component.sharedAssetPath}}</code></td><td>String</td><td>Path to pack shared assets</td></tr></tbody></table>
-

@@ -1,10 +1,11 @@
 ---
-description: A standardised approach
+description: A standardised approach to building components
+icon: paintbrush
 ---
 
 # Component Styling
 
-Elements is based on Tailwind. We use Tailwind for all our components, and highly recommend everyone using and building for Elements does the same.
+We use Tailwind for all our components, and highly recommend everyone using and building for Elements does the same.
 
 If everyone is using Tailwind (and the built-in Theme UI Controls) we can **ensure consistency across all components**, making it easier for end users to build sites that are consistent and easy to update.
 
@@ -28,14 +29,14 @@ The component doesn’t concern itself with the specific values of these propert
 
 When designing your Component, you should always use the Theme-based UI Controls wherever possible; these include the following:
 
-* [Theme Border Width](bundle-structure/components/properties.json/ui-controls/theme-border-width.md)
-* [Theme Border Radius](bundle-structure/components/properties.json/ui-controls/theme-border-radius.md)
-* [Theme Color](bundle-structure/components/properties.json/ui-controls/theme-color.md)
-* [Theme Font](bundle-structure/components/properties.json/ui-controls/theme-font.md)
-* [Theme Spacing](bundle-structure/components/properties.json/ui-controls/theme-spacing.md)
-* [Theme Shadow](bundle-structure/components/properties.json/ui-controls/theme-shadow.md)
-* [Theme Text Style](bundle-structure/components/properties.json/ui-controls/theme-text-style.md)
-* [Theme Typography](bundle-structure/components/properties.json/ui-controls/theme-typography.md)
+* [Theme Border Width](properties.json/ui-controls/theme-border-width.md)
+* [Theme Border Radius](properties.json/ui-controls/theme-border-radius.md)
+* [Theme Color](properties.json/ui-controls/theme-color.md)
+* [Theme Font](properties.json/ui-controls/theme-font.md)
+* [Theme Spacing](properties.json/ui-controls/theme-spacing.md)
+* [Theme Shadow](properties.json/ui-controls/theme-shadow.md)
+* [Theme Text Style](properties.json/ui-controls/theme-text-style.md)
+* [Theme Typography](properties.json/ui-controls/theme-typography.md)
 
 ### Default Colours
 

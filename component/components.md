@@ -1,8 +1,8 @@
 ---
-icon: cube
+icon: circle-question
 ---
 
-# Components
+# What is a Component?
 
 A component is a single item that can be added to a page in the Elements app. Each component lives in its own folder within the pack and follows a clear structure. This guide lays out how each component should be organized, what files it requires, and how each part functions together.
 

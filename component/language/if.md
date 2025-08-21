@@ -2,12 +2,12 @@
 description: Display content based on dynamic conditions.
 ---
 
-# Conditional Statements
+# @if
 
 Conditional statements in Elements allow you to control when content is displayed based on certain conditions. Using @if, @else if, and @else, you can define different outcomes depending on the values of variables. This is useful for showing or hiding content based on user settings, mode (edit or preview), or other dynamic conditions.
 
 {% hint style="info" %}
-When performing complex logic like string comparisons, use the [hooks file](../hooks.js/) to perform this logic and provide simple bool values to the template. This helps to keep templates simple and focused on HTML rather than complex conditional logic!
+When performing complex logic like string comparisons, use the [hooks file](../../elements-language/bundle-structure/components/hooks.js) to perform this logic and provide simple bool values to the template. This helps to keep templates simple and focused on HTML rather than complex conditional logic!
 {% endhint %}
 
 ### If Statement
@@ -59,4 +59,3 @@ Elements gives you access to the current RapidWeaver mode inside of conditional 
     Visible when Published.
 @endif
 ```
-
