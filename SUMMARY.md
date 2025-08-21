@@ -46,7 +46,7 @@
         * [Theme Text Style](elements-language/bundle-structure/components/properties.json/ui-controls/theme-text-style.md)
         * [Theme Typography](elements-language/bundle-structure/components/properties.json/ui-controls/theme-typography.md)
     * [Backend](elements-language/bundle-structure/components/backend.md)
-    * [Elements Language](elements-language/bundle-structure/components/templates/README.md)
+    * [Templates](elements-language/bundle-structure/components/templates/README.md)
       * [@anchor](elements-language/bundle-structure/components/templates/anchor.md)
       * [@dropzone](elements-language/bundle-structure/components/templates/dropzone.md)
       * [@portal](elements-language/bundle-structure/components/templates/portal.md)

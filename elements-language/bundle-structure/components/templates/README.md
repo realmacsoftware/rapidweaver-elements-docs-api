@@ -3,9 +3,13 @@ description: Component Template Folder
 icon: brackets-curly
 ---
 
-# Elements Language
+# Templates
 
-Template files in RapidWeaver Elements house all the HTML, CSS, JavaScript, and other assets your component needs to work seamlessly. These files are dynamically processed by Elements, allowing for property replacements (think handlebars-style), perform iterations, and more—enabling you to build highly flexible and reusable components.
+Template files in RapidWeaver Elements house all the HTML, CSS, JavaScript, and other assets your component needs to work seamlessly. All template files are dynamically processed by Elements, allowing for property replacements (think handlebars-style), perform iterations, and more. This enables you to build highly flexible and reusable components.
+
+{% hint style="info" %}
+Any files that don't contain Elements template language should be store in the [assets](../assets.md) directory
+{% endhint %}
 
 ### Templates Directory Structure
 
@@ -13,11 +17,12 @@ The structure of the templates directory is important and denotes in which area 
 
 The templates directory may also contain the following sub directories
 
-* **headStart** - placed at the top of head
-* **headEnd** - placed at the end of head
-* **bodyStart** - placed at the top of body
-* **bodyEnd** - placed at the bottom of body
-* **include** - files can be included from other template files using an [@include](include.md) statement
+* **headStart** - Placed at the top of head
+* **headEnd** - Placed at the end of head
+* **bodyStart** - Placed at the top of body
+* **bodyEnd** - Placed at the bottom of body
+* **include** - Files can be included from other template files using an [@include](include.md) statement
+* [**backend**](../backend.md) - Additional supporting files deployed to the server
 
 ### Supported Template File Types
 

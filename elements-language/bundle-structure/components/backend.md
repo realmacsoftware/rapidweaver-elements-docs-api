@@ -11,14 +11,14 @@ Sub-directories are not supported in the backend directory. Instead, use the sha
 
 Files added to the backend directory are processed in the same context as other template files. However, instead of forming part of the page, they will be deployed as extra files to the page's backend directory during publish.
 
-To ensure there are no conflicts with other components, all backend files are stored in a subdirectory corresponding to the current node id. For example:
+To ensure there are no conflicts with other components, all backend files are stored in a subdirectory corresponding to the current node id. For example, a published site might contain a contact page with the following structure:
 
 ```
-contact
-    index.html
-    backend
-        rw29BB9A86_0D4A_4E46_9BF5_CD5041A9ECE2
-            submit.php
+contact/
+├── index.html
+└── backend
+    └── rw29BB9A86_0D4A_4E46_9BF5_CD5041A9ECE2/
+        └── submit.php
 ```
 
 The following file types are supported:
