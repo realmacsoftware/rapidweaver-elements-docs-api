@@ -9,7 +9,7 @@ icon: box
 An Element Pack is a folder-based “plugin” format for sharing and distributing addons for Elements.
 
 * Development Use Only: An Element Pack ends with a `.elementsdevpack` extension. This format is strictly for development environments and should not be sold or shared in this form.
-* Distributable Version: To share your packs with others you'll use the Elements Store. Distributable packs are non-editable, pre-processed, optimised and encrypted to protect your code. You can [learn more about distributing your addons here](../../elements-marketplace/distribution.md).
+* Distributable Version (Coming soon): To share your packs with others you'll use the Elements Store. Distributable packs are non-editable, pre-processed, optimised and encrypted to protect your code. You can [learn more about distributing your addons here](../../elements-marketplace/distribution.md).
 
 ### What Can You Include?
 
@@ -48,3 +48,11 @@ MyElementPack.elementsdevpack/
   * components - contains folders for each custom component
   * themes - contains folders for each custom theme
 
+### Tips for Getting Started
+
+* Start with info.json: This is your pack’s “manifest.” Set it up properly before adding components.
+* Add one thing at a time:
+  * _Components_ need extra structure, create them carefully.
+  * _Themes_, _templates_, and _resources_ are more straightforward and should be added using the Elements app.
+* Include Shared Files: If multiple components rely on the same assets (for example, icons or CSS), put them in the components/shared/ folder for easy access and organization.
+* Before Distributing (Coming soon): Convert Dev Packs to a secure format via the Elements Store, which encrypts your code and makes it safe to share.&#x20;
