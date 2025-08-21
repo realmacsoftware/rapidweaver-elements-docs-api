@@ -18,6 +18,8 @@ components/
 │   ├── hooks.js
 │   ├── icon.pdf
 │   ├── icon-dark.pdf
+│   ├── paletteIcon.pdf
+│   ├── paletteIcon-dark.pdf
 │   ├── templates/
 │   │   ├── pageStart/
 │   │   ├── pageEnd/
@@ -44,7 +46,7 @@ components/
 *   [properties.json](properties.json/)
 
     Defines the configurable options (controls) users see when using the component.
-*   [icon.pdf, icon-dark.pdf](icons.md)
+*   [icon.pdf, icon-dark.pdf, paletteIcon.pdf, paletteIcon-dark.pdf](icons.md)
 
     A small icon that visually represents the component inside Elements.
 *   [templates](templates/)/
