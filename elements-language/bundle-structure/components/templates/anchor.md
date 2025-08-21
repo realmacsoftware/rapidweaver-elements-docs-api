@@ -1,4 +1,4 @@
-# Anchor
+# @anchor
 
 Setting an anchor in a template file will list it and allow it to be linked to from the Link Panel in the Editor.
 
@@ -13,6 +13,5 @@ And using a property:
 ```
 
 {% hint style="info" %}
-See also [rw.addAnchor](../../hooks.js/available-functions/rw.addanchor.md) in the hooks file.
+See also [rw.addAnchor](../hooks.js/available-functions/rw.addanchor.md) in the hooks file.
 {% endhint %}
-

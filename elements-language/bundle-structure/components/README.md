@@ -56,7 +56,7 @@ components/
     * \*.html - The component's output. All html/php files processed, concatenated together and added to the page.
     * \*.css - All css files are processed and concatenated together. They're added to the page's css file during publish.
     * \*.js - All javascript files are processed and concatenated together. They're added to the page's js file during publish.
-    * [include/](templates/includes.md) - sub-templates you can include or reuse multiple times.
+    * [include/](templates/include.md) - sub-templates you can include or reuse multiple times.
     * pageStart/, pageEnd/, bodyStart/, bodyEnd/ - templates added to these folders will be injected into the page in the corresponding areas.
 * [assets/](assets.md) - Contains supporting files like CSS, JavaScript, or images that should not be processed for Elements language.
 *   [hooks.js](hooks.js/)
