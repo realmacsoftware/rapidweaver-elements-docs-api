@@ -5,8 +5,6 @@ icon: circle-question
 
 # What is an Element Pack?
 
-### What Is an Element Pack?
-
 An Element Pack is a folder-based “plugin” format for sharing and distributing addons for Elements.
 
 * Development Use Only: An Element Pack ends with a `.elementsdevpack` extension. This format is strictly for development environments and should not be sold or shared in this form.
@@ -16,11 +14,11 @@ An Element Pack is a folder-based “plugin” format for sharing and distributi
 
 Your Element Pack can bundle together different types of add-ons, such as any combination of the following:
 
-* Components – Reusable, structured elements
-* Resources – Assets like images or other files
-* Templates – Pre-built sections consisting of multiple components
-* Themes – Predefined visual styles
-* Projects – (Planned for future support)
+* [Components](../component/components.md) – Reusable, structured elements
+* [Resources](../resource/what-are-resources.md) – Assets like images or other files
+* [Templates](../template/what-are-templates.md) – Pre-built sections consisting of multiple components
+* [Themes](../theme/what-are-themes.md) – Predefined visual styles
+* [Projects](../project/what-are-projects.md) – (Planned for future support)
 
 Note: Element Packs must follow the macOS “bundle” structure. Templates, Resources, and Themes are created within Elements whereas Components are typically built outside of Elements using an editor like VS Code.
 

@@ -10,9 +10,6 @@
 
 * [What is an Element Pack?](element-pack/what-is-an-element-pack.md)
 * [info.json](element-pack/info.json.md)
-* [Resources](element-pack/resources.md)
-* [Templates](element-pack/templates.md)
-* [Themes](element-pack/themes.md)
 
 ## Component
 
@@ -97,3 +94,19 @@
   * [Data collections in Hooks.js](component/collections/data-collections-in-hooks.js.md)
   * [Accessing Data in Templates](component/collections/accessing-data-in-templates.md)
   * [Collections in properties.json](component/collections/collections-in-properties.json.md)
+
+## Resource
+
+* [What are Resources?](resource/what-are-resources.md)
+
+## Template
+
+* [What are Templates?](template/what-are-templates.md)
+
+## Theme
+
+* [What are Themes?](theme/what-are-themes.md)
+
+## Project
+
+* [What are Projects?](project/what-are-projects.md)
