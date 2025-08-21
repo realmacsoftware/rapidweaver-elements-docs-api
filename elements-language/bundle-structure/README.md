@@ -1,47 +1,50 @@
 ---
-description: An Element Pack is a bundled folder
 icon: box
 ---
 
 # Element Pack
 
-The Element Pack format is a highly versatile folder based plugin format for sharing and distributing  addons for Elements.
+### What Is an Element Pack?
 
-Element Packs are essentially a collection of folders and files, with the top-level directory having a name that ends with a `.elementsdevpack` extension. This name and structure is only used for development purposes, dev element packs should not be sold or distributed to other users.
+An Element Pack is a folder-based “plugin” format for sharing and distributing addons for Elements.
 
-An Element Pack can contain one or more add-on types, including any combination of the following:
+* Development Use Only: An Element Pack ends with a `.elementsdevpack` extension. This format is strictly for development environments and should not be sold or shared in this form.
+* Distributable Version: To share your packs with others you'll use the Elements Store. Distributable packs are non-editable, pre-processed, optimised and encrypted to protect your code. You can [learn more about distributing your addons here](../../elements-marketplace/distribution.md).
 
-* Components
-* Resources
-* Templates
-* Themes
-* Projects (planned)
+### What Can You Include?
 
-Templates, Resources, and Themes should be built inside of Elements. However, Components require a specific directory structure in order to work correctly, these are called Bundles in macOS, and need to be built outside of Elements.
+Your Element Pack can bundle together different types of add-ons, such as any combination of the following:
 
-Element Packs distributed via the Elements Store and encrypted and non-editable meaning your code is protected. You can [learn more about distributing your addons here](../../elements-marketplace/distribution.md).
+* Components – Reusable, structured elements
+* Resources – Assets like images or other files
+* Templates – Pre-built sections consisting of multiple components
+* Themes – Predefined visual styles
+* Projects – (Planned for future support)
 
-### Element Dev Pack Bundle Structure
+Note: Element Packs must follow the macOS “bundle” structure. Templates, Resources, and Themes are created within Elements whereas Components are typically built outside of Elements using an editor like VS Code.
 
-The following outlines the top level folder structure for an Element Pack. It can contain multiple addons, each component or theme should be placed in the corresponding folders inside the pack.
+### Folder Structure Overview
 
-* MyElementPack.elementsdevpack (folder/bundle)
-  * components (folder)
-  * [info.json (file)](info.json.md)
-  * themes (folder)
-  * [shared (folder)](components/shared-files/)
+Here’s how a typical `.elementsdevpack` bundle is organized:
 
-The following shows an Element Dev Pack containing multiple themes and components:
+```
+MyElementPack.elementsdevpack/
+├── info.json
+├── components/
+│   ├── com.companyname.slideshow/
+│   ├── com.companyname.navbar/
+│   └── shared/
+│       ├── assets/
+│       └── templates/
+└── themes/
+    ├── com.companyname.themes.architect/
+    └── com.companyname.themes.solar/
+```
 
-* MyElementPack.elementsdevpack (bundle)
-* info.json
-* components (folder)
-  * com.companyname.slideshow (folder)
-  * com.companyname.navbar (folder)
-* themes (folder)
-  * com.companyname.themes.architect (folder)
-  * com.companyname.themes.solar (folder)
-* shared (folder)
+#### Folder Breakdown:
 
-
+* Root folder (MyElementPack.elementsdevpack)
+  * [info.json](info.json.md) - \[required] the main configuration file for the pack
+  * components - contains folders for each custom component
+  * themes - contains folders for each custom theme
 
