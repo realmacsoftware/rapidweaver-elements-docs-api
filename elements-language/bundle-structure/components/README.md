@@ -50,16 +50,16 @@ components/
 *   [icon.pdf, icon-dark.pdf, paletteIcon.pdf, paletteIcon-dark.pdf](icons.md)
 
     A small icon that visually represents the component inside Elements.
-*   [templates](templates/)/
+*   [templates](language/)/
 
     Contains HTML templates for rendering the component output. All files are processed using Elements language.
 
     * \*.html/\*.php - The component's output. All html/php files processed, concatenated together and added to the page.
     * \*.css - All css files are processed and concatenated together. They're added to the page's css file during publish.
     * \*.js - All javascript files are processed and concatenated together. They're added to the page's js file during publish.
-    * [include/](templates/include.md) - sub-templates you can include or reuse multiple times.
-    * [pageStart/, pageEnd/, bodyStart/, bodyEnd/](templates/) - templates added to these folders will be injected into the page in the corresponding areas.
-    * [backend/](backend.md) - Additional supporting files to be deployed to the server.
+    * [include/](language/include.md) - sub-templates you can include or reuse multiple times.
+    * [pageStart/, pageEnd/, bodyStart/, bodyEnd/](language/) - templates added to these folders will be injected into the page in the corresponding areas.
+    * [backend/](templates/backend.md) - Additional supporting files to be deployed to the server.
 * [assets/](assets.md) - Contains supporting files like CSS, JavaScript, or images that should not be processed for Elements language.
 *   [hooks.js](hooks.js/)
 

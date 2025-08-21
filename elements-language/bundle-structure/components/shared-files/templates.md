@@ -18,13 +18,11 @@ This folder can contain extra html templates files, There is no restriction on n
 ### Supported Template File Types
 
 * **html** - contains HTML content
-* **php** - files containing PHP&#x20;
+* **php** - files containing PHP
 
 {% hint style="info" %}
-HTML, PHP, CSS, and JS files are supported in the [Templates folder at the single Component](../templates/) level.
+HTML, PHP, CSS, and JS files are supported in the [Templates folder at the single Component](../language/) level.
 {% endhint %}
-
-
 
 {% hint style="info" %}
 Shared Template files are only included once in the page per component pack.

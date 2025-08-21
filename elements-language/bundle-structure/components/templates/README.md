@@ -1,6 +1,5 @@
 ---
-description: Component Template Folder
-icon: brackets-curly
+icon: folder-open
 ---
 
 # Templates
@@ -21,8 +20,8 @@ The templates directory may also contain the following sub directories
 * **headEnd** - Placed at the end of head
 * **bodyStart** - Placed at the top of body
 * **bodyEnd** - Placed at the bottom of body
-* **include** - Files can be included from other template files using an [@include](include.md) statement
-* [**backend**](../backend.md) - Additional supporting files deployed to the server
+* **include** - Files can be included from other template files using an [@include](../language/include.md) statement
+* [**backend**](backend.md) - Additional supporting files deployed to the server
 
 ### Supported Template File Types
 
