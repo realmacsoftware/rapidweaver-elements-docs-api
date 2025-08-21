@@ -7,11 +7,11 @@ icon: cube
 ```
 components/
 ├── com.companyname.slideshow/
-    ├── info.json
-    ├── properties.json
-    ├── hooks.js
-    ├── templates/
-    └── assets/
+│   ├── info.json
+│   ├── properties.json
+│   ├── hooks.js
+│   ├── templates/
+│   └── assets/
 ├── com.companyname.navbar/
 └── shared/
     ├── assets/
