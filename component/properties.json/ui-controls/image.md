@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Image
 
 Displays an image dropwell in the inspector.
