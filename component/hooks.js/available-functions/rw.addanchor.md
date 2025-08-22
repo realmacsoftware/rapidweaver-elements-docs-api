@@ -2,9 +2,7 @@
 
 The `addAnchor` method enables a component to be linkable, via the "Anchor" menu, from within a Link sheet.
 
-Full Example
-
-```
+```javascript
 const transformHook = (rw) => {
   const { customID } = rw.props;
   
