@@ -62,6 +62,7 @@
   * [@richtext](component/language/richtext.md)
   * [@raw](component/language/raw.md)
   * [@include](component/language/include.md)
+  * [@includeIf](component/language/include-1.md)
   * [@template](component/language/template.md)
   * [Image Resources](component/language/image-resources.md)
 * [Assets](component/assets.md)
