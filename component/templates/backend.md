@@ -30,9 +30,9 @@ The following file types are supported:
 
 #### Example Usage
 
-A good use-case for this would be to process a contact form. Create a new component and add the following code to the `templates/backend/submit.php`file.
+A good use-case for this would be to process a contact form. Create a new component and add the following code to the `templates/backend/submit.php` file.
 
-```
+```php
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize input data
@@ -40,19 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $message = htmlspecialchars(strip_tags(trim($_POST["message"])));
     
-    // Validation
-    if (empty($name) || empty($email) || empty($message)) {
-        echo "All fields are required.";
-        exit;
-    }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email format.";
-        exit;
-    }
-    
-    
-    // Process data (e.g., send email, save to database)
-    
+    // Process data (e.g., validate, send email, save to database)
     
     echo "Thank you, $name. Your message has been received.";
 }
@@ -61,13 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 Then place this in the `templates/form.html` frontend file.
 
-```
+```php
 <script>
     function submitForm(event) {
         event.preventDefault();
         let formData = new FormData(document.getElementById("contactForm"));
         
-        fetch("{{node.backendPath}}/process.php", {
+        fetch("{{node.backendPath}}/submit.php", {
             method: "POST",
             body: formData
         })
@@ -96,11 +84,11 @@ Then place this in the `templates/form.html` frontend file.
 <p id="messageDisplay"></p>
 ```
 
-When the submit button is pressed in the above form, the form sends all the form values to the \{{node.backendPath\}}`/submit.php` file on the server. The `node.backendPath` property will be replaced with the node's unique id.
+When the submit button is pressed in the above form, the form sends all the form values to the `{{node.backendPath/submit.php` file on the server. The `node.backendPath` property will be replaced with the node's unique id.
 
-To use the `node.backendPath` property, we'll need to use the hooks.js file. Create a hooks.js file in your component and add this.
+To use the `node.backendPath` property, we'll need to use the hooks.js file to [pass data to your template](../hooks.js/passing-data-to-templates.md). Create a hooks.js file in your component and add this.
 
-```
+```javascript
 const transformHook = (rw) => {
     rw.setProps({
         node: rw.node
@@ -110,13 +98,13 @@ const transformHook = (rw) => {
 exports.transformHook = transformHook;
 ```
 
-#### Subdirectories are not supported
+### Subdirectories are not supported
 
 Elements monitors every file in the backend directory for changes. This can cause problems when adding large php libraries with hundreds of files. A better solution is to add the php library to the Element pack's [shared assets](../shared-files/assets.md) directory.
 
 The assets are deployed only once after a component from the pack is added to the page. Use the hooks file to find the site assets path and pass it to the backend file.
 
-```
+```javascript
 const transformHook = (rw) => {
     rw.setProps({
         siteAssetPath: rw.component.siteAssetPath,
