@@ -1,5 +1,5 @@
 ---
-icon: folder-open
+icon: table-layout
 ---
 
 # Templates
