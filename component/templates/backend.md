@@ -1,6 +1,5 @@
 ---
 description: Deploy extra files to the backend.
-icon: code
 ---
 
 # Backend
