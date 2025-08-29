@@ -88,7 +88,6 @@
     * [rw.responsiveProps](component/hooks.js/available-data/rw.getresponsivevalues.md)
 * [Shared Files](component/shared-files/README.md)
   * [Assets](component/shared-files/assets.md)
-  * [Hooks](component/shared-files/hooks.md)
   * [Templates](component/shared-files/templates.md)
 * [Collections](component/collections/README.md)
   * [Data collections in Hooks.js](component/collections/data-collections-in-hooks.js.md)
