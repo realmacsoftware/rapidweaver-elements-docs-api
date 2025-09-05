@@ -6,10 +6,15 @@
 * [Quickstart](getting-started/getting-started.md)
 * [Troubleshooting](getting-started/troubleshooting.md)
 
+## Store
+
+* [Getting Started](store/getting-started.md)
+* [Pack Distribution](store/pack-distribution.md)
+* [Add-on Guidelines](store/add-on-guidelines.md)
+
 ## Element Pack
 
 * [What is an Element Pack?](element-pack/what-is-an-element-pack.md)
-* [Pack Distribution](element-pack/pack-distribution.md)
 * [info.json](element-pack/info.json.md)
 
 ## Component
