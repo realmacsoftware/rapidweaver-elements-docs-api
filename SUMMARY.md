@@ -9,6 +9,7 @@
 ## Element Pack
 
 * [What is an Element Pack?](element-pack/what-is-an-element-pack.md)
+* [Element Pack Distribution](element-pack/element-pack-distribution.md)
 * [info.json](element-pack/info.json.md)
 
 ## Component

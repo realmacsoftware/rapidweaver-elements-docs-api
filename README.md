@@ -31,8 +31,6 @@ Dev Packs (.devpack) are for development only. They’re uncompiled and unencryp
 
 ✅ Before sharing or selling your work, **you must compile it into an Element Pack** (.elementpack). These are encrypted, optimised, and safe for distribution.
 
-You can learn more about [distributing Element Packs here](elements-marketplace/pack-distribution.md).
-
 ### Developer Community
 
 We have a [Component Development area](https://forums.realmacsoftware.com/c/rapidweaver-elements/custom-components/56) on the [Elements Forum](https://forums.realmacsoftware.com/c/rapidweaver-elements/developer/58) — It's open to anyone interested in using or building addons for the RapidWeaver Elements ecosystem.
