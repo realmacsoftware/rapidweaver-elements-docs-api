@@ -1,4 +1,5 @@
 ---
+description: Provide users with a seamless experience
 icon: square-info
 ---
 

@@ -1,4 +1,5 @@
 ---
+description: Learn more about sharing your addons
 icon: box-taped
 ---
 
