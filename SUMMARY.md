@@ -1,8 +1,9 @@
 # Table of contents
 
+* [Elements API](README.md)
+
 ## Getting Started
 
-* [Elements API](README.md)
 * [Quickstart](getting-started/getting-started.md)
 * [Troubleshooting](getting-started/troubleshooting.md)
 
