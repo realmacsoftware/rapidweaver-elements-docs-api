@@ -48,5 +48,11 @@ Support for multiple file types can be added using comma seperated values.
 }
 ```
 
+### Getting the Resource Path
 
+To get the path to a resource, append the `path` prop to the `{{resource}}` object, i.e. `{{resource.path}}`. This is important if you want to link to anything other than an image.
+
+```html
+<source src="{{myVideo.path}}" type="video/mp4">
+```
 
