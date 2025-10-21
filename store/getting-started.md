@@ -23,17 +23,36 @@ You can set your own prices, launch new products or updates, and most importantl
 
 You don't need to get bogged down in setting up a website, online payments system, distribution, or licensing, the Elements Store Platform handles it all.
 
+### Supported Add-ons
+
+Your Element Pack can contain a single add-on type, or bundle together different types, including any combination of the following:
+
+* [Components](../component/components.md) – Reusable, structured elements
+* [Resources](../resource/what-are-resources.md) – Assets like, icons, images, video, audio, or other files
+* [Templates](../template/what-are-templates.md) – Pre-built sections consisting of multiple components
+* [Themes](../theme/what-are-themes.md) – Predefined visual styles
+* [Projects](../project/what-are-projects.md) – Pre-build entire projects
+
+### Supported Monetisation&#x20;
+
+Th Elements Store supports two types of payment options for your products.
+
+* One-off pricing
+* Subscription pricing
+
 ### **Developer Distribution Benefits**
 
 Distributing your add-on via the Elements Store comes with a host of benefits. Here's what included:
 
-* Seamlessly build and publish addons inside of Elements.
-* Storage and distribution of your addon is included.
-* Encryption and secure delivery to users (including updates).
-* Secure licensing system, allowing only those that have purchased the addon to use it.
-* Your addons appears inside the Elements app, directly in front of every user.
+* Seamlessly build and publish add-ons inside of Elements.
+* Storage and distribution of your add-on is included.
+* Instant, and secure update system.
+* Encryption and secure delivery to users.
+* Secure licensing system, allowing only those that have purchased your add-on to use it.
+* Your add-ons appears inside the Elements app, directly in front of every user.
 * Users get demo access to your product and can buy when ready.
-* We also manage and keep track of a users purchased addons, you won’t have to deal with any support for users having issues installing or re-downloading addons. We take care of it all.
+* The users Elements Cloud account keeps track of their purchased add-ons. As a developer you won’t have to manage support for users having issues installing or re-downloading addons. We take care of it all.
+* Elements Platform Ltd is the merchant of record, so we handle refunds, and paying taxes, etc.
 
 ### **User Benefits**
 
@@ -43,4 +62,4 @@ Users have no need to backup or worry about locating previous purchases, they ar
 
 ### What You Earn <a href="#what-you-earn" id="what-you-earn"></a>
 
-As a developer, you make a 75% commission on all sales via Elements Store Platform. The money is payed out to your Stripe account. The other 25% goes to cover transaction fees, hosting, distribution, taxes, and helps support the development of the Elements platform.
+As a developer, you make commission on all sales via Elements Store Platform. The money is payed out to your Stripe account. A percentage of each sales goes to cover transaction fees, hosting, distribution, taxes, and helps support the development of the Elements platform.
