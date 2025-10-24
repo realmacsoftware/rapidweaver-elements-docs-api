@@ -38,6 +38,7 @@ Your Element Pack can contain a single add-on type, or bundle together different
 Th Elements Store supports two types of payment options for your products.
 
 * One-off pricing
+  * i.e. Purchase once, own forever.
 * Subscription pricing
 
 ### **Developer Distribution Benefits**
@@ -58,8 +59,12 @@ Distributing your add-on via the Elements Store comes with a host of benefits. H
 
 Users also benefit from the Elements Distribution platform as they will be able to log into their Elements Cloud account on any Mac and instantly get access to all their previous purchases.
 
-Users have no need to backup or worry about locating previous purchases, they are all stored safely in thier Elements Cloud Account.
+Users have no need to backup or worry about locating previous purchases, they are all stored safely in their Elements Cloud Account.
 
 ### What You Earn <a href="#what-you-earn" id="what-you-earn"></a>
 
 As a developer, you make commission on all sales via Elements Store Platform. The money is payed out to your Stripe account. A percentage of each sales goes to cover transaction fees, hosting, distribution, taxes, and helps support the development of the Elements platform.
+
+{% hint style="warning" %}
+Please read the [Store Policy for Customer and Sellers](https://docs.realmacsoftware.com/elements-docs/legal/store-policy) before using the Store.
+{% endhint %}
