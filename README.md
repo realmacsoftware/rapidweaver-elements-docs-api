@@ -11,12 +11,20 @@ The Elements language allows third-party developers to create custom Elements th
 
 The only thing you need to start building your own custom Elements is a copy of RapidWeaver Elements. Previous web development experience is recommend, but not required.
 
+{% hint style="success" %}
+#### Download Code Samples from GitHub
+
+A [public GitHub repository](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) containing a collection of official [example Element Dev Packs](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) is now available. These packs provide ready-to-use Components and configuration files you can explore, modify, and build upon to create your own custom Components for Elements. It’s the best place to learn by example and understand how a complete Dev Pack is structured.
+
+<a href="https://github.com/realmacsoftware/RWElementDevPacks/tree/main" class="button primary" data-icon="github">View Code Examples on GitHub</a>
+{% endhint %}
+
 ### What's Required?
 
 The following is a list of suggested tools to make developing Elements easier.
 
-* A licensed copy RapidWeaver Elements (Required)
-* Text editor, we recommend [Visual Studio Code](https://code.visualstudio.com).
+* A copy of RapidWeaver Elements (Required)
+* Text editor, we recommend [Visual Studio Code](https://code.visualstudio.com) or Cursor.
 * [SF Symbol app](https://developer.apple.com/sf-symbols/) for icon name reference.
 
 ### Sample Code on GitHub

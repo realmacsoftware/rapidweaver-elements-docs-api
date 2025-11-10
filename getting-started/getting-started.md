@@ -7,8 +7,12 @@ icon: bolt
 
 In this getting started guide we'll learn how to create a Component inside an Element DevPack, and then edit it and see the updates live in Elements.
 
-{% hint style="info" %}
-A public [repository on GitHub](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) with example Element Dev Packs is now available.
+{% hint style="success" %}
+#### Download Code Samples from GitHub
+
+A [public GitHub repository](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) containing a collection of official [example Element Dev Packs](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) is now available. These packs provide ready-to-use Components and configuration files you can explore, modify, and build upon to create your own custom Components for Elements. It’s the best place to learn by example and understand how a complete Dev Pack is structured.
+
+<a href="https://github.com/realmacsoftware/RWElementDevPacks/tree/main" class="button primary" data-icon="github">View Code Examples on GitHub</a>
 {% endhint %}
 
 ### Installing an existing Dev Pack into Elements
