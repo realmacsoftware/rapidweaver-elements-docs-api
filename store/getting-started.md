@@ -1,11 +1,11 @@
 ---
-description: Build, share, and sell addons for RapidWeaver Elements.
+description: Build, share, and sell products on the RapidWeaver Elements Platform.
 icon: hand-wave
 ---
 
 # Getting Started
 
-If you’re building add-ons for Elements then, welcome! This documentation is for you. It covers everything you need to know about submitting and promoting your addon to the growing number of passionate RapidWeaver Element users around the world.
+If you’re building products for Elements then, welcome! This documentation is for you. It covers everything you need to know about submitting and promoting your addon to the growing number of passionate RapidWeaver Element users around the world.
 
 **Create and launch the next must-have Component. Build your reputation, generate income, and help shape the future of Elements.**
 
@@ -35,11 +35,17 @@ Your Element Pack can contain a single add-on type, or bundle together different
 
 ### Supported Monetisation&#x20;
 
-Th Elements Store supports two types of payment options for your products.
+Th Elements Store supports three types of options for your products:
 
-* One-off pricing
+* Free
+* Lifetime Pricing
   * i.e. Purchase once, own forever.
-* Subscription pricing
+* Monthly Subscription Pricing
+  * Please note: Yearly subscription pricing is not offered.
+
+### Discounts
+
+You can apply a discount to your addons for a set duration of time. This discount and remaing time (when less than 7 days) will be displayed on the Storefront.
 
 ### **Developer Distribution Benefits**
 
@@ -51,7 +57,7 @@ Distributing your add-on via the Elements Store comes with a host of benefits. H
 * Encryption and secure delivery to users.
 * Secure licensing system, allowing only those that have purchased your add-on to use it.
 * Your add-ons appears inside the Elements app, directly in front of every user.
-* Users get demo access to your product and can buy when ready.
+* Users get demo access to your product and can buy when ready (planned feature)
 * The users Elements Cloud account keeps track of their purchased add-ons. As a developer you won’t have to manage support for users having issues installing or re-downloading addons. We take care of it all.
 * Elements Platform Ltd is the merchant of record, so we handle refunds, and paying taxes, etc.
 

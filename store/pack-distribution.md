@@ -11,10 +11,6 @@ Dev Packs (.devpack) are for development only. They’re uncompiled and unencryp
 
 Before sharing or selling your work, **you must compile it into an Element Pack** (.elementpack). These are encrypted, optimised, and safe for distribution.
 
-{% hint style="warning" %}
-We plan to share more details on how to compile a dev pack for distribution very soon. In the meantime only Element Projects can be sold and distributed directly to Element Customers.
-{% endhint %}
-
 ## Element Pack Deep Dive
 
 This section covers everything you need to know about preparing your components for release. Whether you’re sharing your work with clients or publishing it on the Marketplace, it’s essential to package and protect your components correctly.&#x20;
@@ -80,5 +76,5 @@ Information on converting your Dev Pack into a distributable Element Pack will b
 
 ***
 
-I you need a help while developing your next great addon for Elements or you have questions about distribution, [Please visit the Support Form](https://forums.realmacsoftware.com/c/rapidweaver-elements/43).
+If you need a help while developing your next great addon for Elements or you have questions about distribution, [Please visit the Support Form](https://forums.realmacsoftware.com/c/rapidweaver-elements/43).
 

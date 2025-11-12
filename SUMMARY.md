@@ -11,7 +11,7 @@
 
 * [Getting Started](store/getting-started.md)
 * [Pack Distribution](store/pack-distribution.md)
-* [Add-on Guidelines](store/add-on-guidelines.md)
+* [Product Guidelines](store/product-guidelines.md)
 
 ## Element Pack
 
