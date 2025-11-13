@@ -15,9 +15,9 @@ The only thing you need to start building your own custom Elements is a copy of 
 #### Download Code Samples from GitHub
 
 A [public GitHub repository](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) containing a collection of official [example Element Dev Packs](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) is now available. These packs provide ready-to-use Components and configuration files you can explore, modify, and build upon to create your own custom Components for Elements. It’s the best place to learn by example and understand how a complete Dev Pack is structured.
-
-<a href="https://github.com/realmacsoftware/RWElementDevPacks/tree/main" class="button primary" data-icon="github">View Code Examples on GitHub</a>
 {% endhint %}
+
+<a href="https://github.com/realmacsoftware/RWElementDevPacks/tree/main" class="button secondary" data-icon="github">View Code Examples on GitHub</a>
 
 ### What's Required?
 
