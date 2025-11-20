@@ -45,7 +45,13 @@ Th Elements Store supports three types of options for your products:
 
 ### Discounts
 
-You can apply a discount to your addons for a set duration of time. This discount and remaing time (when less than 7 days) will be displayed on the Storefront.
+You can set a discount on your add-ons for a fixed period. The Storefront will show the discounted price along with the remaining time when it drops under 7 days. Time is displayed in days, then switches to hours once it falls below 24 hours, and under 1 hour it will show the minutes and seconds remaining.
+
+If a user has already purchased the product, no pricing or discount will be displayed for them.
+
+<figure><img src="../.gitbook/assets/CleanShot 2025-11-20 at 12 .54.34@2x.png" alt=""><figcaption></figcaption></figure>
+
+All timing is based on UTC on the server, not the user’s local timezone.
 
 ### **Developer Distribution Benefits**
 
