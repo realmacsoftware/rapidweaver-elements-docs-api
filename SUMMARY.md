@@ -7,12 +7,6 @@
 * [Quickstart](getting-started/getting-started.md)
 * [Troubleshooting](getting-started/troubleshooting.md)
 
-## Store
-
-* [Getting Started](store/getting-started.md)
-* [Pack Distribution](store/pack-distribution.md)
-* [Product Guidelines](store/product-guidelines.md)
-
 ## Element Pack
 
 * [What is an Element Pack?](element-pack/what-is-an-element-pack.md)
