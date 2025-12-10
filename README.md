@@ -37,7 +37,9 @@ Dev Packs (.devpack) are for development only. They’re uncompiled and unencryp
 
 **⚠️ Do not share or sell Dev Packs:** They’re not optimised for distribution and can cause performance issues if misused.
 
-✅ Before sharing or selling your work, **you must compile it into an Element Pack** (.elementpack). These are encrypted, optimised, and safe for distribution.
+✅ If you want to share or monitise your Dev Packs, they **must be compiled into Element Packs** (.elementpack) via the Elements Platform.&#x20;
+
+[Learn more about distributing Element Packs](https://docs.realmacsoftware.com/elements-docs/store/creators/addon-distribution).
 
 ### Developer Community
 
