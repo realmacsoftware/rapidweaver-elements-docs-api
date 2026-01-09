@@ -12,6 +12,12 @@
 * [What is an Element Pack?](element-pack/what-is-an-element-pack.md)
 * [info.json](element-pack/info.json.md)
 
+## Development Resources
+
+* [Open Source Components](development-resources/open-source-components.md)
+* [Build Tools](development-resources/build-tools.md)
+* [Syntax Highlighting](development-resources/syntax-highlighting.md)
+
 ## Component
 
 * [What is a Component?](component/components.md)
