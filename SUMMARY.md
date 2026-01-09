@@ -67,6 +67,7 @@
   * [@each](component/language/each.md)
   * [@text](component/language/text.md)
   * [@richtext](component/language/richtext.md)
+  * [@markdown](component/language/markdown.md)
   * [@raw](component/language/raw.md)
   * [@include](component/language/include.md)
   * [@includeIf](component/language/include-1.md)
