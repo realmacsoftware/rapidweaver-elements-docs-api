@@ -11,25 +11,20 @@ The Elements language allows third-party developers to create custom Elements th
 
 The only thing you need to start building your own custom Elements is a copy of RapidWeaver Elements. Previous web development experience is recommend, but not required.
 
-{% hint style="success" %}
-#### Download Code Samples from GitHub
+### Open Source Component&#x20;
 
-A [public GitHub repository](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) containing a collection of official [example Element Dev Packs](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) is now available. These packs provide ready-to-use Components and configuration files you can explore, modify, and build upon to create your own custom Components for Elements. It’s the best place to learn by example and understand how a complete Dev Pack is structured.
-{% endhint %}
+The Core Components built into Elements are now open-source 🎉 You can learn more about our [Open Source Core Components that power Elements here](dev-resources/open-source-components.md). You also want to take a look at the [Build Tools](dev-resources/build-tools.md).
 
-<a href="https://github.com/realmacsoftware/RWElementDevPacks/tree/main" class="button secondary" data-icon="github">View Code Examples on GitHub</a>
+We also offer a simpler collection of [example Element Components](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) to help you get started. These simple component packs provide ready-to-use Components and configuration files you can explore, modify, and build upon to create your own custom Components for Elements.It’s the best place to learn by example and understand how a complete Dev Pack is structured.
 
 ### What's Required?
 
 The following is a list of suggested tools to make developing Elements easier.
 
-* A copy of RapidWeaver Elements (Required)
-* Text editor, we recommend [Visual Studio Code](https://code.visualstudio.com) or Cursor.
+* A copy of [RapidWeaver Elements](https://realmacsoftware.com/rapidweaver/) (Required).
+* Text editor, we recommend [Visual Studio Code](https://code.visualstudio.com).
+* Our [Elements Syntax Highlighter](dev-resources/syntax-highlighting.md) for Visual Studio.
 * [SF Symbol app](https://developer.apple.com/sf-symbols/) for icon name reference.
-
-### Sample Code on GitHub
-
-A public [repository on GitHub](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) with a growing collection of Element Dev Packs is now available.
 
 ### Distributing Elements Packs
 
@@ -43,7 +38,7 @@ Dev Packs (.devpack) are for development only. They’re uncompiled and unencryp
 
 ### Developer Community
 
-We have a [Component Development area](https://forums.realmacsoftware.com/c/rapidweaver-elements/custom-components/56) on the [Elements Forum](https://forums.realmacsoftware.com/c/rapidweaver-elements/developer/58) — It's open to anyone interested in using or building addons for the RapidWeaver Elements ecosystem.
+We have a [Component Development area](https://forums.realmacsoftware.com/c/rapidweaver-elements/custom-components/56) on the [Elements Forum](https://forums.realmacsoftware.com/c/rapidweaver-elements/developer/58). It's open to anyone interested in using or building addons for the RapidWeaver Elements ecosystem.
 
 We're always around to offer help with getting started or if you just need a hand while developing your next great addon for Elements. Come join us, we're a friendly bunch ☺️
 

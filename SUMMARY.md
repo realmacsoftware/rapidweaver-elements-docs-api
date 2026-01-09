@@ -7,16 +7,16 @@
 * [Quickstart](getting-started/getting-started.md)
 * [Troubleshooting](getting-started/troubleshooting.md)
 
+## Dev Resources
+
+* [Open Source Components](dev-resources/open-source-components.md)
+* [Build Tools](dev-resources/build-tools.md)
+* [Syntax Highlighting](dev-resources/syntax-highlighting.md)
+
 ## Element Pack
 
 * [What is an Element Pack?](element-pack/what-is-an-element-pack.md)
 * [info.json](element-pack/info.json.md)
-
-## Development Resources
-
-* [Open Source Components](development-resources/open-source-components.md)
-* [Build Tools](development-resources/build-tools.md)
-* [Syntax Highlighting](development-resources/syntax-highlighting.md)
 
 ## Component
 
