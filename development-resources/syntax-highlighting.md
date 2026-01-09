@@ -1,10 +1,10 @@
+---
+description: Official Visual Studio Code Support for RapidWeaver Elements
+---
+
 # Syntax Highlighting
 
-## RW Elements VSCode Extension
-
-**Official Visual Studio Code Support for RapidWeaver Elements**
-
-The **RW Elements VSCode Extension** brings powerful, purpose-built tooling to Visual Studio Code for developers working with **RapidWeaver Elements**. It enhances your editing experience with features tailored specifically to Elements projects and helps you stay focused, productive, and confident while building components and packs.
+The **Elements VSCode Extension** brings powerful, purpose-built tooling to Visual Studio Code for developers working with **RapidWeaver Elements**. It enhances your editing experience with features tailored specifically to Elements projects and helps you stay focused, productive, and confident while building components and packs.
 
 Whether you’re new to Elements or a seasoned pack creator, this extension adds real value to your development workflow.
 
