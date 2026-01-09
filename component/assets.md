@@ -18,7 +18,7 @@ components
                 snowstorm.js
 ```
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Currently, page is the only area currently supported. If you need to deploy assets to another area, please visit the [forum and let us know](https://forums.realmacsoftware.com/c/rapidweaver-elements/developer/).
 {% endhint %}
 

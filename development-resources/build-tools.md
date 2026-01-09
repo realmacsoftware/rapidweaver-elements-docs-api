@@ -7,9 +7,13 @@ description: >-
 
 # Build Tools
 
-### What is rw-element-tools?
+{% hint style="info" %}
+For more detailed information about this package, including installation details and examples, please visit the [rw-elements-tools readme.md](https://www.npmjs.com/package/rw-elements-tools)
+{% endhint %}
 
-`rw-element-tools` is a development toolkit that simplifies the process of creating custom elements for [RapidWeaver](https://www.realmacsoftware.com/rapidweaver/), the popular Mac website builder. It provides:
+### What is rw-elements-tools?
+
+`rw-elements-tools` is a development toolkit that simplifies the process of creating custom elements for [RapidWeaver](https://www.realmacsoftware.com/rapidweaver/), the popular Mac website builder. It provides:
 
 * **A powerful CLI** for building and watching your element files
 * **Ready-to-use controls** for common UI patterns (colors, spacing, typography, and more)
@@ -23,9 +27,9 @@ description: >-
 * **Developers** looking to extend RapidWeaver's capabilities
 * **Anyone** who wants to contribute elements to the RapidWeaver ecosystem
 
-### Why use rw-element-tools?
+### Why use rw-elements-tools?
 
-| Without rw-element-tools                 | With rw-element-tools                  |
+| Without rw-elements-tools                | With rw-elements-tools                 |
 | ---------------------------------------- | -------------------------------------- |
 | Manually write complex JSON config files | Use intuitive JavaScript configuration |
 | Copy/paste utility code between elements | Import from a shared library           |
