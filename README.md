@@ -13,7 +13,7 @@ The only thing you need to start building your own custom Elements is a copy of 
 
 ### Open Source Component&#x20;
 
-The Core Components built into Elements are now open-source 🎉 You can learn more about our [Open Source Core Components that power Elements here](dev-resources/open-source-components.md). You also want to take a look at the [Build Tools](dev-resources/build-tools.md).
+The Core Components built into Elements are now open-source 🎉 You can learn more about our [Open Source Core Components that power Elements here](development-resources/open-source-components.md). You also want to take a look at the [Build Tools](development-resources/build-tools.md).
 
 We also offer a simpler collection of [example Element Components](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) to help you get started. These simple component packs provide ready-to-use Components and configuration files you can explore, modify, and build upon to create your own custom Components for Elements.It’s the best place to learn by example and understand how a complete Dev Pack is structured.
 
@@ -23,7 +23,7 @@ The following is a list of suggested tools to make developing Elements easier.
 
 * A copy of [RapidWeaver Elements](https://realmacsoftware.com/rapidweaver/) (Required).
 * Text editor, we recommend [Visual Studio Code](https://code.visualstudio.com).
-* Our [Elements Syntax Highlighter](dev-resources/syntax-highlighting.md) for Visual Studio.
+* Our [Elements Syntax Highlighter](development-resources/syntax-highlighting.md) for Visual Studio.
 * [SF Symbol app](https://developer.apple.com/sf-symbols/) for icon name reference.
 
 ### Distributing Elements Packs

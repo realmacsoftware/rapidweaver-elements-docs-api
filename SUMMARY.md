@@ -9,9 +9,9 @@
 
 ## Dev Resources
 
-* [Open Source Components](dev-resources/open-source-components.md)
-* [Build Tools](dev-resources/build-tools.md)
-* [Syntax Highlighting](dev-resources/syntax-highlighting.md)
+* [Open Source Components](development-resources/open-source-components.md)
+* [Build Tools](development-resources/build-tools.md)
+* [Syntax Highlighting](development-resources/syntax-highlighting.md)
 
 ## Element Pack
 
