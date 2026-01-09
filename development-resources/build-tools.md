@@ -11,27 +11,90 @@ description: >-
 For more detailed information about this package, including installation details and examples, please visit the [rw-elements-tools readme.md](https://www.npmjs.com/package/rw-elements-tools)
 {% endhint %}
 
-### What is rw-elements-tools?
+## RW Elements Tools
 
-`rw-elements-tools` is a development toolkit that simplifies the process of creating custom elements for [RapidWeaver](https://www.realmacsoftware.com/rapidweaver/), the popular Mac website builder. It provides:
+**Official NPM Toolkit for RapidWeaver Elements Development**
 
-* **A powerful CLI** for building and watching your element files
-* **Ready-to-use controls** for common UI patterns (colors, spacing, typography, and more)
-* **Shared utilities** for generating Tailwind CSS classes
-* **Smart optimization** that automatically removes unused code from your builds
+[rw-elements-tools](https://www.npmjs.com/package/rw-elements-tools) is the official utility package for developers working with **RapidWeaver Elements**. It provides a set of helpful tools and build helpers that make creating, compiling, and maintaining Elements packs simpler and more efficient.
 
-### Who is this for?
+Whether you’re just getting started with Elements development or building advanced component packs, RW Elements Tools helps streamline your workflow so you can focus on building great experiences.
 
-* **Theme developers** who want to create custom RapidWeaver elements
-* **Agencies** building bespoke elements for client projects
-* **Developers** looking to extend RapidWeaver's capabilities
-* **Anyone** who wants to contribute elements to the RapidWeaver ecosystem
+***
 
-### Why use rw-elements-tools?
+### What is RW Elements Tools?
 
-| Without rw-elements-tools                | With rw-elements-tools                 |
-| ---------------------------------------- | -------------------------------------- |
-| Manually write complex JSON config files | Use intuitive JavaScript configuration |
-| Copy/paste utility code between elements | Import from a shared library           |
-| Bloated output with unused code          | Automatic dead code elimination        |
-| Manual rebuilds on every change          | Watch mode for instant updates         |
+RW Elements Tools is a developer toolkit published on NPM that supports the Elements development workflow.
+
+It includes utilities designed to help with:
+
+* Building and bundling Elements components
+* Running common development and build tasks
+* Standardising workflows across Elements projects
+* Preparing packs for production use
+
+The tools are designed to work out of the box with minimal setup and sensible defaults.
+
+**View the package on NPM**\
+[https://www.npmjs.com/package/rw-elements-tools](https://www.npmjs.com/package/rw-elements-tools)
+
+***
+
+### Why it exists
+
+Building Elements packs often involves repetitive setup and tooling work. RW Elements Tools exists to remove friction and provide a shared, reliable foundation for Elements development.
+
+Using this toolkit helps:
+
+* Reduce boilerplate configuration
+* Keep projects consistent across teams
+* Improve build reliability
+* Speed up development and iteration
+
+It’s the same tooling used and maintained alongside the Elements ecosystem.
+
+***
+
+### Who is it for?
+
+RW Elements Tools is ideal for:
+
+* **Developers** building custom Elements packs
+* **Teams** working on multiple Elements projects
+* **Open source contributors** supporting Elements tooling
+* Anyone creating, testing, or publishing Elements components
+
+If you’re writing code for Elements, this package is designed to fit naturally into your workflow.
+
+***
+
+### Installing and using RW Elements Tools
+
+Installation and usage instructions are maintained on the NPM package page.
+
+To learn how to install the toolkit, configure it for your project, and use the available utilities, visit:
+
+👉 [https://www.npmjs.com/package/rw-elements-tools](https://www.npmjs.com/package/rw-elements-tools)
+
+***
+
+### Contributing
+
+RW Elements Tools is open to contributions from the community.
+
+You can help by:
+
+* Reporting bugs or issues
+* Suggesting improvements or enhancements
+* Submitting pull requests
+* Helping improve documentation and examples
+
+Contribution links and repository details can be found via the NPM page.
+
+***
+
+### Links
+
+* **NPM Package**\
+  [https://www.npmjs.com/package/rw-elements-tools](https://www.npmjs.com/package/rw-elements-tools)
+* **Installation & Usage**\
+  See the package page on NPM
