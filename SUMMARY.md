@@ -10,7 +10,10 @@
 ## Dev Resources
 
 * [Open Source Components](development-resources/open-source-components.md)
-* [Build Tools](development-resources/build-tools.md)
+* [Build Tools](development-resources/build-tools/README.md)
+  * [Controls](development-resources/build-tools/controls/README.md)
+  * [Properties](development-resources/build-tools/properties/README.md)
+  * [Shared Hooks](development-resources/build-tools/shared-hooks/README.md)
 * [Syntax Highlighting](development-resources/syntax-highlighting.md)
 
 ## Element Pack

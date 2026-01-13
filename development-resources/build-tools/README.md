@@ -98,3 +98,159 @@ Contribution links and repository details can be found via the NPM page.
   [https://www.npmjs.com/package/rw-elements-tools](https://www.npmjs.com/package/rw-elements-tools)
 * **Installation & Usage**\
   See the package page on NPM
+
+
+---
+
+
+
+| Section | Description | Count |
+|---------|-------------|-------|
+| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
+| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
+| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+
+## Installation
+
+```bash
+npm install --save-dev rw-elements-tools
+```
+
+## Usage Overview
+
+### Controls in properties.config.json
+
+```json
+{
+  "globalControl": "Spacing"
+}
+```
+
+### Properties in controls
+
+```json
+{
+  "select": {
+    "use": "FontWeight"
+  }
+}
+```
+
+### Shared Hooks in hooks.source.js
+
+```javascript
+function transformHook(rw) {
+    const classes = classnames()
+        .add(globalSpacing(rw))
+        .add(globalBackground(rw))
+        .toString();
+
+    return { classes };
+}
+```
+
+For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
+
+
+---
+
+
+
+| Section | Description | Count |
+|---------|-------------|-------|
+| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
+| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
+| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+
+## Installation
+
+```bash
+npm install --save-dev rw-elements-tools
+```
+
+## Usage Overview
+
+### Controls in properties.config.json
+
+```json
+{
+  "globalControl": "Spacing"
+}
+```
+
+### Properties in controls
+
+```json
+{
+  "select": {
+    "use": "FontWeight"
+  }
+}
+```
+
+### Shared Hooks in hooks.source.js
+
+```javascript
+function transformHook(rw) {
+    const classes = classnames()
+        .add(globalSpacing(rw))
+        .add(globalBackground(rw))
+        .toString();
+
+    return { classes };
+}
+```
+
+For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
+
+
+---
+
+
+
+| Section | Description | Count |
+|---------|-------------|-------|
+| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
+| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
+| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+
+## Installation
+
+```bash
+npm install --save-dev rw-elements-tools
+```
+
+## Usage Overview
+
+### Controls in properties.config.json
+
+```json
+{
+  "globalControl": "Spacing"
+}
+```
+
+### Properties in controls
+
+```json
+{
+  "select": {
+    "use": "FontWeight"
+  }
+}
+```
+
+### Shared Hooks in hooks.source.js
+
+```javascript
+function transformHook(rw) {
+    const classes = classnames()
+        .add(globalSpacing(rw))
+        .add(globalBackground(rw))
+        .toString();
+
+    return { classes };
+}
+```
+
+For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
