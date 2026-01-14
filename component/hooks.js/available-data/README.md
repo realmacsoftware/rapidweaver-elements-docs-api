@@ -1,46 +1,104 @@
 ---
-description: Access Project Properties
+description: Access data in your transform hook
 ---
 
 # Available Data
 
-Properties from the current environment can be used within templates but most of them need to be passed through using the `setProps` command in the [hooks.js](../../../elements-language/bundle-structure/components/hooks.js/available-data/broken-reference/) file first. The node object is always available.
+The `rw` object passed to your transform hook provides access to various data sources. Most data needs to be passed to templates using `rw.setProps()`, except for `node` which is always available.
 
-```
-const transformHook = (rw) => {    
-    // Expose project, page and component objects to the template, node is always available
+## Quick Reference
+
+| Property | Description |
+|----------|-------------|
+| [`rw.props`](rw.props.md) | UI control values from properties.json |
+| [`rw.responsiveProps`](rw.getresponsivevalues.md) | Responsive property values by breakpoint |
+| [`rw.collections`](rw.collections.md) | Component collections data |
+| [`rw.project`](rw.project.md) | Project-level settings |
+| [`rw.page`](rw.page.md) | Current page information |
+| [`rw.node`](rw.node.md) | Component instance data (always available in templates) |
+| [`rw.component`](rw.element.md) | Component metadata and asset paths |
+| [`rw.theme`](rw.theme.md) | Theme configuration including breakpoints |
+| [`rw.pages`](rw.pages.md) | Site navigation page tree |
+
+## Basic Example
+
+```javascript
+const transformHook = (rw) => {
+    // Access various data sources
+    const { title, isVisible } = rw.props;
+    const { items } = rw.collections;
+    const { mode } = rw.project;
+    const { id } = rw.node;
+    const { assetPath } = rw.component;
+    
+    // Pass to templates
     rw.setProps({
-        project: rw.project,
-        page: rw.page,
-        component: rw.component
-    })
-}
+        title,
+        isVisible,
+        items,
+        isEditMode: mode === 'edit',
+        nodeId: id,
+        iconPath: `${assetPath}/icons/`
+    });
+};
 
 exports.transformHook = transformHook;
 ```
 
-With this in place, we gain access to the following within template files.
+## Exposing Data to Templates
 
-### Project Properties
+While the `node` object is automatically available, other data must be explicitly passed:
 
-<table><thead><tr><th width="346">Property Name</th><th width="127">Type</th><th width="278">Description</th></tr></thead><tbody><tr><td><code>{{project.title}}</code></td><td>String</td><td></td></tr><tr><td><code>{{project.mode}}</code></td><td>String</td><td></td></tr><tr><td><code>{{project.siteURL}}</code></td><td>String</td><td></td></tr><tr><td><code>{{project.language}}</code></td><td>String</td><td></td></tr><tr><td><code>{{project.enableSocialTags}}</code></td><td>Boolean</td><td></td></tr><tr><td><code>{{project.allowDarkMode}}</code></td><td>Boolean</td><td></td></tr><tr><td><code>{{project.logo.url}}</code></td><td>String</td><td></td></tr><tr><td><code>{{project.logo.alt}}</code></td><td>String</td><td></td></tr></tbody></table>
+```javascript
+const transformHook = (rw) => {    
+    // Expose project, page and component objects to the template
+    rw.setProps({
+        project: rw.project,
+        page: rw.page,
+        component: rw.component
+    });
+};
 
-### Page Properties
+exports.transformHook = transformHook;
+```
 
-<table><thead><tr><th width="275">Property Name</th><th width="135">Type</th><th width="338">Description</th></tr></thead><tbody><tr><td><code>{{page.id}}</code></td><td>String</td><td></td></tr><tr><td><code>{{page.title}}</code></td><td>String</td><td></td></tr><tr><td><code>{{page.menuTitle}}</code></td><td>String</td><td></td></tr><tr><td><code>{{page.filename}}</code></td><td>String</td><td></td></tr><tr><td><code>{{page.ext}}</code></td><td>String</td><td></td></tr><tr><td><code>{{page.language}}</code></td><td>String</td><td></td></tr><tr><td><code>{{page.navLevel}}</code></td><td>Integer</td><td>Navigation level of the page</td></tr><tr><td><code>{{page.absolutePath}}</code></td><td>String</td><td></td></tr><tr><td><code>{{page.docRootPath}}</code></td><td>String</td><td></td></tr><tr><td><code>{{page.projectResourcesPath}}</code></td><td>String</td><td>Path to the project resources</td></tr><tr><td><code>{{page.isFolder}}</code></td><td>Boolean</td><td>Does this page represent a folder</td></tr><tr><td><code>{{page.isPage}}</code></td><td>Boolean</td><td>Is this a regular Elements page</td></tr><tr><td><code>{{page.isCode}}</code></td><td>Boolean</td><td>Is this a code file</td></tr><tr><td><code>{{page.isLink}}</code></td><td>Boolean</td><td>Is this a link URL</td></tr><tr><td><code>{{page.displayInMenu}}</code></td><td>Boolean</td><td>Should the page be shown in menus</td></tr><tr><td><code>{{page.isDraft}}</code></td><td>Boolean</td><td>Draft pages are not published</td></tr><tr><td><code>{{page.icon.url}}</code></td><td>String</td><td>Path to the page icon</td></tr></tbody></table>
+With this in place, you can access properties in your templates:
 
-### Node Properties
+```html
+<!-- Project data -->
+<title>{{project.title}}</title>
 
-The node object is always passed into templates and contains the following properties.
+<!-- Page data -->
+<h1>{{page.title}}</h1>
+<p>Path: {{page.absolutePath}}</p>
 
-| Property Name               | Type   | Description                        |
-| --------------------------- | ------ | ---------------------------------- |
-| `{{node.id}}`               | String |                                    |
-| `{{node.title}}`            | String |                                    |
-| `{{node.parent.id}}`        | String |                                    |
-| `{{node.parent.container}}` | String |                                    |
-| `{{node.backendPath}}`      | String | Path to the node's backend folder. |
+<!-- Component data -->
+<img src="{{component.assetPath}}/placeholder.png">
 
-### Component Properties
+<!-- Node is always available -->
+<div id="{{node.id}}">{{node.title}}</div>
+```
 
-<table><thead><tr><th width="249">Property Name</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>{{component.title}}</code></td><td>String</td><td></td></tr><tr><td><code>{{component.group}}</code></td><td>String</td><td></td></tr><tr><td><code>{{component.version}}</code></td><td>Integer</td><td></td></tr><tr><td><code>{{component.build}}</code></td><td>Integer</td><td></td></tr><tr><td><code>{{component.assetPath}}</code></td><td>String</td><td>Path to component assets</td></tr><tr><td><code>{{component.siteAssetPath}}</code></td><td>String</td><td>Path to component site assets</td></tr><tr><td><code>{{component.sharedAssetPath}}</code></td><td>String</td><td>Path to pack shared assets</td></tr></tbody></table>
+## Data Availability by Mode
+
+Some data may differ between edit and preview modes:
+
+```javascript
+const transformHook = (rw) => {
+    const { mode } = rw.project;
+    const { sharedAssetPath } = rw.component;
+    const { image } = rw.props;
+    
+    // Show placeholder in edit mode when no image is set
+    const displayImage = image?.image 
+        ? image.image 
+        : (mode === 'edit' ? `${sharedAssetPath}/images/placeholder.png` : null);
+    
+    rw.setProps({
+        displayImage,
+        hasImage: !!image?.image
+    });
+};
+
+exports.transformHook = transformHook;
+```

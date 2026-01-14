@@ -6,160 +6,169 @@ icon: anchor
 
 Hooks provide a powerful way to extend your components by manipulating properties before they are applied within templates.
 
-The typical flow of a component follows this sequence: properties → hooks → template. Hooks process and refine properties, allowing you to perform complex logic before passing them into the template for rendering.
+## Component Lifecycle
 
-{% hint style="info" %}
-Each component has its own unique `hooks.js` file. To share code across multiple components, we recommend using a build system or spinning up your own script to merge js files and copy them to each component.
-{% endhint %}
+The typical flow of a component follows this sequence:
 
-To use a transform hook, create a `hooks.js`file in the root of your component with this code.
+```
+properties.json → hooks.js → template.html
+```
+
+1. **Properties** define the UI controls and their values
+2. **Hooks** process and transform those values
+3. **Templates** render the final HTML output
+
+## Creating a Transform Hook
+
+To use a transform hook, create a `hooks.js` file in the root of your component:
 
 ```javascript
-// Create a function called transformHook that receives the rw API object
 const transformHook = (rw) => {
-
-    // Use the API to set a property called message to "Hooks are awesome!"
+    // Access properties from UI controls
+    const { title, isVisible } = rw.props;
+    
+    // Transform and pass data to templates
     rw.setProps({
-        message: "Hooks are awesome!"
+        message: `Hello, ${title}!`,
+        displayClass: isVisible ? 'block' : 'hidden'
     });
 };
 
-// Register the transformHook function with Elements
 exports.transformHook = transformHook;
 ```
 
-Next, add this to the `template.html` file in the component templates directory.
+{% hint style="info" %}
+Each component has its own unique `hooks.js` file. To share code across multiple components, we recommend using a build system or creating a script to merge and copy JS files to each component.
+{% endhint %}
 
-```html
-<div class="p-6 text-black-600 text-center">
-    {{message}}
-</div>
-```
+## The `rw` Object
 
-### Global Properties
+The `rw` object is passed to your transform hook and provides access to component data and helper functions.
 
-<table><thead><tr><th>Property Name</th><th width="186">Type</th><th>Values</th></tr></thead><tbody><tr><td><code>rw:mode</code></td><td>string</td><td><code>edit</code> or <code>preview</code></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+### Available Data
 
-### **Available Context methods**
+| Property | Description |
+|----------|-------------|
+| [`rw.props`](available-data/rw.props.md) | UI control values from properties.json |
+| [`rw.responsiveProps`](available-data/rw.getresponsivevalues.md) | Responsive property values by breakpoint |
+| [`rw.collections`](available-data/rw.collections.md) | Component collections data |
+| [`rw.project`](available-data/rw.project.md) | Project-level data (title, mode, siteUrl, etc.) |
+| [`rw.page`](available-data/rw.page.md) | Current page data (id, title, filename, etc.) |
+| [`rw.node`](available-data/rw.node.md) | Component node data (id, title, parent, etc.) |
+| [`rw.component`](available-data/rw.element.md) | Component metadata (title, assetPath, etc.) |
+| [`rw.theme`](available-data/rw.theme.md) | Theme data including breakpoints |
+| [`rw.pages`](available-data/rw.pages.md) | Site navigation page tree |
 
-<table><thead><tr><th>Method Name</th><th width="186">Type</th><th>Values</th></tr></thead><tbody><tr><td><code>getValues</code></td><td></td><td></td></tr><tr><td><code>getClassNames</code></td><td></td><td></td></tr><tr><td><code>getResponsiveValues</code></td><td></td><td></td></tr><tr><td><code>getBreakpoints</code></td><td></td><td></td></tr><tr><td><code>getBreakpointNames</code></td><td></td><td></td></tr></tbody></table>
+### Available Functions
 
-### Setting Values
+| Function | Description |
+|----------|-------------|
+| [`rw.setProps()`](available-functions/rw.setprops.md) | Pass data to templates |
+| [`rw.setRootElement()`](available-functions/rw.setrootelement.md) | Configure the root HTML element |
+| [`rw.addAnchor()`](available-functions/rw.addanchor.md) | Register an anchor for the link picker |
+| [`rw.resizeResource()`](available-functions/rw.resizeresource.md) | Resize image resources |
+| [`rw.getBreakpoints()`](available-functions/rw.getbreakpoints.md) | Get theme breakpoint data |
 
-in hooks.js
+## Basic Example
 
-```
-// Set values in the context
-context.setValues({
-    "obj": {
-        "name" : "Mario",
-        "job" : {
-            "title" : "Plumber"
-        }
-    }
-})
-```
+Here's a complete example showing how hooks transform properties before they reach the template:
 
-in template.html
-
-```
-<p><strong>{{obj.name}}</strong> - {{obj.job.title}}</p>
-```
-
-The rendered output would look something like this:
-
-**Mario** - Plumber
-
-### Transform Hook
-
-The transform hook allows you to get and set property values before they're used in templates. Let's assume you have the following slider defined in your properties and you're using the value in a template.
-
-```
-// properties.json
+**properties.json**
+```json
 {
-    "title" : "Padding",
-    "property" : "padding",
-    "default" : 5,
+    "title": "Padding",
+    "property": "padding",
+    "default": 5,
     "slider": {
-        "min" : 0,
-        "max" : 12,
-        "round" : true
+        "min": 0,
+        "max": 12,
+        "round": true
     }
 }
 ```
 
-```
-// template.html
-The slider is {{padding}}
-```
-
-When the slider is set to 5, the output would be
-
-```
-The slider is 5
-```
-
-Now lets add a transform hook that multiplies the padding value by 2
-
-```
+**hooks.js**
+```javascript
 const transformHook = (rw) => {
-  const {
-    padding,
-  } = rw.props;
-
-  rw.setProps({
-    padding: padding*2,
-  });
-};
-
-exports.transformHook = transformHook;
-
-```
-
-With the slider still set to 5, when the template is processed the output will be
-
-```
-The slider is 10
-```
-
-This becomes incredibly powerful and convenient when you need to perform logic based on multiple properties. The following example show how you might generate a list of css classes based on standard or custom settings.
-
-```
-const transformHook = (rw) => {
-  const {
-    customSizing,     // Checkbox
-    size,             // Slider 
-    fontSize          // Slider 
-    paddingTop        // Slider 
-    paddingRight      // Slider 
-    paddingBottom     // Slider 
-    paddingLeft       // Slider
-  } = rw.props;
-  
-  const sizeClasses = [
-    // Included if customSizing == false
-    !customSizing && size,
+    const { padding } = rw.props;
     
-    // Included if customSizing == true
-    customSizing && fontSize,
-    customSizing && paddingTop,
-    customSizing && paddingRight,
-    customSizing && paddingBottom,
-    customSizing && paddingLeft,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  rw.setProps({
-    classes: sizeClasses,
-  });
+    // Double the padding value
+    rw.setProps({
+        padding: padding * 2
+    });
 };
 
 exports.transformHook = transformHook;
 ```
 
-The template simply uses the classes property instead of attempting to handle all options from 7 different properties. For example
+**template.html**
+```html
+<div style="padding: {{padding}}px">
+    Content with transformed padding
+</div>
+```
 
+When the slider is set to 5, the template receives 10 (5 × 2).
+
+## Conditional Class Generation
+
+A common use case is generating CSS classes based on multiple properties:
+
+```javascript
+const transformHook = (rw) => {
+    const {
+        customSizing,
+        size,
+        fontSize,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft
+    } = rw.props;
+    
+    const sizeClasses = [
+        !customSizing && size,
+        customSizing && fontSize,
+        customSizing && paddingTop,
+        customSizing && paddingRight,
+        customSizing && paddingBottom,
+        customSizing && paddingLeft,
+    ]
+        .filter(Boolean)
+        .join(" ");
+
+    rw.setProps({
+        classes: sizeClasses
+    });
+};
+
+exports.transformHook = transformHook;
 ```
-<div class="{{classes}}"><div>
+
+```html
+<div class="{{classes}}">Content</div>
 ```
+
+## Edit vs Preview Mode
+
+You can detect whether the component is being viewed in the editor or preview:
+
+```javascript
+const transformHook = (rw) => {
+    const { mode } = rw.project;
+    
+    rw.setProps({
+        isEditMode: mode === 'edit',
+        isPreviewMode: mode === 'preview'
+    });
+};
+
+exports.transformHook = transformHook;
+```
+
+## Next Steps
+
+- [Passing Data to Templates](passing-data-to-templates.md) - Detailed examples of using `rw.setProps()`
+- [Working with Collections](working-with-collections.md) - Accessing and transforming collection data
+- [Working with Resources](working-with-resources.md) - Handling images and other resources
+- [Common Use Cases](common-use-cases.md) - Practical recipes and patterns
