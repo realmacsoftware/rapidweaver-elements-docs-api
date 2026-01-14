@@ -21,8 +21,7 @@ globalMenuItem(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalMenuItem(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalMenuItem(rw);
+};
 ```

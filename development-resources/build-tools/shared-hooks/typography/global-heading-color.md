@@ -21,8 +21,7 @@ globalHeadingColor(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalHeadingColor(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalHeadingColor(rw);
+};
 ```

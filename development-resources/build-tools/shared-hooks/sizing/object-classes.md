@@ -21,8 +21,7 @@ objectClasses(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = objectClasses(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = objectClasses(rw);
+};
 ```

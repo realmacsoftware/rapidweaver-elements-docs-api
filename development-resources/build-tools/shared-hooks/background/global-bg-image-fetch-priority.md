@@ -21,8 +21,8 @@ globalBgImageFetchPriority(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalBgImageFetchPriority(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const priority = globalBgImageFetchPriority(rw);
+    // priority.globalBgImageFetchPriorityEnabled
+};
 ```

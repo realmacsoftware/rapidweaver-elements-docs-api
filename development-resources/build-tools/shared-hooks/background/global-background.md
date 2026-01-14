@@ -22,8 +22,7 @@ globalBackground(app, args = {})
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalBackground(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalBackground(rw);
+};
 ```

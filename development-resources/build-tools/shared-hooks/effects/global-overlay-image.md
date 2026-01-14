@@ -22,8 +22,7 @@ globalOverlayImage(app, prefix)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalOverlayImage(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalOverlayImage(rw);
+};
 ```

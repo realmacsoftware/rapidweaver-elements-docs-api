@@ -22,8 +22,7 @@ addPrefixToTailwindClasses(classString, prefix)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = addPrefixToTailwindClasses();
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = addPrefixToTailwindClasses();
+};
 ```

@@ -21,8 +21,7 @@ globalSizingContainer(app)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalSizingContainer(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalSizingContainer(rw);
+};
 ```

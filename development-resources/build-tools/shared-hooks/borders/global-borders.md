@@ -22,8 +22,7 @@ globalBorders(app, args = {})
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalBorders(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalBorders(rw);
+};
 ```

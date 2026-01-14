@@ -21,8 +21,7 @@ globalSizing(app)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalSizing(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalSizing(rw);
+};
 ```

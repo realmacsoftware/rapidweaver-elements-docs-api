@@ -22,8 +22,7 @@ globalBgVideoThumbnail(app, args)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalBgVideoThumbnail(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalBgVideoThumbnail(rw);
+};
 ```

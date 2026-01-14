@@ -21,8 +21,7 @@ globalTextFontsAndTextStyles(app)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalTextFontsAndTextStyles(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalTextFontsAndTextStyles(rw);
+};
 ```

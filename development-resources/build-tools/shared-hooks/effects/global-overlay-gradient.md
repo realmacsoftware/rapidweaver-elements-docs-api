@@ -22,8 +22,7 @@ globalOverlayGradient(app, prefix)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalOverlayGradient(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalOverlayGradient(rw);
+};
 ```

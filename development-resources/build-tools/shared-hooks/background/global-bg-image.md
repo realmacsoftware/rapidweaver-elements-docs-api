@@ -22,8 +22,7 @@ globalBgImage(app, args)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalBgImage(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalBgImage(rw);
+};
 ```

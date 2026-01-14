@@ -21,8 +21,7 @@ getAlpineTransitionAttributesMobile(transitionName)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = getAlpineTransitionAttributesMobile();
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = getAlpineTransitionAttributesMobile();
+};
 ```

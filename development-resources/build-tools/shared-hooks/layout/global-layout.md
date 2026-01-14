@@ -22,8 +22,7 @@ globalLayout(app, args = {})
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalLayout(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalLayout(rw);
+};
 ```

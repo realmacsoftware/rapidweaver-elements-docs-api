@@ -21,8 +21,8 @@ globalLink(app)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalLink(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const link = globalLink(rw);
+    // link.hasLink, link.args
+};
 ```

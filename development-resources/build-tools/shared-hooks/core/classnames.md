@@ -21,8 +21,7 @@ classnames(initialClasses = "")
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = classnames();
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = classnames();
+};
 ```

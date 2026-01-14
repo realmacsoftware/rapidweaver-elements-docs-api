@@ -23,8 +23,7 @@ globalHeadingTextColor(rw, type, prefix)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalHeadingTextColor(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalHeadingTextColor(rw);
+};
 ```

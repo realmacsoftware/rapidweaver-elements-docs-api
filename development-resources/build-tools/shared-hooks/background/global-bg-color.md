@@ -22,8 +22,7 @@ globalBgColor(app, args = {})
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalBgColor(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalBgColor(rw);
+};
 ```

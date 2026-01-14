@@ -22,8 +22,7 @@ globalNavItems(rw, isActive = false)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalNavItems(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalNavItems(rw);
+};
 ```

@@ -22,8 +22,7 @@ globalButtonFontAndTextStyles(rw, args = {})
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalButtonFontAndTextStyles(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalButtonFontAndTextStyles(rw);
+};
 ```

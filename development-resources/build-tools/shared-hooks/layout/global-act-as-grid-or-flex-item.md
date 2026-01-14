@@ -21,8 +21,7 @@ globalActAsGridOrFlexItem(app)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalActAsGridOrFlexItem(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalActAsGridOrFlexItem(rw);
+};
 ```

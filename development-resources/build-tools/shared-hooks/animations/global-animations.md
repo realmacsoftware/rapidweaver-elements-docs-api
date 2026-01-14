@@ -21,8 +21,8 @@ globalAnimations(app)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalAnimations(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const animation = globalAnimations(rw);
+    // animation.isEnabled, animation.data, etc.
+};
 ```

@@ -21,8 +21,7 @@ globalSpacing(app)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalSpacing(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalSpacing(rw);
+};
 ```

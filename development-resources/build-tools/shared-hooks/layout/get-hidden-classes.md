@@ -22,8 +22,7 @@ getHiddenClasses(hidden = {}, defaultDisplay = "block")
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = getHiddenClasses();
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = getHiddenClasses();
+};
 ```

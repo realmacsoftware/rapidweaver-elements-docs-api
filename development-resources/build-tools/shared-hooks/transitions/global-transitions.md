@@ -22,8 +22,7 @@ globalTransitions(app, alwaysWantsHover = false)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalTransitions(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalTransitions(rw);
+};
 ```

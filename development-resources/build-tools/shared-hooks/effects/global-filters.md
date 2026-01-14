@@ -22,8 +22,7 @@ globalFilters(app, args = {})
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalFilters(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalFilters(rw);
+};
 ```

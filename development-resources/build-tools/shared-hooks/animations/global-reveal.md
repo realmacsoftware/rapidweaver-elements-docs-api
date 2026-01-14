@@ -21,8 +21,8 @@ globalReveal(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalReveal(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const revealAttrs = globalReveal(rw);
+    // Returns data attributes for reveal animations
+};
 ```

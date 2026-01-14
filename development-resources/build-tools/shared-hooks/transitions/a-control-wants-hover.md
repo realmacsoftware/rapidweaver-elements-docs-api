@@ -15,8 +15,7 @@ aControlWantsHover()
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = aControlWantsHover();
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = aControlWantsHover();
+};
 ```

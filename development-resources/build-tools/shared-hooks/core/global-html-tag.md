@@ -22,8 +22,7 @@ globalHTMLTag(app, fallback = "div")
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalHTMLTag(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalHTMLTag(rw);
+};
 ```

@@ -21,8 +21,7 @@ getAlpineTransitionAttributesDesktop(transitionName)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = getAlpineTransitionAttributesDesktop();
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = getAlpineTransitionAttributesDesktop();
+};
 ```

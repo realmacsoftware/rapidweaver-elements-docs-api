@@ -22,8 +22,7 @@ globalEffects(app, args = {})
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalEffects(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalEffects(rw);
+};
 ```

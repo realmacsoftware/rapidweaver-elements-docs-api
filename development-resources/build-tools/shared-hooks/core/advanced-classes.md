@@ -21,8 +21,7 @@ advancedClasses(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = advancedClasses(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = advancedClasses(rw);
+};
 ```

@@ -27,8 +27,7 @@ getHoverPrefix(node = {},
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = getHoverPrefix(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = getHoverPrefix(rw);
+};
 ```

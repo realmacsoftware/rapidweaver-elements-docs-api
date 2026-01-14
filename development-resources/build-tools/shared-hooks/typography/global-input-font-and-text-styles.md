@@ -21,8 +21,7 @@ globalInputFontAndTextStyles(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalInputFontAndTextStyles(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalInputFontAndTextStyles(rw);
+};
 ```

@@ -22,8 +22,7 @@ bgPosition(horizontal, vertical)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = bgPosition();
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = bgPosition();
+};
 ```

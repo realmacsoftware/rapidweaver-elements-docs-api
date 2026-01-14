@@ -22,8 +22,7 @@ globalOverlay(app, isContainer = false)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalOverlay(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalOverlay(rw);
+};
 ```

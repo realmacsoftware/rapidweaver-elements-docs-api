@@ -21,8 +21,7 @@ aspectRatioClasses(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = aspectRatioClasses(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = aspectRatioClasses(rw);
+};
 ```

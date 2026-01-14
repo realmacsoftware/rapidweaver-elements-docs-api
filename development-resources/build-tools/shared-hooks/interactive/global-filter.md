@@ -21,8 +21,8 @@ globalFilter(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalFilter(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const filter = globalFilter(rw);
+    // filter.wantsFilter, filter.args
+};
 ```

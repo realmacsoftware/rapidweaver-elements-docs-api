@@ -21,8 +21,7 @@ globalOutline(rw)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = globalOutline(rw);
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = globalOutline(rw);
+};
 ```

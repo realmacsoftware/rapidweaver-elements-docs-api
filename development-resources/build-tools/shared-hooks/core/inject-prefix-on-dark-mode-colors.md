@@ -22,8 +22,7 @@ injectPrefixOnDarkModeColors(prefix, classes)
 ## Usage
 
 ```javascript
-function transformHook(rw) {
-    const result = injectPrefixOnDarkModeColors();
-    return { result };
-}
+const transformHook = (rw) => {
+    const classes = injectPrefixOnDarkModeColors();
+};
 ```
