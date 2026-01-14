@@ -32,9 +32,9 @@ In templates:
 ```html
 <p>{{message}}</p>
 <span>Count: {{count}}</span>
-{{#if isVisible}}
+@if(isVisible)
     <div>Visible content</div>
-{{/if}}
+@endif
 ```
 
 ### Arrays
@@ -54,9 +54,9 @@ In templates:
 
 ```html
 <ul>
-    {{#each team}}
-        <li>{{this}}</li>
-    {{/each}}
+    @each(member in team)
+        <li>{{member}}</li>
+    @endeach
 </ul>
 ```
 
@@ -85,9 +85,9 @@ In templates:
 
 ```html
 <p>{{apps.elements.slogan}}</p>
-{{#if apps.elements.isAmazing}}
+@if(apps.elements.isAmazing)
     <span>Amazing!</span>
-{{/if}}
+@endif
 ```
 
 ## Common Patterns

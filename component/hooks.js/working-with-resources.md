@@ -128,18 +128,18 @@ exports.transformHook = transformHook;
 Template:
 
 ```html
-{{#if hasImage}}
+@if(hasImage)
 <picture>
-    {{#each sources}}
-        <source media="{{this.media}}" srcset="{{this.srcset}}">
-    {{/each}}
+    @each(source in sources)
+        <source media="{{source.media}}" srcset="{{source.srcset}}">
+    @endeach
     <img 
         src="{{fallbackSrc}}" 
         alt="{{alt}}"
         style="aspect-ratio: {{aspectRatio}}"
     >
 </picture>
-{{/if}}
+@endif
 ```
 
 ## Gallery Resources

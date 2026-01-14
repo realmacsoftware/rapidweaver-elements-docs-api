@@ -154,24 +154,24 @@ Template for navigation:
 ```html
 <nav>
     <ul>
-        {{#each pages}}
-            <li class="{{#if this.isActive}}active{{/if}}">
-                <a href="{{this.url}}" 
-                   {{#if this.openInNewWindow}}target="_blank"{{/if}}>
-                    {{this.title}}
+        @each(page in pages)
+            <li class="@if(page.isActive)active@endif">
+                <a href="{{page.url}}" 
+                   @if(page.openInNewWindow)target="_blank"@endif>
+                    {{page.title}}
                 </a>
                 
-                {{#if this.hasPages}}
+                @if(page.hasPages)
                     <ul>
-                        {{#each this.pages}}
-                            <li class="{{#if this.isActive}}active{{/if}}">
-                                <a href="{{this.url}}">{{this.title}}</a>
+                        @each(subPage in page.pages)
+                            <li class="@if(subPage.isActive)active@endif">
+                                <a href="{{subPage.url}}">{{subPage.title}}</a>
                             </li>
-                        {{/each}}
+                        @endeach
                     </ul>
-                {{/if}}
+                @endif
             </li>
-        {{/each}}
+        @endeach
     </ul>
 </nav>
 ```

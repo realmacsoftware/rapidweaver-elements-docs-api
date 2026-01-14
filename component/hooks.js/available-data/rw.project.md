@@ -90,7 +90,7 @@ In templates:
 <title>{{project.title}}</title>
 <html lang="{{project.language}}">
 
-{{#if project.logo.url}}
+@if(project.logo.url)
     <img src="{{project.logo.url}}" alt="{{project.logo.alt}}">
-{{/if}}
+@endif
 ```

@@ -92,12 +92,12 @@ exports.transformHook = transformHook;
 Once passed via `setProps`, collections can be iterated in templates:
 
 ```html
-{{#each items}}
+@each(item in items)
     <div class="item">
-        <h3>{{this.title}}</h3>
-        <p>{{this.description}}</p>
+        <h3>{{item.title}}</h3>
+        <p>{{item.description}}</p>
     </div>
-{{/each}}
+@endeach
 ```
 
 ## Collection Item Properties

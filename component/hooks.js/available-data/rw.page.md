@@ -117,7 +117,7 @@ In templates:
 <h1>{{page.title}}</h1>
 <html lang="{{page.language}}">
 
-{{#if page.description}}
+@if(page.description)
     <meta name="description" content="{{page.description}}">
-{{/if}}
+@endif
 ```

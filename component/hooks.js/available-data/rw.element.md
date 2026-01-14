@@ -91,7 +91,7 @@ exports.transformHook = transformHook;
 <link rel="stylesheet" href="{{sharedAssetPath}}/css/styles.css">
 
 <!-- Conditionally load scripts -->
-{{#if needsGalleryScript}}
+@if(needsGalleryScript)
     <script src="{{assetPath}}/js/gallery.min.js"></script>
-{{/if}}
+@endif
 ```
