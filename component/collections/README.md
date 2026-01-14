@@ -1,100 +1,203 @@
 ---
+description: Create flexible datasets for your components
 icon: rectangle-history
 ---
 
 # Collections
 
-Collections are a flexible way to create datasets for your element. You can add multiple collections to your elements.
+Collections provide a flexible way to create repeatable datasets for your components. They allow users to add, edit, and manage multiple items of structured data—perfect for features like audio playlists, image galleries, FAQ sections, pricing tables, and any content that follows a repeated pattern.
 
-<figure><img src="../../.gitbook/assets/CleanShot%202025-02-13%20at%209%E2%80%AF.05.06@2x.png" alt=""><figcaption><p>Example Collection view with four records.</p></figcaption></figure>
+## Overview
 
-To add data collections to your element you must first create a `collections` folder at the root of your element.
+Collections appear in the Elements inspector as a dedicated panel where users can add, remove, and reorder items. Each item in a collection has its own set of properties that you define.
 
-{% hint style="info" %}
-A public [repository on GitHub](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) with a growing collection of Element Dev Packs is now available, including Collection examples!
-{% endhint %}
+## Directory Structure
 
-###
-
-**Example structure**
+To add collections to your component, create a `collections` folder at the root of your component directory. Each collection requires its own subfolder containing two files:
 
 ```
-/com.company.element.element-name
-  /collections
-    /{data-collection-name}
-      • info.json
-      • properties.json
+com.yourcompany.component/
+├── collections/
+│   └── {collection-name}/
+│       ├── info.json
+│       └── properties.json
+├── templates/
+│   └── index.html
+├── hooks.js
+├── info.json
+└── properties.json
 ```
 
-Inside the collections folder you must create a folder with the name of your data collection. Inside the data collection folder you must create both a `info.json` and `properties.json` file.
+## Creating a Collection
 
-### Basic Example
+### Step 1: Create the Collection Folder
 
-If we want to create an data collection for `features` we need to create the following structure in your element:
-
-```
-/com.company.element.element-name
-  /collections
-    /features
-      • info.json
-      • properties.json
-```
-
-#### Info.json
-
-We then need to identify this data collection with RapidWeaver. To do this we must add the following code to the info.json file.
+Create a folder inside `collections/` with the name of your collection. Use lowercase with hyphens for multi-word names:
 
 ```
+collections/
+├── tracks/
+├── features/
+├── pricing-tiers/
+└── team-members/
+```
+
+### Step 2: Define info.json
+
+The `info.json` file identifies your collection to RapidWeaver:
+
+```json
 {
-  "identifier": "com.company.element.features",
-  "title": "Features"
+    "identifier": "com.yourcompany.component.collections.features",
+    "title": "Features"
 }
-
 ```
 
-#### Properties.json
+| Property | Required | Description |
+|----------|----------|-------------|
+| `identifier` | Yes | Unique identifier using reverse domain notation |
+| `title` | Yes | Display name shown in the Elements interface |
 
-To add properties to our collection we need to describe the fields for each item added to our features collection.
+### Step 3: Define properties.json
 
-Data collection properties are described in the same way as Element properties.
+The `properties.json` file describes the fields for each item in your collection. It uses the same format as component properties:
 
-This means we must create a `properties.json` file and describe our properties in exactly the same way as Element properties.
-
-**Note:** all properties available to Elements are also available to data collections. Read the [properties.json docs](../../elements-language/bundle-structure/components/properties.json) for more information.
-
-So, given that a feature should have a title, description, and icon, we should add the following to properties.json:
-
-```
+```json
 {
-  "groups": [
-    {
-      "title": "Feature",
-      "properties": [
+    "groups": [
         {
-          "title": "Title",
-          "id": "title",
-          "text": {
-            "default": ""
-          }
-        },
-        {
-          "title": "Description",
-          "id": "description",
-          "textArea": {
-            "default": ""
-          }
-        },
-        {
-          "title": "Icon",
-          "id": "icon",
-          "resource": {}
+            "title": "Feature",
+            "properties": [
+                {
+                    "title": "Title",
+                    "property": "title",
+                    "responsive": false,
+                    "text": {
+                        "default": ""
+                    }
+                },
+                {
+                    "title": "Description",
+                    "property": "description",
+                    "responsive": false,
+                    "textArea": {
+                        "default": ""
+                    }
+                },
+                {
+                    "title": "Icon",
+                    "property": "icon",
+                    "responsive": false,
+                    "resource": {}
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-
-
 ```
 
-With this all setup your element will have a Features data collection that allows the user to add unlimited items with a title, description, and icon.
+All UI controls available to components are also available within collections. See the [properties.json documentation](../properties.json/README.md) for the complete reference.
+
+## Real-World Examples
+
+### Tags Collection
+
+A simple collection for filtering tags used in Grid, Flex, and Container components:
+
+**collections/tags/info.json**
+```json
+{
+    "identifier": "com.realmacsoftware.grid.collections.tags",
+    "title": "Tags"
+}
+```
+
+**collections/tags/properties.json**
+```json
+{
+    "groups": [
+        {
+            "title": "Tag",
+            "properties": [
+                {
+                    "title": "Title",
+                    "property": "title",
+                    "responsive": false,
+                    "text": {
+                        "default": ""
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Audio Tracks Collection
+
+A more complex collection for an audio playlist with multiple fields:
+
+**collections/tracks/info.json**
+```json
+{
+    "identifier": "com.realmacsoftware.audioPlaylist.collections.tracks",
+    "title": "Tracks"
+}
+```
+
+**collections/tracks/properties.json**
+```json
+{
+    "groups": [
+        {
+            "title": "Track",
+            "properties": [
+                {
+                    "title": "Title",
+                    "property": "title",
+                    "responsive": false,
+                    "text": { "default": "" }
+                },
+                {
+                    "title": "Artist",
+                    "property": "artist",
+                    "responsive": false,
+                    "text": { "default": "" }
+                },
+                {
+                    "title": "Artwork",
+                    "property": "coverImage",
+                    "responsive": false,
+                    "resource": {}
+                },
+                {
+                    "title": "Audio Source",
+                    "property": "audioSource",
+                    "responsive": false,
+                    "resource": {}
+                }
+            ]
+        }
+    ]
+}
+```
+
+## Next Steps
+
+Once you've created your collection structure, you need to:
+
+1. **[Add the collection to properties.json](collections-in-properties.json.md)** - Make the collection appear in the component inspector
+2. **[Access data in templates](accessing-data-in-templates.md)** - Display collection items in your HTML
+3. **[Manipulate data in hooks.js](data-collections-in-hooks.js.md)** - Process collection data before rendering
+
+## Best Practices
+
+1. **Use descriptive identifiers** - Follow the pattern `com.company.component.collections.name` for clear organization.
+
+2. **Keep properties focused** - Only include fields that users need for each collection item.
+
+3. **Set appropriate defaults** - Provide sensible defaults to give users a starting point.
+
+4. **Mark properties as non-responsive** - Collection properties typically don't need responsive values, so set `"responsive": false`.
+
+5. **Group related properties** - Use property groups to organize complex collection items.
