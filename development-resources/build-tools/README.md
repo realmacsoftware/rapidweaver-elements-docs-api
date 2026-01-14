@@ -17,6 +17,8 @@ For more detailed information about this package, including installation details
 
 [rw-elements-tools](https://www.npmjs.com/package/rw-elements-tools) is the official utility package for developers working with **RapidWeaver Elements**. It provides a set of helpful tools and build helpers that make creating, compiling, and maintaining Elements packs simpler and more efficient.
 
+{% embed url="https://youtu.be/X_57memVXHk" %}
+
 Whether you’re just getting started with Elements development or building advanced component packs, RW Elements Tools helps streamline your workflow so you can focus on building great experiences.
 
 ***
@@ -99,16 +101,13 @@ Contribution links and repository details can be found via the NPM page.
 * **Installation & Usage**\
   See the package page on NPM
 
+***
 
----
-
-
-
-| Section | Description | Count |
-|---------|-------------|-------|
-| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
-| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
-| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+| Section                       | Description                                         | Count |
+| ----------------------------- | --------------------------------------------------- | ----- |
+| [Controls](controls/)         | UI control definitions for `properties.config.json` | 90+   |
+| [Properties](properties/)     | Reusable value definitions (`use` references)       | 13    |
+| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js`  | 35+   |
 
 ## Installation
 
@@ -151,16 +150,13 @@ function transformHook(rw) {
 
 For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
 
+***
 
----
-
-
-
-| Section | Description | Count |
-|---------|-------------|-------|
-| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
-| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
-| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+| Section                       | Description                                         | Count |
+| ----------------------------- | --------------------------------------------------- | ----- |
+| [Controls](controls/)         | UI control definitions for `properties.config.json` | 90+   |
+| [Properties](properties/)     | Reusable value definitions (`use` references)       | 13    |
+| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js`  | 35+   |
 
 ## Installation
 
@@ -203,16 +199,13 @@ function transformHook(rw) {
 
 For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
 
+***
 
----
-
-
-
-| Section | Description | Count |
-|---------|-------------|-------|
-| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
-| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
-| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+| Section                       | Description                                         | Count |
+| ----------------------------- | --------------------------------------------------- | ----- |
+| [Controls](controls/)         | UI control definitions for `properties.config.json` | 90+   |
+| [Properties](properties/)     | Reusable value definitions (`use` references)       | 13    |
+| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js`  | 35+   |
 
 ## Installation
 
@@ -255,16 +248,13 @@ function transformHook(rw) {
 
 For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
 
+***
 
----
-
-
-
-| Section | Description | Count |
-|---------|-------------|-------|
-| [Controls](controls/) | UI control definitions for `properties.config.json` | 90+ |
-| [Properties](properties/) | Reusable value definitions (`use` references) | 13 |
-| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js` | 35+ |
+| Section                       | Description                                         | Count |
+| ----------------------------- | --------------------------------------------------- | ----- |
+| [Controls](controls/)         | UI control definitions for `properties.config.json` | 90+   |
+| [Properties](properties/)     | Reusable value definitions (`use` references)       | 13    |
+| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js`  | 35+   |
 
 ## Installation
 
@@ -307,16 +297,13 @@ function transformHook(rw) {
 
 For installation details and full documentation, see the [main documentation](../) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
 
+***
 
----
-
-
-
-| Section | Description | Count |
-|---------|-------------|-------|
-| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
-| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
-| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+| Section                       | Description                                         | Count |
+| ----------------------------- | --------------------------------------------------- | ----- |
+| [Controls](controls/)         | UI control definitions for `properties.config.json` | 90+   |
+| [Properties](properties/)     | Reusable value definitions (`use` references)       | 13    |
+| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js`  | 35+   |
 
 ## Installation
 
@@ -359,16 +346,13 @@ function transformHook(rw) {
 
 For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
 
+***
 
----
-
-
-
-| Section | Description | Count |
-|---------|-------------|-------|
-| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
-| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
-| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+| Section                       | Description                                         | Count |
+| ----------------------------- | --------------------------------------------------- | ----- |
+| [Controls](controls/)         | UI control definitions for `properties.config.json` | 90+   |
+| [Properties](properties/)     | Reusable value definitions (`use` references)       | 13    |
+| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js`  | 35+   |
 
 ## Installation
 
@@ -411,16 +395,13 @@ function transformHook(rw) {
 
 For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
 
+***
 
----
-
-
-
-| Section | Description | Count |
-|---------|-------------|-------|
-| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
-| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
-| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+| Section                       | Description                                         | Count |
+| ----------------------------- | --------------------------------------------------- | ----- |
+| [Controls](controls/)         | UI control definitions for `properties.config.json` | 90+   |
+| [Properties](properties/)     | Reusable value definitions (`use` references)       | 13    |
+| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js`  | 35+   |
 
 ## Installation
 
@@ -463,16 +444,13 @@ function transformHook(rw) {
 
 For installation details and full documentation, see the [main documentation](../build-tools.md) or visit [NPM](https://www.npmjs.com/package/rw-elements-tools).
 
+***
 
----
-
-
-
-| Section | Description | Count |
-|---------|-------------|-------|
-| [Controls](controls/README.md) | UI control definitions for `properties.config.json` | 90+ |
-| [Properties](properties/README.md) | Reusable value definitions (`use` references) | 13 |
-| [Shared Hooks](shared-hooks/README.md) | JavaScript utility functions for `hooks.source.js` | 35+ |
+| Section                       | Description                                         | Count |
+| ----------------------------- | --------------------------------------------------- | ----- |
+| [Controls](controls/)         | UI control definitions for `properties.config.json` | 90+   |
+| [Properties](properties/)     | Reusable value definitions (`use` references)       | 13    |
+| [Shared Hooks](shared-hooks/) | JavaScript utility functions for `hooks.source.js`  | 35+   |
 
 ## Installation
 
