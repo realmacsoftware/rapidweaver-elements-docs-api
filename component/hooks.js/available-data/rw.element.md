@@ -18,12 +18,12 @@ The `rw.component` object provides metadata about the component itself, includin
 
 ```javascript
 const transformHook = (rw) => {
-    const { 
-        title, 
-        assetPath, 
-        sharedAssetPath 
+    const {
+        title,
+        assetPath,
+        sharedAssetPath
     } = rw.component;
-    
+
     console.log(title);           // "Image Gallery"
     console.log(assetPath);       // "/resources/components/gallery/"
     console.log(sharedAssetPath); // "/resources/shared/"
@@ -39,12 +39,12 @@ Asset paths are essential for referencing component resources like images, scrip
 ```javascript
 const transformHook = (rw) => {
     const { assetPath, sharedAssetPath } = rw.component;
-    
+
     rw.setProps({
         // Component-specific assets
         placeholderImage: `${assetPath}/images/placeholder.png`,
         componentScript: `${assetPath}/js/gallery.js`,
-        
+
         // Shared assets across the pack
         sharedIcon: `${sharedAssetPath}/icons/arrow.svg`,
         sharedStyles: `${sharedAssetPath}/css/common.css`
@@ -63,15 +63,15 @@ const transformHook = (rw) => {
     const { mode } = rw.project;
     const { sharedAssetPath } = rw.component;
     const { image } = rw.props;
-    
+
     const isEditMode = mode === 'edit';
     const hasImage = image && image.image;
-    
+
     // Show placeholder in edit mode when no image is set
-    const displayImage = hasImage 
-        ? image.image 
+    const displayImage = hasImage
+        ? image.image
         : (isEditMode ? `${sharedAssetPath}/images/placeholder.png` : null);
-    
+
     rw.setProps({
         displayImage,
         hasImage
