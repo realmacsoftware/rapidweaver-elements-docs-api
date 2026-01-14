@@ -6,17 +6,17 @@ description: SIZING controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `Height` | [View details](height) |
-| `MaxHeight` | [View details](max-height) |
-| `MaxWidth` | [View details](max-width) |
-| `MinHeight` | [View details](min-height) |
-| `MinWidth` | [View details](min-width) |
-| `Sizing` | [View details](sizing) |
-| `SizingContainer` | [View details](sizing-container) |
-| `SizingImage` | [View details](sizing-image) |
-| `SizingInput` | [View details](sizing-input) |
-| `SizingSVG` | [View details](sizing-svg) |
-| `Width` | [View details](width) |
+| `Height` | [View details](height.md) |
+| `MaxHeight` | [View details](max-height.md) |
+| `MaxWidth` | [View details](max-width.md) |
+| `MinHeight` | [View details](min-height.md) |
+| `MinWidth` | [View details](min-width.md) |
+| `Sizing` | [View details](sizing.md) |
+| `SizingContainer` | [View details](sizing-container.md) |
+| `SizingImage` | [View details](sizing-image.md) |
+| `SizingInput` | [View details](sizing-input.md) |
+| `SizingSVG` | [View details](sizing-svg.md) |
+| `Width` | [View details](width.md) |
 
 ## Usage
 

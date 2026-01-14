@@ -6,9 +6,9 @@ description: Background utility functions
 
 | Function | Description |
 |----------|-------------|
-| `globalBackground()` | [View details](global-background) |
-| `globalBgColor()` | [View details](global-bg-color) |
-| `globalBgGradient()` | [View details](global-bg-gradient) |
-| `globalBgImage()` | [View details](global-bg-image) |
-| `globalBgImageFetchPriority()` | [View details](global-bg-image-fetch-priority) |
-| `globalBgVideoThumbnail()` | [View details](global-bg-video-thumbnail) |
+| `globalBackground()` | [View details](global-background.md) |
+| `globalBgColor()` | [View details](global-bg-color.md) |
+| `globalBgGradient()` | [View details](global-bg-gradient.md) |
+| `globalBgImage()` | [View details](global-bg-image.md) |
+| `globalBgImageFetchPriority()` | [View details](global-bg-image-fetch-priority.md) |
+| `globalBgVideoThumbnail()` | [View details](global-bg-video-thumbnail.md) |

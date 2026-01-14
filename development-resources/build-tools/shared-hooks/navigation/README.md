@@ -6,6 +6,6 @@ description: Navigation utility functions
 
 | Function | Description |
 |----------|-------------|
-| `globalMenuItem()` | [View details](global-menu-item) |
-| `globalNavItems()` | [View details](global-nav-items) |
-| `globalNavTitle()` | [View details](global-nav-title) |
+| `globalMenuItem()` | [View details](global-menu-item.md) |
+| `globalNavItems()` | [View details](global-nav-items.md) |
+| `globalNavTitle()` | [View details](global-nav-title.md) |

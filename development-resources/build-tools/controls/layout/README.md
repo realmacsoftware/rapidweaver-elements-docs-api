@@ -6,17 +6,17 @@ description: LAYOUT controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `AspectRatio` | [View details](aspect-ratio) |
-| `Container` | [View details](container) |
-| `Hidden` | [View details](hidden) |
-| `Inset` | [View details](inset) |
-| `Isolation` | [View details](isolation) |
-| `Layout` | [View details](layout) |
-| `Overflow` | [View details](overflow) |
-| `Position` | [View details](position) |
-| `TopRightBottomLeft` | [View details](top-right-bottom-left) |
-| `Visibility` | [View details](visibility) |
-| `ZIndex` | [View details](z-index) |
+| `AspectRatio` | [View details](aspect-ratio.md) |
+| `Container` | [View details](container.md) |
+| `Hidden` | [View details](hidden.md) |
+| `Inset` | [View details](inset.md) |
+| `Isolation` | [View details](isolation.md) |
+| `Layout` | [View details](layout.md) |
+| `Overflow` | [View details](overflow.md) |
+| `Position` | [View details](position.md) |
+| `TopRightBottomLeft` | [View details](top-right-bottom-left.md) |
+| `Visibility` | [View details](visibility.md) |
+| `ZIndex` | [View details](z-index.md) |
 
 ## Usage
 

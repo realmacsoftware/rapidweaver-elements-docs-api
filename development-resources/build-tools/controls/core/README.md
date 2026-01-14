@@ -6,24 +6,24 @@ description: CORE controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `BackdropBlur` | [View details](backdrop-blur) |
-| `Blur` | [View details](blur) |
-| `BoxShadow` | [View details](box-shadow) |
-| `Brightness` | [View details](brightness) |
-| `CSSClasses` | [View details](css-classes) |
-| `ControlType` | [View details](control-type) |
-| `DropShadow` | [View details](drop-shadow) |
-| `Effects` | [View details](effects) |
-| `Filters` | [View details](filters) |
-| `HTMLTag` | [View details](html-tag) |
-| `HoverGroup` | [View details](hover-group) |
-| `ID` | [View details](id) |
-| `Image` | [View details](image) |
-| `MenuItem` | [View details](menu-item) |
-| `ObjectFit` | [View details](object-fit) |
-| `ObjectPosition` | [View details](object-position) |
-| `Opacity` | [View details](opacity) |
-| `Saturate` | [View details](saturate) |
+| `BackdropBlur` | [View details](backdrop-blur.md) |
+| `Blur` | [View details](blur.md) |
+| `BoxShadow` | [View details](box-shadow.md) |
+| `Brightness` | [View details](brightness.md) |
+| `CSSClasses` | [View details](css-classes.md) |
+| `ControlType` | [View details](control-type.md) |
+| `DropShadow` | [View details](drop-shadow.md) |
+| `Effects` | [View details](effects.md) |
+| `Filters` | [View details](filters.md) |
+| `HTMLTag` | [View details](html-tag.md) |
+| `HoverGroup` | [View details](hover-group.md) |
+| `ID` | [View details](id.md) |
+| `Image` | [View details](image.md) |
+| `MenuItem` | [View details](menu-item.md) |
+| `ObjectFit` | [View details](object-fit.md) |
+| `ObjectPosition` | [View details](object-position.md) |
+| `Opacity` | [View details](opacity.md) |
+| `Saturate` | [View details](saturate.md) |
 
 ## Usage
 

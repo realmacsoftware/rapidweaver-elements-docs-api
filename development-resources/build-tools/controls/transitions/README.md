@@ -6,11 +6,11 @@ description: TRANSITIONS controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `Delay` | [View details](delay) |
-| `Duration` | [View details](duration) |
-| `Property` | [View details](property) |
-| `TimingFunction` | [View details](timing-function) |
-| `Transitions` | [View details](transitions) |
+| `Delay` | [View details](delay.md) |
+| `Duration` | [View details](duration.md) |
+| `Property` | [View details](property.md) |
+| `TimingFunction` | [View details](timing-function.md) |
+| `Transitions` | [View details](transitions.md) |
 
 ## Usage
 

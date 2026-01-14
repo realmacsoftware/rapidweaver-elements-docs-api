@@ -6,7 +6,7 @@ description: Sizing utility functions
 
 | Function | Description |
 |----------|-------------|
-| `aspectRatioClasses()` | [View details](aspect-ratio-classes) |
-| `globalSizing()` | [View details](global-sizing) |
-| `globalSizingContainer()` | [View details](global-sizing-container) |
-| `objectClasses()` | [View details](object-classes) |
+| `aspectRatioClasses()` | [View details](aspect-ratio-classes.md) |
+| `globalSizing()` | [View details](global-sizing.md) |
+| `globalSizingContainer()` | [View details](global-sizing-container.md) |
+| `objectClasses()` | [View details](object-classes.md) |

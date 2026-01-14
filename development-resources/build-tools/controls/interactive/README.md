@@ -6,10 +6,10 @@ description: INTERACTIVE controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `ButtonFontAndTextStyles` | [View details](button-font-and-text-styles) |
-| `Filter` | [View details](filter) |
-| `InputFontAndTextStyles` | [View details](input-font-and-text-styles) |
-| `Link` | [View details](link) |
+| `ButtonFontAndTextStyles` | [View details](button-font-and-text-styles.md) |
+| `Filter` | [View details](filter.md) |
+| `InputFontAndTextStyles` | [View details](input-font-and-text-styles.md) |
+| `Link` | [View details](link.md) |
 
 ## Usage
 

@@ -6,5 +6,5 @@ description: Animations utility functions
 
 | Function | Description |
 |----------|-------------|
-| `globalAnimations()` | [View details](global-animations) |
-| `globalReveal()` | [View details](global-reveal) |
+| `globalAnimations()` | [View details](global-animations.md) |
+| `globalReveal()` | [View details](global-reveal.md) |

@@ -6,12 +6,12 @@ description: TRANSFORMS controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `Rotate` | [View details](rotate) |
-| `Scale` | [View details](scale) |
-| `Skew` | [View details](skew) |
-| `TransformOrigin` | [View details](transform-origin) |
-| `Transforms` | [View details](transforms) |
-| `Translate` | [View details](translate) |
+| `Rotate` | [View details](rotate.md) |
+| `Scale` | [View details](scale.md) |
+| `Skew` | [View details](skew.md) |
+| `TransformOrigin` | [View details](transform-origin.md) |
+| `Transforms` | [View details](transforms.md) |
+| `Translate` | [View details](translate.md) |
 
 ## Usage
 
