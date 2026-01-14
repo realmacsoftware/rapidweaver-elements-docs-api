@@ -1,56 +1,159 @@
-# Portal
+---
+description: Transport content to different areas of the page
+---
 
-The  portal feature allows you to transport sections of your template code to another part of the page.
+# @portal
+
+The `@portal` directive allows you to transport sections of your template code to another part of the page. This is essential for injecting scripts, styles, or content into specific locations like the page head or body, regardless of where your component appears in the document.
+
+## Syntax
 
 ```html
-@portal(pageStart)
-<!-- Code here will be transported to the top of the page before the open HTML tag.-->
+@portal(destination)
+    <!-- Content to transport -->
 @endportal
 ```
 
+With additional parameters:
+
 ```html
-@portal(pageEnd)
-<!-- Code here will be transported to the bottom of the page after the end html tag.-->
+@portal(destination, id: "unique-id", includeOnce: true)
+    <!-- Content included only once -->
 @endportal
 ```
 
-```html
-@portal(headStart)
-<!-- Code here will be transported to the top of the page head.-->
-@endportal
-```
+## Portal Destinations
 
-```html
-@portal(headEnd)
-<!-- Code here will be transported to the bottom of the page head.-->
-@endportal
-```
+| Destination | Description |
+|-------------|-------------|
+| `pageStart` | Before the opening `<html>` tag |
+| `pageEnd` | After the closing `</html>` tag |
+| `headStart` | At the start of the `<head>` element |
+| `headEnd` | At the end of the `<head>` element |
+| `bodyStart` | At the start of the `<body>` element |
+| `bodyEnd` | At the end of the `<body>` element |
 
-```html
-@portal(bodyStart)
-<!-- Code here will be transported to the top of the page body.-->
-@endportal
-```
+## Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `destination` | Yes | The target location for the content (see destinations table) |
+| `id` | No | A unique identifier for deduplication across multiple components |
+| `includeOnce` | No | When `true`, ensures the content is only included once per page |
+
+## Examples
+
+### Injecting Scripts at Body End
+
+The most common use case is injecting JavaScript at the end of the body:
 
 ```html
 @portal(bodyEnd)
-<!-- Code here will be transported to the bottom of the page body.-->
+    <script>
+        console.log("Component initialized");
+    </script>
 @endportal
 ```
 
-If you are linking and including scripts, you'll want to tell Elements to only include the link once (when multiple instances of the same component are on the page). To do that you can use the "includeOne argument.
+### Include Once for Libraries
+
+When including shared libraries like Alpine.js, use `includeOnce` to prevent duplicate includes when multiple instances of your component exist on the page:
+
+```html
+@portal(bodyEnd, includeOnce: true)
+    <script src="https://cdn.example.com/library.js"></script>
+@endportal
+```
+
+### Unique ID for Cross-Component Deduplication
+
+When multiple different components might include the same library, use a consistent `id` to deduplicate across all of them:
+
+```html
+@portal(bodyEnd, id: "com.realmacsoftware.alpine", includeOnce: true)
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+@endportal
+```
+
+### Alpine.js Component Registration
+
+Register Alpine.js components that your element depends on:
+
+```html
+@portal(bodyEnd, id: "com.realmacsoftware.accordion.alpine", includeOnce: true)
+    <script>
+        document.addEventListener("alpine:init", () => {
+            Alpine.data("accordion", () => ({
+                open: false,
+                toggle() {
+                    this.open = !this.open;
+                }
+            }));
+        });
+    </script>
+@endportal
+```
+
+### Mobile Menu at Body Start
+
+Transport a mobile navigation overlay to the start of the body:
+
+```html
+@if(includeMobileMenu)
+    @portal("bodyStart")
+        <div x-data="mobileMenu" class="mobile-overlay">
+            <!-- Mobile menu content -->
+        </div>
+    @endportal
+@endif
+```
+
+### Preload Critical Resources
+
+Add preload hints to the head for performance optimization:
+
+```html
+@portal(headStart)
+    {{globalBgImageFetchPriorityLinkElement}}
+@endportal
+```
+
+### Custom Styles in Head
+
+Inject component-specific styles into the page head:
 
 ```html
 @portal(headEnd, includeOnce: true)
-<!-- Code will only be included once when using multiple instances of the same component.-->
+    <style>
+        .my-component {
+            /* Component styles */
+        }
+    </style>
 @endportal
 ```
 
-Include once across multiple components.
+### Modal Dialogs at Body End
+
+Transport modal dialog markup to the end of the body for proper stacking:
 
 ```html
-@portal(headEnd, id: "com.realmacsoftware.alpine", includeOnce: true)
-<!-- Code will only be included once when using the same ID across multiple compoenents.-->
+@portal("bodyEnd")
+    <div x-dialog class="modal-backdrop">
+        <div class="modal-content">
+            @dropzone("content", title: "Content")
+        </div>
+    </div>
 @endportal
-
 ```
+
+## Best Practices
+
+1. **Use `includeOnce` for shared resources** - Always use `includeOnce: true` when including libraries or scripts that should only appear once on the page.
+
+2. **Use consistent IDs across components** - When multiple components might include the same resource, use the same `id` to ensure proper deduplication.
+
+3. **Prefer `bodyEnd` for scripts** - Loading scripts at the end of the body improves page load performance.
+
+4. **Use reverse domain notation for IDs** - Follow the pattern `com.yourcompany.feature` to avoid ID collisions.
+
+5. **Combine with conditionals** - Use `@if` to conditionally include portal content based on component settings.

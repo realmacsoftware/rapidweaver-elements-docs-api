@@ -2,67 +2,219 @@
 description: Include content from another template file
 ---
 
-# Includes
+# @include
 
-An include allows you to insert the content of another template file within the current template file.
+The `@include` directive allows you to insert the content of another template file within the current template. This promotes code reuse, keeps templates organized, and makes complex components more maintainable.
 
-Include files should be stored in the [include](./) directory.
+## Syntax
 
-Suppose you have the following template files in your include folder:
-
-**hello.html**
-
-```
-Hello
+```html
+@include("templateName")
 ```
 
-**world.html**
+With parameters:
 
-```
-World
-```
-
-You could then include the contents of those files into your main template.html file by using the following code:
-
-```
-@include("hello")
-@include("world")
+```html
+@include("templateName", property1: value1, property2: value2)
 ```
 
-The output from template.html would look like this
+## Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `template` | Yes | The name of the template file to include (without `.html` extension) |
+| `...properties` | No | Additional properties to pass to the included template |
+
+## File Location
+
+Include files should be stored in the `templates/include/` directory within your component:
+
+```
+com.yourcompany.component/
+├── templates/
+│   ├── index.html
+│   └── include/
+│       ├── header.html
+│       ├── footer.html
+│       └── item.html
+```
+
+## Examples
+
+### Basic Include
+
+Include a template file:
+
+```html
+@include("header")
+@include("footer")
+```
+
+If `header.html` contains `Hello` and `footer.html` contains `World`, the output would be:
 
 ```
 Hello World
 ```
 
-### Property access
+### Passing Properties
 
-The include template files allow access to properties as if they were part of the main template file. Given that you have set a `pages` value in your hooks file (via the `rw.setProps()` method), you can pass that property to your template like so:
+Pass data to the included template:
 
+```html
+@include("button", label: "Buy Now", style: "primary")
 ```
-@include("menuitem", property: pages)
-```
 
-You can of cause include multiple properties simply by comma separating them:
+In the `button.html` template, you can access these as `{{label}}` and `{{style}}`.
 
-```
+### String and Variable Properties
+
+Pass both literal strings and variable values:
+
+```html
 @include("banner", title: "Can be a string", body: canAlsoBeAVariable)
 ```
 
-### Conditional Includes
+### Passing Loop Items
 
-Rather than wrapping your @include statement inside an @if statement, you can use the @includeIf helper:
+Pass the current loop item to an include:
 
+```html
+@each(page in pages)
+    @include("menu_item", page: page)
+@endeach
 ```
-// Instead of doing this:
+
+### Navigation with Nested Includes
+
+Build complex navigation with recursive includes:
+
+```html
+<!-- In index.html -->
+<nav>
+    <ul>
+        @each(page in pages)
+            @include("desktop_item")
+        @endeach
+    </ul>
+</nav>
+```
+
+```html
+<!-- In include/desktop_item.html -->
+@if(page.isFolder)
+    @include("desktop_folder")
+@else
+    <a href="{{page.url}}">{{page.title}}</a>
+@endif
+```
+
+### Recursive Includes
+
+For hierarchical data like nested menus, templates can include themselves:
+
+```html
+<!-- In include/item.html -->
+<li>
+    <a href="{{page.url}}">{{page.title}}</a>
+    @if(page.hasPages)
+        <ul>
+            @each(subPage in page.pages)
+                @include("item", page: subPage)
+            @endeach
+        </ul>
+    @endif
+</li>
+```
+
+### Gallery Thumbnails
+
+Extract repeated item markup into includes:
+
+```html
+<div class="gallery">
+    @each(image in resources)
+        @include("thumbnail")
+    @endeach
+</div>
+```
+
+## Conditional Includes
+
+### Using @includeIf
+
+Rather than wrapping your `@include` statement inside an `@if` statement, use the `@includeIf` helper for cleaner syntax:
+
+```html
+<!-- Instead of this: -->
 @if(myVariable)
-  @include("myTemplate")
+    @include("myTemplate")
 @endif
 
-// You can do this:
-@includeIf(myVariable, template:"myTemplate")
-
-// You can also negate the property
-@includeIf(!myVariable, template:"myTemplate")
+<!-- Use this: -->
+@includeIf(myVariable, template: "myTemplate")
 ```
 
+### Negating the Condition
+
+You can negate the condition with `!`:
+
+```html
+@includeIf(!myVariable, template: "myTemplate")
+```
+
+### Real-World Examples
+
+Include a lightbox only when enabled:
+
+```html
+@includeIf(wantsLightbox, template: "lightbox")
+```
+
+Include video templates based on video type:
+
+```html
+@includeIf(bgVideo.isYoutube, template: "youtube")
+@includeIf(bgVideo.isVimeo, template: "vimeo")
+@includeIf(bgVideo.isMP4, template: "mp4")
+```
+
+Include icon only when no custom icon is set:
+
+```html
+@includeIf(!hasAnIcon, template: "chevron")
+```
+
+Include submenu indicators for pages with children:
+
+```html
+<a href="{{page.url}}">
+    {{page.title}}
+    @includeIf(page.hasPages, template: "submenu_indicator")
+</a>
+```
+
+## Property Access in Includes
+
+Included templates have access to:
+
+1. **All parent template properties** - Properties from the main template are accessible
+2. **Passed properties** - Properties explicitly passed in the include statement
+3. **Loop context** - When inside an `@each` loop, the loop variable is accessible
+
+## Best Practices
+
+1. **Extract reusable patterns** - If you find yourself repeating markup, extract it into an include.
+
+2. **Use meaningful file names** - Name include files after their purpose: `button.html`, `menu_item.html`, `lightbox.html`.
+
+3. **Pass only what's needed** - Pass specific properties rather than relying on parent scope when possible.
+
+4. **Use @includeIf for conditionals** - It's cleaner than wrapping includes in if statements.
+
+5. **Organize complex includes** - For components with many includes, consider subdirectories within `include/`.
+
+## Related
+
+- [@template](template.md) - For inline template definitions
+- [@if](if.md) - For conditional rendering
+- [@each](each.md) - For iterating over collections

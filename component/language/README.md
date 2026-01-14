@@ -1,117 +1,182 @@
 ---
-description: Component Template Folder
+description: Template syntax reference for RapidWeaver Elements components
 icon: brackets-curly
 ---
 
 # Elements Language
 
-The Elements Language (also known as the Elements API) is a lightweight yet powerful templating system built into RapidWeaver Elements. It uses \{{…\}} syntax for property insertion and offers expressive control structures like @if, all aimed at keeping your templates clean, intuitive, and logic-driven.
+The Elements Language is a lightweight yet powerful templating system built into RapidWeaver Elements. It uses `{{…}}` syntax for property insertion and provides expressive directives like `@if`, `@each`, and `@include` for dynamic content generation. The language is designed to keep your templates clean, intuitive, and focused on HTML structure.
 
-**Property Insertion with \{{…\}}**
+## Property Insertion
 
-Use the familiar \{{…\}} syntax to inject component or page data directly into your markup. It’s simple and intuitive. Values from properties or collections appear where needed:
+Use double curly braces to insert component properties, page data, or collection values directly into your markup:
 
 ```html
 <h2>{{title}}</h2>
+<p>{{description}}</p>
+<a href="{{link.href}}">{{link.title}}</a>
 ```
 
-[**@dropzone**](dropzone.md)
-
-A container you can drop other components into.
+Access nested properties using dot notation:
 
 ```html
-@dropzone("extraItems")
+<span>{{author.name}}</span>
+<img src="{{image.resource.src}}" alt="{{image.alt}}" />
 ```
 
-[@text](text.md)
+## Directives Reference
 
-Editable text areas.
+### Content Areas
 
-```
-@text("heading")
-```
+| Directive | Description | Documentation |
+|-----------|-------------|---------------|
+| `@dropzone` | Container for child elements | [Dropzones](dropzone.md) |
+| `@text` | Editable plain text area | [Text](text.md) |
+| `@richtext` | Editable styled text with Typography | [Rich Text](richtext.md) |
+| `@markdown` | Editable Markdown text area | [Markdown](markdown.md) |
 
-[@richtext](richtext.md)
+### Control Flow
 
-Editable styled text area.
+| Directive | Description | Documentation |
+|-----------|-------------|---------------|
+| `@if` / `@elseif` / `@else` | Conditional rendering | [Conditionals](if.md) |
+| `@each` | Iterate over collections | [Looping](each.md) |
 
-```
-@richtext("heading", default: "Hello World!")
-```
+### Code Organization
 
-[**@if**](if.md)
+| Directive | Description | Documentation |
+|-----------|-------------|---------------|
+| `@include` | Include external template file | [Includes](include.md) |
+| `@includeIf` | Conditional template include | [Includes](include.md#conditional-includes) |
+| `@template` | Define inline reusable template | [Inline Templates](template.md) |
 
-Control block-level rendering with clear, condition-based syntax. Elements Language uses @if, @elseif, @else, and @endif choosing when to display content based on properties.
+### Page Integration
+
+| Directive | Description | Documentation |
+|-----------|-------------|---------------|
+| `@portal` | Transport content to page locations | [Portals](portal.md) |
+| `@anchor` | Create linkable anchor points | [Anchors](anchor.md) |
+| `@raw` | Disable template processing | [Raw Output](raw.md) |
+
+## Quick Examples
+
+### Editable Text Areas
 
 ```html
-@if(condition)
-  …
-@elseif(otherCondition)
-  …
-@else
-  …
+@text("heading", default: "Welcome")
+```
+
+```html
+@richtext("content", title: "Body Content")
+```
+
+```html
+@markdown("article", title: "Article", default: "Write your content here...")
+```
+
+### Dropzones for Child Elements
+
+```html
+@dropzone("content", title: "Container")
+```
+
+```html
+@dropzone(name: "items", title: "Grid Items", horizontal: true)
+```
+
+### Conditional Rendering
+
+```html
+@if(showHeader)
+    <header>{{headerText}}</header>
 @endif
 ```
 
-#### [@each](each.md)
+```html
+@if(edit)
+    <!-- Edit mode content -->
+@elseif(preview)
+    <!-- Preview mode content -->
+@else
+    <!-- Published content -->
+@endif
+```
 
-Iterate over a number of items, repeating content.
+### Looping Over Collections
 
 ```html
 @each(item in items)
-  <li>{{item.title}}</li>
+    <li>{{item.title}}</li>
 @endeach
 ```
 
-#### [@include](include.md)
-
-Include the content from another template file.
-
 ```html
-@include("button")
+@each(page in pages)
+    @if(page::isFirst)
+        <li class="first">{{page.title}}</li>
+    @else
+        <li>{{page.title}}</li>
+    @endif
+@endeach
 ```
 
-[@portal](portal.md)
-
-Transport content to another area of the page.
+### Including Templates
 
 ```html
-@portal(pageStart)
-<!-- Code here will be transported to the top of the page before the open HTML tag.-->
+@include("button", label: "Click Me", style: "primary")
+```
+
+```html
+@includeIf(wantsLightbox, template: "lightbox")
+```
+
+### Portals for Script Injection
+
+```html
+@portal(bodyEnd, id: "my-script", includeOnce: true)
+    <script src="library.js"></script>
 @endportal
 ```
 
-[@template](template.md)
+### Inline Templates
 
-Define inline pieces of markup for reuse
-
-```
-@template("button")
-  <button>{{label}}</button>
+```html
+@template("card")
+    <div class="card">
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+    </div>
 @endtemplate
+
+@each(item in cards)
+    @include("card", title: item.title, description: item.desc)
+@endeach
 ```
 
-Then include them
+### Anchor Points
 
 ```html
-@include("button", label: "Buy Now")
+<section id="@anchor("features")">
+    <h2>Features</h2>
+</section>
 ```
 
-[@anchor](anchor.md)
-
-Instruct Elements to add a linkable anchor in Elements Link Panel.
-
-```html
-<div id="@anchor("myAnchor")"></div>
-```
-
-[@raw](raw.md)
-
-Disables template processing.
+### Raw Output for CMS Integration
 
 ```html
 @raw()
-    ‹div class="text-sm text-black-600">{{message}}</div>
+    <div>{{cms.field}}</div>
 @endraw
 ```
 
+## Best Practices
+
+1. **Keep templates focused on HTML** - Use the [hooks file](../hooks.js/README.md) for complex logic, string manipulation, and data processing.
+
+2. **Use meaningful property names** - Choose descriptive names that indicate purpose: `showHeader`, `buttonLabel`, `heroImage`.
+
+3. **Extract repeated patterns** - Use `@include` or `@template` for reusable markup.
+
+4. **Leverage conditionals for modes** - Use `edit` and `preview` variables to show appropriate content in each mode.
+
+5. **Organize portal content** - Use `includeOnce` and consistent `id` values to prevent duplicate script/style injection.

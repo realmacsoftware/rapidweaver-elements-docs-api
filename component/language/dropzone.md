@@ -1,48 +1,149 @@
-# Dropzones
+---
+description: Create areas where child elements can be added
+---
 
-### Dropzone Naming
+# @dropzone
 
-A dropzones is an area within a template where child element can be added. Each dropzone requires a name giving you a consistent & reliable way to manage child items.&#x20;
+The `@dropzone` directive creates an area within a template where child elements can be added. Dropzones are fundamental to building container components that allow users to compose layouts by dragging and dropping other components inside them.
 
-```
-@dropzone("extraItems")
-```
+## Syntax
 
-```
-@dropzone(name: "content")
-```
-
-```
-@dropzone("zone-1", title: "Zone 1")
+```html
+@dropzone("name")
 ```
 
-{% hint style="info" %}
-Multiple dropzones with the same name can used, but you should be careful not to show them at the same time. This can be useful if you want to show child items in different places based on a control.
-{% endhint %}
+With additional parameters:
 
+```html
+@dropzone(name: "content", title: "Display Title", horizontal: true)
 ```
+
+## Parameters
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `name` | Yes | A unique identifier for the dropzone within the component |
+| `title` | No | The label displayed in the editor interface |
+| `horizontal` | No | When `true`, displays dropped items in a horizontal layout in the editor |
+
+## Examples
+
+### Basic Dropzone
+
+```html
+@dropzone("content")
+```
+
+### Named Dropzone with Title
+
+Provide a descriptive title for the editor interface:
+
+```html
+@dropzone("content", title: "Container")
+```
+
+### Horizontal Layout
+
+Use horizontal layout for grid or flex containers:
+
+```html
+@dropzone(name: "content", title: "Grid", horizontal: true)
+```
+
+### Multiple Dropzones in One Component
+
+Components can have multiple named dropzones for different content areas:
+
+```html
+<div class="accordion-header">
+    @dropzone("title", title: "Title")
+</div>
+<div class="accordion-content">
+    @dropzone("content", title: "Content")
+</div>
+```
+
+### Conditional Dropzones
+
+Show different dropzones based on component state. Note that multiple dropzones can share the same name, but only one should be visible at a time:
+
+```html
 @if(edit)
-   @dropzone("extraItems")
+    @dropzone("extraItems")
 @elseif(preview)
-   @dropzone("extraItems")
+    @dropzone("extraItems")
 @endif
 ```
 
-### Resource Dropzone
+### Navbar with Multiple Dropzones
 
-Sometimes you want to allow the user to drop the resources directly into the Editor, this can be achieved with the `rwResourceDropZone` key.
+A navigation component with separate areas for logo, menu items, and mobile content:
 
-The following example shows how to support dropping a folder of images directly into the Editor. Place the following in the Template HTML:
+```html
+<nav class="navbar">
+    <div class="logo-area">
+        @dropzone("logo", title: "Logo")
+    </div>
+    <div class="desktop-items">
+        @dropzone("desktop", title: "Desktop")
+    </div>
+</nav>
 
+@portal("bodyStart")
+    <div class="mobile-menu">
+        @dropzone("mobileLogo", title: "Mobile Logo")
+        @dropzone("mobileContent", title: "Mobile Content")
+    </div>
+@endportal
 ```
-<div class="grid grid-cols-4 gap-4" rwResourceDropZone="images">
+
+### Modal with Trigger and Content
+
+```html
+<span class="trigger">
+    @dropzone("trigger", title: "Trigger")
+</span>
+
+@portal("bodyEnd")
+    <div class="modal-panel">
+        @dropzone("content", title: "Content")
+    </div>
+@endportal
+```
+
+### Flex Container with Direction Option
+
+```html
+@if(wantsHorizontalDropzone)
+    @dropzone(name: "content", title: "Flex", horizontal: true)
+@else
+    @dropzone(name: "content", title: "Flex")
+@endif
+```
+
+## Resource Dropzones
+
+In addition to component dropzones, you can allow users to drop resources (like images) directly into the editor using the `rwResourceDropZone` HTML attribute.
+
+### Syntax
+
+```html
+<div rwResourceDropZone="propertyName">
+    <!-- Fallback content -->
+</div>
+```
+
+### Image Gallery Example
+
+Allow users to drop a folder of images directly into the component:
+
+```html
+<div class="gallery" rwResourceDropZone="images">
     @if(!images.isFolder)
-        <!-- if the `images` resource property is not a folder, display this message -->
-        <h3 class="font-bold text-lg uppercase text-brand-500 p-10 col-span-full place-self-center">
+        <h3 class="placeholder">
             Drop a folder of images here!
         </h3>
     @else
-        <!-- Otherwise we have a folder of resources (yay!) -->
         @each(image in images.resources)
             <img src="{{image.image}}" alt="{{image.caption}}" />
         @endeach
@@ -50,14 +151,14 @@ The following example shows how to support dropping a folder of images directly 
 </div>
 ```
 
-You also need a corresponding image control in the Properties file:
+This requires a corresponding resource control in the Properties file:
 
-```
+```json
 {
     "groups": [{
-        "title" : "Content",
-        "properties" : [{
-            "title" : "Images",
+        "title": "Content",
+        "properties": [{
+            "title": "Images",
             "property": "images",
             "resource": {
                 "types": ["image"]
@@ -66,3 +167,15 @@ You also need a corresponding image control in the Properties file:
     }]
 }
 ```
+
+## Best Practices
+
+1. **Use descriptive names** - Choose names that clearly indicate the purpose of the dropzone (e.g., `"header"`, `"content"`, `"sidebar"`).
+
+2. **Add meaningful titles** - The `title` parameter helps users understand where to add content in the editor.
+
+3. **Use `horizontal` for layout components** - Enable horizontal layout for flex/grid containers to match the visual layout in the editor.
+
+4. **Avoid duplicate visible dropzones** - While multiple dropzones can share a name, only show one at a time to prevent confusion.
+
+5. **Combine with @portal for overlays** - For modals and off-canvas menus, use `@portal` to position the dropzone content appropriately in the DOM.
