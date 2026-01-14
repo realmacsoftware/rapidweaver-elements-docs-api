@@ -1,13 +1,14 @@
 ---
-description: >-
-  Build powerful, reusable web components for RapidWeaver without the
-  complexity. This toolkit handles the heavy lifting so you can focus on what
-  matters: creating great elements.
+description: Streamline your workflow with Component Build Tools
 ---
 
 # Build Tools
 
-{% hint style="info" %}
+Build powerful, reusable web components for RapidWeaver without the complexity. This toolkit handles the heavy lifting so you can focus creating awesome components.
+
+{% embed url="https://youtu.be/X_57memVXHk" %}
+
+{% hint style="warning" %}
 For more detailed information about this package, including installation details and examples, please visit the [rw-elements-tools readme.md](https://www.npmjs.com/package/rw-elements-tools)
 {% endhint %}
 
@@ -16,8 +17,6 @@ For more detailed information about this package, including installation details
 **Official NPM Toolkit for RapidWeaver Elements Development**
 
 [rw-elements-tools](https://www.npmjs.com/package/rw-elements-tools) is the official utility package for developers working with **RapidWeaver Elements**. It provides a set of helpful tools and build helpers that make creating, compiling, and maintaining Elements packs simpler and more efficient.
-
-{% embed url="https://youtu.be/X_57memVXHk" %}
 
 Whether you’re just getting started with Elements development or building advanced component packs, RW Elements Tools helps streamline your workflow so you can focus on building great experiences.
 
