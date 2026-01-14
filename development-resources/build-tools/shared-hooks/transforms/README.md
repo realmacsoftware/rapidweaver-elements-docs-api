@@ -6,4 +6,4 @@ description: Transforms utility functions
 
 | Function | Description |
 |----------|-------------|
-| `globalTransforms()` | [View details](global-transforms.md) |
+| `globalTransforms()` | [View details](global-transforms) |

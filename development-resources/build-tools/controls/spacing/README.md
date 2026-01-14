@@ -6,12 +6,12 @@ description: SPACING controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `Margin` | [View details](margin.md) |
-| `Padding` | [View details](padding.md) |
-| `Spacing` | [View details](spacing.md) |
-| `SpacingButton` | [View details](spacing-button.md) |
-| `SpacingContainer` | [View details](spacing-container.md) |
-| `SpacingInput` | [View details](spacing-input.md) |
+| `Margin` | [View details](margin) |
+| `Padding` | [View details](padding) |
+| `Spacing` | [View details](spacing) |
+| `SpacingButton` | [View details](spacing-button) |
+| `SpacingContainer` | [View details](spacing-container) |
+| `SpacingInput` | [View details](spacing-input) |
 
 ## Usage
 

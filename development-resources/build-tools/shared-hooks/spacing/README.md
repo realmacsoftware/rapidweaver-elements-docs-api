@@ -6,6 +6,6 @@ description: Spacing utility functions
 
 | Function | Description |
 |----------|-------------|
-| `globalSpacing()` | [View details](global-spacing.md) |
-| `globalSpacingMargin()` | [View details](global-spacing-margin.md) |
-| `globalSpacingPadding()` | [View details](global-spacing-padding.md) |
+| `globalSpacing()` | [View details](global-spacing) |
+| `globalSpacingMargin()` | [View details](global-spacing-margin) |
+| `globalSpacingPadding()` | [View details](global-spacing-padding) |

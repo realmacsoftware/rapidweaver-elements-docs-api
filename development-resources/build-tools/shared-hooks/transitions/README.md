@@ -6,7 +6,7 @@ description: Transitions utility functions
 
 | Function | Description |
 |----------|-------------|
-| `aControlWantsHover()` | [View details](a-control-wants-hover.md) |
-| `getAlpineTransitionAttributesDesktop()` | [View details](get-alpine-transition-attributes-desktop.md) |
-| `getAlpineTransitionAttributesMobile()` | [View details](get-alpine-transition-attributes-mobile.md) |
-| `globalTransitions()` | [View details](global-transitions.md) |
+| `aControlWantsHover()` | [View details](a-control-wants-hover) |
+| `getAlpineTransitionAttributesDesktop()` | [View details](get-alpine-transition-attributes-desktop) |
+| `getAlpineTransitionAttributesMobile()` | [View details](get-alpine-transition-attributes-mobile) |
+| `globalTransitions()` | [View details](global-transitions) |

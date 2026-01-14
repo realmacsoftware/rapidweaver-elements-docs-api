@@ -6,6 +6,6 @@ description: Layout utility functions
 
 | Function | Description |
 |----------|-------------|
-| `getHiddenClasses()` | [View details](get-hidden-classes.md) |
-| `globalActAsGridOrFlexItem()` | [View details](global-act-as-grid-or-flex-item.md) |
-| `globalLayout()` | [View details](global-layout.md) |
+| `getHiddenClasses()` | [View details](get-hidden-classes) |
+| `globalActAsGridOrFlexItem()` | [View details](global-act-as-grid-or-flex-item) |
+| `globalLayout()` | [View details](global-layout) |

@@ -6,10 +6,10 @@ description: OVERLAY controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `Overlay` | [View details](overlay.md) |
-| `Overlay_Color` | [View details](overlay_color.md) |
-| `Overlay_Gradient` | [View details](overlay_gradient.md) |
-| `Overlay_Image` | [View details](overlay_image.md) |
+| `Overlay` | [View details](overlay) |
+| `Overlay_Color` | [View details](overlay_color) |
+| `Overlay_Gradient` | [View details](overlay_gradient) |
+| `Overlay_Image` | [View details](overlay_image) |
 
 ## Usage
 

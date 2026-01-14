@@ -6,36 +6,36 @@ description: BACKGROUND controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `Background` | [View details](background.md) |
-| `BackgroundButton` | [View details](background-button.md) |
-| `BackgroundColor` | [View details](background-color.md) |
-| `BackgroundContainer` | [View details](background-container.md) |
-| `BackgroundGradient` | [View details](background-gradient.md) |
-| `BackgroundImage` | [View details](background-image.md) |
-| `BackgroundOnlyColor` | [View details](background-only-color.md) |
-| `BackgroundTransparent` | [View details](background-transparent.md) |
-| `BackgroundVideo` | [View details](background-video.md) |
-| `Background_Color` | [View details](background_color.md) |
-| `Background_Gradient` | [View details](background_gradient.md) |
-| `Background_Gradient_Container` | [View details](background_gradient_container.md) |
-| `Background_Image` | [View details](background_image.md) |
-| `Background_Image_CMS` | [View details](background_image_cms.md) |
-| `Background_SVG` | [View details](background_svg.md) |
-| `Background_Video` | [View details](background_video.md) |
-| `Border` | [View details](border.md) |
-| `BorderColor` | [View details](border-color.md) |
-| `BorderHover` | [View details](border-hover.md) |
-| `BorderRadius` | [View details](border-radius.md) |
-| `BorderStyle` | [View details](border-style.md) |
-| `BorderWidth` | [View details](border-width.md) |
-| `Borders` | [View details](borders.md) |
-| `BordersContainer` | [View details](borders-container.md) |
-| `BordersInput` | [View details](borders-input.md) |
-| `Outline` | [View details](outline.md) |
-| `OutlineColor` | [View details](outline-color.md) |
-| `OutlineOffset` | [View details](outline-offset.md) |
-| `OutlineStyle` | [View details](outline-style.md) |
-| `OutlineWidth` | [View details](outline-width.md) |
+| `Background` | [View details](background) |
+| `BackgroundButton` | [View details](background-button) |
+| `BackgroundColor` | [View details](background-color) |
+| `BackgroundContainer` | [View details](background-container) |
+| `BackgroundGradient` | [View details](background-gradient) |
+| `BackgroundImage` | [View details](background-image) |
+| `BackgroundOnlyColor` | [View details](background-only-color) |
+| `BackgroundTransparent` | [View details](background-transparent) |
+| `BackgroundVideo` | [View details](background-video) |
+| `Background_Color` | [View details](background_color) |
+| `Background_Gradient` | [View details](background_gradient) |
+| `Background_Gradient_Container` | [View details](background_gradient_container) |
+| `Background_Image` | [View details](background_image) |
+| `Background_Image_CMS` | [View details](background_image_cms) |
+| `Background_SVG` | [View details](background_svg) |
+| `Background_Video` | [View details](background_video) |
+| `Border` | [View details](border) |
+| `BorderColor` | [View details](border-color) |
+| `BorderHover` | [View details](border-hover) |
+| `BorderRadius` | [View details](border-radius) |
+| `BorderStyle` | [View details](border-style) |
+| `BorderWidth` | [View details](border-width) |
+| `Borders` | [View details](borders) |
+| `BordersContainer` | [View details](borders-container) |
+| `BordersInput` | [View details](borders-input) |
+| `Outline` | [View details](outline) |
+| `OutlineColor` | [View details](outline-color) |
+| `OutlineOffset` | [View details](outline-offset) |
+| `OutlineStyle` | [View details](outline-style) |
+| `OutlineWidth` | [View details](outline-width) |
 
 ## Usage
 

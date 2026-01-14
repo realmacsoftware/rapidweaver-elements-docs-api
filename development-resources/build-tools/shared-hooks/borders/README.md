@@ -6,5 +6,5 @@ description: Borders utility functions
 
 | Function | Description |
 |----------|-------------|
-| `globalBorders()` | [View details](global-borders.md) |
-| `globalOutline()` | [View details](global-outline.md) |
+| `globalBorders()` | [View details](global-borders) |
+| `globalOutline()` | [View details](global-outline) |

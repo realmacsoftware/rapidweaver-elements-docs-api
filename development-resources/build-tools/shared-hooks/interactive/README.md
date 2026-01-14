@@ -6,5 +6,5 @@ description: Interactive utility functions
 
 | Function | Description |
 |----------|-------------|
-| `globalFilter()` | [View details](global-filter.md) |
-| `globalLink()` | [View details](global-link.md) |
+| `globalFilter()` | [View details](global-filter) |
+| `globalLink()` | [View details](global-link) |

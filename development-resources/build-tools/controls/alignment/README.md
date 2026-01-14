@@ -6,13 +6,13 @@ description: ALIGNMENT controls for properties.config.json
 
 | globalControl | Description |
 |---------------|-------------|
-| `AlignContent` | [View details](align-content.md) |
-| `AlignItems` | [View details](align-items.md) |
-| `AlignItemsBasic` | [View details](align-items-basic.md) |
-| `AlignSelf` | [View details](align-self.md) |
-| `JustifyContent` | [View details](justify-content.md) |
-| `JustifyItems` | [View details](justify-items.md) |
-| `JustifySelf` | [View details](justify-self.md) |
+| `AlignContent` | [View details](align-content) |
+| `AlignItems` | [View details](align-items) |
+| `AlignItemsBasic` | [View details](align-items-basic) |
+| `AlignSelf` | [View details](align-self) |
+| `JustifyContent` | [View details](justify-content) |
+| `JustifyItems` | [View details](justify-items) |
+| `JustifySelf` | [View details](justify-self) |
 
 ## Usage
 
