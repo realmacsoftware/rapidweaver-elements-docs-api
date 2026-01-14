@@ -1,8 +1,8 @@
 ---
-description: TRANSITIONS controls for properties.config.json
+description: Transitions controls for properties.config.json
 ---
 
-# TRANSITIONS
+# Transitions
 
 | globalControl | Description |
 |---------------|-------------|

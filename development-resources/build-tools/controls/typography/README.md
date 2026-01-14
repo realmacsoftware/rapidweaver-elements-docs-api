@@ -1,8 +1,8 @@
 ---
-description: TYPOGRAPHY controls for properties.config.json
+description: Typography controls for properties.config.json
 ---
 
-# TYPOGRAPHY
+# Typography
 
 | globalControl | Description |
 |---------------|-------------|

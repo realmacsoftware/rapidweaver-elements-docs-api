@@ -1,8 +1,8 @@
 ---
-description: ALIGNMENT controls for properties.config.json
+description: Alignment controls for properties.config.json
 ---
 
-# ALIGNMENT
+# Alignment
 
 | globalControl | Description |
 |---------------|-------------|

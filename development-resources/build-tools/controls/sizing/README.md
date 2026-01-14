@@ -1,8 +1,8 @@
 ---
-description: SIZING controls for properties.config.json
+description: Sizing controls for properties.config.json
 ---
 
-# SIZING
+# Sizing
 
 | globalControl | Description |
 |---------------|-------------|

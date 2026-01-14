@@ -1,8 +1,8 @@
 ---
-description: BACKGROUND controls for properties.config.json
+description: Background controls for properties.config.json
 ---
 
-# BACKGROUND
+# Background
 
 | globalControl | Description |
 |---------------|-------------|

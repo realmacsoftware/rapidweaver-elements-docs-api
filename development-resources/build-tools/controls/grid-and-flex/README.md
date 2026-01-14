@@ -1,8 +1,8 @@
 ---
-description: GRID & FLEX controls for properties.config.json
+description: Grid & Flex controls for properties.config.json
 ---
 
-# GRID & FLEX
+# Grid & Flex
 
 | globalControl | Description |
 |---------------|-------------|

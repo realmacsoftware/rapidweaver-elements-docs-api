@@ -1,8 +1,8 @@
 ---
-description: LAYOUT controls for properties.config.json
+description: Layout controls for properties.config.json
 ---
 
-# LAYOUT
+# Layout
 
 | globalControl | Description |
 |---------------|-------------|

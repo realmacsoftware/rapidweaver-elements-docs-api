@@ -1,8 +1,8 @@
 ---
-description: SPACING controls for properties.config.json
+description: Spacing controls for properties.config.json
 ---
 
-# SPACING
+# Spacing
 
 | globalControl | Description |
 |---------------|-------------|

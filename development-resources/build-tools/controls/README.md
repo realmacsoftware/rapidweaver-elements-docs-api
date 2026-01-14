@@ -6,7 +6,7 @@ description: Reusable UI control definitions for properties.config.json
 
 Use these in your `properties.config.json` with `"globalControl": "Name"`.
 
-## ALIGNMENT
+## Alignment
 
 | globalControl | Description |
 |---------------|-------------|
@@ -18,7 +18,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `JustifyItems` | [JustifyItems](alignment/justify-items.md) |
 | `JustifySelf` | [JustifySelf](alignment/justify-self.md) |
 
-## ANIMATIONS
+## Animations
 
 | globalControl | Description |
 |---------------|-------------|
@@ -30,7 +30,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `ScrollAnimation_Scale` | [ScrollAnimation_Scale](animations/scroll-animation_scale.md) |
 | `ScrollAnimation_Translate` | [ScrollAnimation_Translate](animations/scroll-animation_translate.md) |
 
-## BACKGROUND
+## Background
 
 | globalControl | Description |
 |---------------|-------------|
@@ -65,7 +65,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `OutlineStyle` | [OutlineStyle](background/outline-style.md) |
 | `OutlineWidth` | [OutlineWidth](background/outline-width.md) |
 
-## CORE
+## Core
 
 | globalControl | Description |
 |---------------|-------------|
@@ -88,7 +88,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `Opacity` | [Opacity](core/opacity.md) |
 | `Saturate` | [Saturate](core/saturate.md) |
 
-## GRID & FLEX
+## Grid & Flex
 
 | globalControl | Description |
 |---------------|-------------|
@@ -104,7 +104,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `RowStart` | [RowStart](grid-and-flex/row-start.md) |
 | `Rows` | [Rows](grid-and-flex/rows.md) |
 
-## INTERACTIVE
+## Interactive
 
 | globalControl | Description |
 |---------------|-------------|
@@ -113,7 +113,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `InputFontAndTextStyles` | [InputFontAndTextStyles](interactive/input-font-and-text-styles.md) |
 | `Link` | [Link](interactive/link.md) |
 
-## LAYOUT
+## Layout
 
 | globalControl | Description |
 |---------------|-------------|
@@ -129,7 +129,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `Visibility` | [Visibility](layout/visibility.md) |
 | `ZIndex` | [ZIndex](layout/z-index.md) |
 
-## OVERLAY
+## Overlay
 
 | globalControl | Description |
 |---------------|-------------|
@@ -138,7 +138,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `Overlay_Gradient` | [Overlay_Gradient](overlay/overlay_gradient.md) |
 | `Overlay_Image` | [Overlay_Image](overlay/overlay_image.md) |
 
-## SIZING
+## Sizing
 
 | globalControl | Description |
 |---------------|-------------|
@@ -154,7 +154,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `SizingSVG` | [SizingSVG](sizing/sizing-svg.md) |
 | `Width` | [Width](sizing/width.md) |
 
-## SPACING
+## Spacing
 
 | globalControl | Description |
 |---------------|-------------|
@@ -165,7 +165,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `SpacingContainer` | [SpacingContainer](spacing/spacing-container.md) |
 | `SpacingInput` | [SpacingInput](spacing/spacing-input.md) |
 
-## TRANSFORMS
+## Transforms
 
 | globalControl | Description |
 |---------------|-------------|
@@ -176,7 +176,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `Transforms` | [Transforms](transforms/transforms.md) |
 | `Translate` | [Translate](transforms/translate.md) |
 
-## TRANSITIONS
+## Transitions
 
 | globalControl | Description |
 |---------------|-------------|
@@ -186,7 +186,7 @@ Use these in your `properties.config.json` with `"globalControl": "Name"`.
 | `TimingFunction` | [TimingFunction](transitions/timing-function.md) |
 | `Transitions` | [Transitions](transitions/transitions.md) |
 
-## TYPOGRAPHY
+## Typography
 
 | globalControl | Description |
 |---------------|-------------|

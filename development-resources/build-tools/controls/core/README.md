@@ -1,8 +1,8 @@
 ---
-description: CORE controls for properties.config.json
+description: Core controls for properties.config.json
 ---
 
-# CORE
+# Core
 
 | globalControl | Description |
 |---------------|-------------|

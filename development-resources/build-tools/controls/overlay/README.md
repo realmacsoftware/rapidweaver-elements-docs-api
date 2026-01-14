@@ -1,8 +1,8 @@
 ---
-description: OVERLAY controls for properties.config.json
+description: Overlay controls for properties.config.json
 ---
 
-# OVERLAY
+# Overlay
 
 | globalControl | Description |
 |---------------|-------------|

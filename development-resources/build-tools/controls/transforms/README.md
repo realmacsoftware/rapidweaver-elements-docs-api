@@ -1,8 +1,8 @@
 ---
-description: TRANSFORMS controls for properties.config.json
+description: Transforms controls for properties.config.json
 ---
 
-# TRANSFORMS
+# Transforms
 
 | globalControl | Description |
 |---------------|-------------|

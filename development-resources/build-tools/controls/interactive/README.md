@@ -1,8 +1,8 @@
 ---
-description: INTERACTIVE controls for properties.config.json
+description: Interactive controls for properties.config.json
 ---
 
-# INTERACTIVE
+# Interactive
 
 | globalControl | Description |
 |---------------|-------------|

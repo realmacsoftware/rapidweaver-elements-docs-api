@@ -1,8 +1,8 @@
 ---
-description: ANIMATIONS controls for properties.config.json
+description: Animations controls for properties.config.json
 ---
 
-# ANIMATIONS
+# Animations
 
 | globalControl | Description |
 |---------------|-------------|
