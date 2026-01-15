@@ -15,10 +15,6 @@ Use the backend directory for:
 - AJAX request handlers
 - File upload processors
 
-{% hint style="info" %}
-Subdirectories are not supported in the backend directory. For large PHP libraries, use the [shared assets](../shared-files/assets.md) directory and reference them from backend scripts.
-{% endhint %}
-
 ## Directory Location
 
 ```
@@ -107,10 +103,10 @@ A typical use case is processing form submissions. Create a backend PHP file to 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars(strip_tags(trim($_POST["name"])));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    
+
     // Process form data
     mail('{{notificationEmail}}', 'Form Submission', "Name: $name\nEmail: $email");
-    
+
     echo json_encode(['success' => true]);
 }
 ?>
@@ -138,17 +134,13 @@ document.getElementById('form-{{id}}').addEventListener('submit', async (e) => {
 </script>
 ```
 
-## No Subdirectories
+## Using Subdirectories
 
-{% hint style="warning" %}
-The backend directory does **not** support subdirectories. All backend files must be placed directly in `templates/backend/`.
-{% endhint %}
+The backend directory supports subdirectories for organizing your backend files. However, Elements monitors every file in the backend directory for changes, so using subdirectories with large PHP libraries containing many files can impact performance.
 
-Elements monitors every file in the backend directory for changes. Adding subdirectories with large PHP libraries can cause performance issues.
+### Best Practice: Use Shared Assets for Large Libraries
 
-### Solution: Use Shared Assets
-
-For large PHP libraries, place them in the Element Pack's [shared assets](../shared-files/assets.md) directory and reference them from backend files:
+For large PHP libraries and frameworks, it's recommended to place them in the Element Pack's [shared assets](../shared-files/assets.md) directory and reference them from backend files:
 
 ```javascript
 // hooks.js - Pass the asset path to templates
