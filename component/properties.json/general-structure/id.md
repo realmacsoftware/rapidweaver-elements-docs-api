@@ -19,4 +19,3 @@ Template usage:
 ```html
 <a class="btn">{{buttonLabel}}</a>
 ```
-

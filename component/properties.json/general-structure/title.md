@@ -13,4 +13,3 @@ The `title` is the human-friendly label shown in the Elements inspector. Use sho
   }
 }
 ```
-
