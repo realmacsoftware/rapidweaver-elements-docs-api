@@ -191,33 +191,6 @@ See the [Backend documentation](backend.md) for complete examples and best pract
 
 ## Limitations
 
-### No Subdirectories in Backend
-
-The backend directory doesn't support subdirectories. For large PHP libraries:
-
-1. Place libraries in the Element Pack's [shared assets](../shared-files/assets.md) directory
-2. Reference them from backend PHP files
-3. Pass configuration from component properties
-
-```php
-<!-- templates/backend/handler.php -->
-<?php
-// Include library from shared assets
-require_once('{{siteAssetPath}}/php-library/vendor/autoload.php');
-
-// Configure with component properties
-$config = [
-    'api_key' => '{{apiKey}}',
-    'timeout' => {{timeout}},
-    'debug' => {{debugMode}}
-];
-
-// Use the library
-$handler = new Handler($config);
-$result = $handler->process($_POST);
-?>
-```
-
 ### Template Processing Only
 
 PHP files in templates are processed by Elements template engine during publish, but they're not executed during the build process. They're deployed to the server and execute when requested.
