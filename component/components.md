@@ -8,7 +8,7 @@ A component is a self-contained, reusable building block that can be added to a 
 
 ### Folder Structure Overview
 
-Each component is self-contained: all templates, assets, and logic should live within a single folder. You should use a reverse domain name (e.g., `com.companyname.componentname`) as the component directory name. 
+Each component is self-contained: all templates, assets, and logic should live within a single folder. You should use a reverse domain name (e.g., `com.companyname.componentname`) as the component directory name.
 
 ```
 components/
@@ -77,7 +77,7 @@ Contains the files that define how the component is rendered. All files in this 
 *   **\*.css**: All CSS files are processed, concatenated, and added to the page's stylesheet during publishing.
 *   **\*.js**: All JavaScript files are processed, concatenated, and added to the page's script file during publishing.
 *   **[includes/](language/include.md)**: Sub-templates that can be reused across multiple templates using the `@include` directive.
-*   **[pageStart/, pageEnd/, bodyStart/, bodyEnd/](language/README.md)**: Templates in these folders are automatically injected into specific regions of the final HTML document.
+*   **[headStart/, headEnd/, bodyStart/, bodyEnd/, pageStart/, pageEnd/](templates/README.md)**: Templates in these folders are automatically injected into specific regions of the final HTML document.
 *   **[backend/](templates/backend.md)**: Files that should be deployed to the server but are not directly included in the page (e.g., PHP processing scripts).
 
 #### [assets/](assets.md)

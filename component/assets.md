@@ -33,7 +33,7 @@ To link to an asset in a single component you'll need to do the following;
 </strong>@endportal
 </code></pre>
 
-2. Include the following code in the [hooks.js](../elements-language/bundle-structure/components/hooks.js) to return the assetPath to the page template:
+2. Include the following code in the [hooks.js](hooks.js/README.md) to return the assetPath to the page template:
 
 ```
 const transformHook = (rw) => {

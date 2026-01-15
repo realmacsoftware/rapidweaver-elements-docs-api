@@ -16,10 +16,12 @@ The structure of the templates directory is important and denotes in which area 
 
 The templates directory may also contain the following sub directories
 
-* **headStart** - Placed at the top of head
-* **headEnd** - Placed at the end of head
-* **bodyStart** - Placed at the top of body
-* **bodyEnd** - Placed at the bottom of body
+* **headStart** - Placed at the top of `<head>`
+* **headEnd** - Placed at the end of `<head>`
+* **bodyStart** - Placed at the top of `<body>`
+* **bodyEnd** - Placed at the bottom of `<body>`
+* **pageStart** - Placed at the very start of the page (before `<!DOCTYPE>`)
+* **pageEnd** - Placed at the very end of the page (after `</html>`)
 * **include** - Files can be included from other template files using an [@include](../language/include.md) statement
 * [**backend**](backend.md) - Additional supporting files deployed to the server
 
