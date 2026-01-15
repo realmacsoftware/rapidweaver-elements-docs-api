@@ -28,30 +28,27 @@ The returned value is dependent on the responsive setting and either returns a s
 
 #### Example
 
-Below is an example of a typical responsive dropdown that returns one or more tailwind text transform classes, one for each device breakpoint.
+Below is an example of a responsive dropdown that returns Tailwind text size classes for a button label.
 
 {% tabs %}
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Case",
-    "id": "headingTextTransform",
-    "select": {
-        "default": "normal-case",
-        "items": [{
-            "value": "normal-case",
-            "title": "None"
-        }, {
-            "value": "uppercase",
-            "title": "Uppercase"
-        }, {
-            "value": "lowercase",
-            "title": "Lowercase"
-        }, {
-            "value": "capitalize",
-            "title": "Capitalize"
-        }]
-    }
+  "title": "Button Text Size",
+  "id": "buttonTextSize",
+  "select": {
+    "default": "text-base",
+    "items": [{
+      "value": "text-sm",
+      "title": "Small"
+    }, {
+      "value": "text-base",
+      "title": "Medium"
+    }, {
+      "value": "text-lg",
+      "title": "Large"
+    }]
+  }
 }
 ```
 {% endtab %}
@@ -59,29 +56,26 @@ Below is an example of a typical responsive dropdown that returns one or more ta
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Select Example",
-        "properties": [{
-            "title": "Case",
-            "id": "headingTextTransform",
-            "select": {
-                "default": "normal-case",
-                "items": [{
-                    "value": "normal-case",
-                    "title": "None"
-                }, {
-                    "value": "uppercase",
-                    "title": "Uppercase"
-                }, {
-                    "value": "lowercase",
-                    "title": "Lowercase"
-                }, {
-                    "value": "capitalize",
-                    "title": "Capitalize"
-                }]
-            }
+  "groups": [{
+    "title": "Button",
+    "properties": [{
+      "title": "Button Text Size",
+      "id": "buttonTextSize",
+      "select": {
+        "default": "text-base",
+        "items": [{
+          "value": "text-sm",
+          "title": "Small"
+        }, {
+          "value": "text-base",
+          "title": "Medium"
+        }, {
+          "value": "text-lg",
+          "title": "Large"
         }]
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

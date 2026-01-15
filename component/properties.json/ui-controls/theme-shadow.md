@@ -6,13 +6,13 @@ Displays the Theme Studio Shadow control.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Shadow",
-    "id": "boxShadow",
-    "themeShadow": {
-        "default": {
-            "name": "none"
-        }
+  "title": "Card Shadow",
+  "id": "cardShadow",
+  "themeShadow": {
+    "default": {
+      "name": "sm"
     }
+  }
 }
 ```
 {% endtab %}
@@ -20,18 +20,18 @@ Displays the Theme Studio Shadow control.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Theme Shadow Example",
-        "properties": [{
-            "title": "Shadow",
-            "id": "boxShadow",
-            "themeShadow": {
-                "default": {
-                    "name": "none"
-                }
-            }
-        }]
+  "groups": [{
+    "title": "Card Styles",
+    "properties": [{
+      "title": "Card Shadow",
+      "id": "cardShadow",
+      "themeShadow": {
+        "default": {
+          "name": "sm"
+        }
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

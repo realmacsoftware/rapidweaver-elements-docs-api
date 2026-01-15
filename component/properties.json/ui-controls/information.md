@@ -6,8 +6,8 @@ Display some informational static text.
 {% tab title="Control Example" %}
 ```json
 {
-    "information": {},
-    "title": "You can display a helpful tip here!"
+  "information": {},
+  "title": "Tip: Use short, action-oriented labels for buttons."
 }
 ```
 {% endtab %}
@@ -15,13 +15,19 @@ Display some informational static text.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Information Example",
-        "properties": [{
-            "information": {},
-            "title": "You can display a helpful tip here!"
-        }]
+  "groups": [{
+    "title": "Button Settings",
+    "properties": [{
+      "information": {},
+      "title": "Tip: Use short, action-oriented labels for buttons."
+    }, {
+      "title": "Button Label",
+      "id": "buttonLabel",
+      "text": {
+        "default": "Get Started"
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

@@ -6,7 +6,7 @@ Display a divider between content.
 {% tab title="Control Example" %}
 ```json
 {
-    "divider": {}
+  "divider": {}
 }
 ```
 {% endtab %}
@@ -14,12 +14,30 @@ Display a divider between content.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Divider Example",
-        "properties": [{
-            "divider": {}
-        }]
+  "groups": [{
+    "title": "Card Settings",
+    "properties": [{
+      "title": "Content",
+      "heading": {}
+    }, {
+      "title": "Title",
+      "id": "cardTitle",
+      "text": {
+        "default": "New arrivals"
+      }
+    }, {
+      "divider": {}
+    }, {
+      "title": "Button",
+      "heading": {}
+    }, {
+      "title": "Button Label",
+      "id": "buttonLabel",
+      "text": {
+        "default": "Shop now"
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

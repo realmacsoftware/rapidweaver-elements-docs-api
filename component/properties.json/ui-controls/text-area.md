@@ -6,12 +6,12 @@ Displays a multiline text area in the inspector.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "TextArea",
-    "id": "myTextArea",
-    "textArea": {
-        "size": 5,
-        "default": "Hello World"
-    }
+  "title": "Description",
+  "id": "cardDescription",
+  "textArea": {
+    "size": 5,
+    "default": "Add a short paragraph that explains the feature."
+  }
 }
 ```
 {% endtab %}
@@ -19,17 +19,17 @@ Displays a multiline text area in the inspector.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "TextArea Example",
-        "properties": [{
-            "title": "TextArea",
-            "id": "myTextArea",
-            "textArea": {
-                "size": 5,
-                "default": "Hello World"
-            }
-        }]
+  "groups": [{
+    "title": "Card Content",
+    "properties": [{
+      "title": "Description",
+      "id": "cardDescription",
+      "textArea": {
+        "size": 5,
+        "default": "Add a short paragraph that explains the feature."
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

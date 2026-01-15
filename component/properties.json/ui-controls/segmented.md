@@ -6,25 +6,21 @@ Display a segmented control.&#x20;
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Alignment",
-    "id": "alignment",
-    "segmented": {
-        "default": {
-            "base": "align-left",
-            "md": "align-center"
-        },
-        "items": [{
-            "value": "align-left",
-            "icon": "text.alignleft"
-        }, {
-            "value": "align-center",
-            "icon": "text.aligncenter",
-            "default": true
-        }, {
-            "value": "align-right",
-            "icon": "text.alignright"
-        }]  
-    }
+  "title": "Button Style",
+  "id": "buttonStyle",
+  "segmented": {
+    "default": "solid",
+    "items": [{
+      "value": "solid",
+      "icon": "rectangle.fill"
+    }, {
+      "value": "outline",
+      "icon": "rectangle"
+    }, {
+      "value": "ghost",
+      "icon": "square.dashed"
+    }]
+  }
 }
 ```
 {% endtab %}
@@ -32,30 +28,26 @@ Display a segmented control.&#x20;
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Segmented Example",
-        "properties": [{
-            "title": "Alignment",
-            "id": "alignment",
-            "segmented": {
-                "default": {
-                    "base": "align-left",
-                    "md": "align-center"
-                },
-                "items": [{
-                    "value": "align-left",
-                    "icon": "text.alignleft"
-                }, {
-                    "value": "align-center",
-                    "icon": "text.aligncenter",
-                    "default": true
-                }, {
-                    "value": "align-right",
-                    "icon": "text.alignright"
-                }]  
-            }
+  "groups": [{
+    "title": "Button",
+    "properties": [{
+      "title": "Button Style",
+      "id": "buttonStyle",
+      "segmented": {
+        "default": "solid",
+        "items": [{
+          "value": "solid",
+          "icon": "rectangle.fill"
+        }, {
+          "value": "outline",
+          "icon": "rectangle"
+        }, {
+          "value": "ghost",
+          "icon": "square.dashed"
         }]
+      }
     }]
+  }]
 }
 ```
 {% endtab %}
@@ -65,26 +57,26 @@ You can also use the following title key to display text instead of icons.
 
 ```json
 {
-    "groups": [{
-        "title": "Segmented Example",
-        "properties": [{
-            "title": "Alignment",
-            "id": "alignment",
-            "segmented": {
-                "items": [{
-                    "value": "align-left",
-                    "title": "Left"
-                }, {
-                    "value": "align-center",
-                    "title": "Center",
-                    "default": true
-                }, {
-                    "value": "align-right",
-                    "title": "Right"
-                }]  
-            }
+  "groups": [{
+    "title": "Layout",
+    "properties": [{
+      "title": "Content Alignment",
+      "id": "contentAlignment",
+      "segmented": {
+        "items": [{
+          "value": "text-left",
+          "title": "Left"
+        }, {
+          "value": "text-center",
+          "title": "Center",
+          "default": true
+        }, {
+          "value": "text-right",
+          "title": "Right"
         }]
+      }
     }]
+  }]
 }
 ```
 

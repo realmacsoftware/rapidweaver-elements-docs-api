@@ -6,12 +6,12 @@ Displays a switch, similar to a checkbox in functionality.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Visible",
-    "id": "display",
-    "responsive": false,
-    "switch": {
-        "default": true
-    }
+  "title": "Show Icon",
+  "id": "showIcon",
+  "responsive": false,
+  "switch": {
+    "default": true
+  }
 }
 ```
 {% endtab %}
@@ -19,37 +19,37 @@ Displays a switch, similar to a checkbox in functionality.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Switch Example",
-        "properties": [{
-            "title": "Visible",
-            "id": "display",
-            "responsive": false,
-            "switch": {
-                "default": true
-            }
-        }]
+  "groups": [{
+    "title": "Button",
+    "properties": [{
+      "title": "Show Icon",
+      "id": "showIcon",
+      "responsive": false,
+      "switch": {
+        "default": true
+      }
     }]
+  }]
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-The following examples returns a true or false value. Note that `responsive` should be `false`.
+The following example returns a true or false value. Note that `responsive` should be `false`.
 
 ```json
 {
-    "groups": [{
-        "title": "Switch Example",
-        "properties": [{
-            "title": "Visible",
-            "id": "display",
-            "responsive": false,
-            "switch": {
-                "default": true
-            }
-        }]
+  "groups": [{
+    "title": "Content",
+    "properties": [{
+      "title": "Show Badge",
+      "id": "showBadge",
+      "responsive": false,
+      "switch": {
+        "default": false
+      }
     }]
+  }]
 }
 ```
 
@@ -57,23 +57,23 @@ The following example returns a string value instead of true or false. Note that
 
 ```json
 {
-    "groups": [{
-        "title": "Switch Example",
-        "properties": [{
-            "title": "Prices Inc VAT",
-            "id": "includeVATMessage",
-            "responsive": false,
-            "switch": {
-                "trueValue": "Price includes VAT",
-                "falseValue": "Price does not include VAT",
-                "default": true
-            }
-        }]
+  "groups": [{
+    "title": "Pricing",
+    "properties": [{
+      "title": "Price Label",
+      "id": "priceLabel",
+      "responsive": false,
+      "switch": {
+        "trueValue": "From $99",
+        "falseValue": "From $129",
+        "default": true
+      }
     }]
+  }]
 }
 ```
 
-To display this value in a template file, use `{{display}}`.
+To display this value in a template file, use `{{priceLabel}}`.
 
 ### Responsive
 
@@ -81,22 +81,22 @@ When using a switch responsively, trueValue and falseValue should be set to a Ta
 
 ```json
 {
-    "groups": [{
-        "title": "Responsive Switch Example",
-        "properties": [{
-            "title": "Show Detail",
-            "id": "showDetail",
-            "responsive": true,
-            "switch": {
-                "trueValue": "block",
-                "falseValue": "hidden",
-                "default": {
-                    "base": false,
-                    "md": true,
-                }
-            }
-        }]
+  "groups": [{
+    "title": "Layout",
+    "properties": [{
+      "title": "Show Description",
+      "id": "showDescription",
+      "responsive": true,
+      "switch": {
+        "trueValue": "block",
+        "falseValue": "hidden",
+        "default": {
+          "base": false,
+          "md": true
+        }
+      }
     }]
+  }]
 }
 ```
 
@@ -105,7 +105,7 @@ When using a switch responsively, trueValue and falseValue should be set to a Ta
 In the Template file you can do the following to display different html based on the value.
 
 ```html
-@if(display)
+@if(showDescription)
     <div class="p-sm text-lg text-center text-primary-500">I'm True!</div>
 @else
     <div class="p-sm text-lg text-center text-primary-500">I'm False!</div>

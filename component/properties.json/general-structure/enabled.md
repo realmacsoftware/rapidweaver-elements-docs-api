@@ -14,21 +14,21 @@ The `enabled` key in an object's properties can be set using a logical expressio
 1.  **Complex Condition**
 
     ```json
-    "enabled": "(backgroundType == 'custom' || backgroundType == 'image') && textColor == 'white'"
+    "enabled": "(buttonStyle == 'filled' || buttonStyle == 'outline') && showIcon == true"
     ```
 
-    This makes the property enabled only if the backgroundType is either custom' or 'image', and the textColor is 'white'.
-2.  **Visibility Based on Numeric Ranges**
+    This makes the control enabled only when a button style is chosen and icons are enabled.
+2.  **Enabled Based on Numeric Ranges**
 
     ```json
-    "enabled": "opacity > 20 && opacity < 30"
+    "enabled": "imageBlur > 0 && imageBlur <= 20"
     ```
 
-    Useful for enabling controls that should only be visible within a specific range.
-3.  **Negation to Hide Elements**
+    Useful for enabling fine-tuning controls only when blur is active.
+3.  **Negation to Disable**
 
     ```json
-    "enabled": "mySwitchControl != true"
+    "enabled": "useCustomColors != true"
     ```
 
-    The property is enabled when `mySwitchControl` is `false`.
+    The property is enabled when `useCustomColors` is `false`.

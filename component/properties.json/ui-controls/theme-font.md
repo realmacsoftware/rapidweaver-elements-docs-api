@@ -6,15 +6,15 @@ Displays the Theme Studio Font control.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Theme Font",
-    "id": "fontFamily",
-    "themeFont": {
-        "default": {
-            "base": { "name": "body" },
-            "sm": { "name": "heading" },
-            "md": { "name": "quote" }
-        }
+  "title": "Headline Font",
+  "id": "headlineFont",
+  "themeFont": {
+    "default": {
+      "base": { "name": "heading" },
+      "sm": { "name": "heading" },
+      "md": { "name": "display" }
     }
+  }
 }
 ```
 {% endtab %}
@@ -22,20 +22,20 @@ Displays the Theme Studio Font control.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Theme Font Example",
-        "properties": [{
-            "title": "Theme Font",
-            "id": "fontFamily",
-            "themeFont": {
-                "default": {
-                    "base": { "name": "body" },
-                    "sm": { "name": "heading" },
-                    "md": { "name": "quote" }
-                }
-            }
-        }]
+  "groups": [{
+    "title": "Typography",
+    "properties": [{
+      "title": "Headline Font",
+      "id": "headlineFont",
+      "themeFont": {
+        "default": {
+          "base": { "name": "heading" },
+          "sm": { "name": "heading" },
+          "md": { "name": "display" }
+        }
+      }
     }]
+  }]
 }
 ```
 {% endtab %}
@@ -45,4 +45,4 @@ For effective theme integration in RapidWeaver Elements, it is recommended to us
 
 Here’s a structured example for defining a font property:
 
-**Output Example:** In your template files, referencing `{{fontFamily}}` with the example configuration above would output: `font-sub-heading sm:font-heading md:font-quote`.
+**Output Example:** In your template files, referencing `{{headlineFont}}` with the example configuration above would output: `font-heading sm:font-heading md:font-display`.

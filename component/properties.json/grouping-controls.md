@@ -1,23 +1,22 @@
 # Grouping Controls
 
-Groups allow you to organise similar settings into relevant groups.
+Groups allow you to organise similar settings into relevant sections in the inspector.
 
 {% hint style="info" %}
-the **Icon** property uses SF Symbols. Please refer to the [SF Symbol app](https://developer.apple.com/sf-symbols/) for a list of available icons.
+The **icon** property uses SF Symbols. Please refer to the [SF Symbol app](https://developer.apple.com/sf-symbols/) for a list of available icons.
 {% endhint %}
 
-Here is an example emtpy group:
+Here is an example empty group:
 
 ```
 {
-	"groups": [
-			{
-	  "title": "Colour Settings",
-	  "icon": "paintpalette",
-	  "properties": [
-		  
-		]
-	}]
+  "groups": [
+    {
+      "title": "Color Settings",
+      "icon": "paintpalette",
+      "properties": []
+    }
+  ]
 }
 ```
 
@@ -27,57 +26,62 @@ You can specify an icon to appear next to the title of your group. The **Icon** 
 
 ### Group Controls
 
-Controls should placed inside of the properties array. The following example has a heading and an image drop well inside of the group.
+Controls should be placed inside the properties array. The following example has a heading, a text field, and an image dropwell inside the group.
 
 ```
 {
-    "groups": [
+  "groups": [
+    {
+      "title": "Hero Content",
+      "icon": "textformat.size",
+      "properties": [
         {
-            "title": "Button Design",
-            "icon": "paintpalette",
-            "properties": [
-                {
-                    "title": "Title",
-                    "id": "buttonTitle",
-                    "default": "",
-                    "text": {
-                       "default": "Click Me"
-                    }
-                },
-                {
-                    "title": "Image",
-                    "id": "buttonImage",
-                    "image": {}
-                },
-                
-            ]
+          "title": "Headline",
+          "id": "heroHeadline",
+          "text": {
+            "default": "Launch your next product"
+          }
+        },
+        {
+          "title": "Subheading",
+          "id": "heroSubheading",
+          "textArea": {
+            "default": "A short sentence explaining the value proposition."
+          }
+        },
+        {
+          "title": "Background Image",
+          "id": "heroImage",
+          "image": {}
         }
-    ]
+      ]
+    }
+  ]
 }
 ```
 
-The following example has two groups, the first with a text box, and the second with an image dropwell.
+The following example has two groups, one for content and one for media.
 
 ```
 {
-    "groups": [{
-        "title" : "First Group",
-        "icon" : "1.circle.fill",
-        "properties" : [{
-            "title": "Title",
-            "id": "title",
-            "text": {}
-        }]
-    },
-    {
-        "title" : "Second Group",
-        "icon" : "2.circle.fill",
-        "properties" : [{
-            "title": "Image",
-            "id": "image",
-            "image": {}
-        }]
-    } 
-    ]
+  "groups": [{
+    "title": "Content",
+    "icon": "textformat",
+    "properties": [{
+      "title": "Title",
+      "id": "cardTitle",
+      "text": {
+        "default": "Customer Story"
+      }
+    }]
+  }, {
+    "title": "Media",
+    "icon": "photo",
+    "properties": [{
+      "title": "Image",
+      "id": "cardImage",
+      "image": {}
+    }]
+  }]
 }
 ```

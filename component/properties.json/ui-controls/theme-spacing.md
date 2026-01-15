@@ -6,25 +6,25 @@ Displays the Theme Studio Spacing control.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Padding",
-    "id": "themeSpacing",
-    "themeSpacing": {
-        "mode": "padding",
-        "default": {
-            "base": {
-                "left": "sm",
-                "right": "sm",
-                "top": "sm",
-                "bottom": "sm"
-            },
-            "md": {
-                "left": "md",
-                "right": "md",
-                "top": "md",
-                "bottom": "md"
-            }
-        }
+  "title": "Card Padding",
+  "id": "cardPadding",
+  "themeSpacing": {
+    "mode": "padding",
+    "default": {
+      "base": {
+        "left": "sm",
+        "right": "sm",
+        "top": "sm",
+        "bottom": "sm"
+      },
+      "md": {
+        "left": "lg",
+        "right": "lg",
+        "top": "lg",
+        "bottom": "lg"
+      }
     }
+  }
 }
 ```
 {% endtab %}
@@ -32,36 +32,36 @@ Displays the Theme Studio Spacing control.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Theme Spacing Example",
-        "properties": [{
-            "title": "Padding",
-            "id": "themeSpacing",
-            "themeSpacing": {
-                "mode": "padding",
-                "default": {
-                    "base": {
-                        "left": "sm",
-                        "right": "sm",
-                        "top": "sm",
-                        "bottom": "sm"
-                    },
-                    "md": {
-                        "left": "md",
-                        "right": "md",
-                        "top": "md",
-                        "bottom": "md"
-                    }
-                }
-            }
-        }]
+  "groups": [{
+    "title": "Card Layout",
+    "properties": [{
+      "title": "Card Padding",
+      "id": "cardPadding",
+      "themeSpacing": {
+        "mode": "padding",
+        "default": {
+          "base": {
+            "left": "sm",
+            "right": "sm",
+            "top": "sm",
+            "bottom": "sm"
+          },
+          "md": {
+            "left": "lg",
+            "right": "lg",
+            "top": "lg",
+            "bottom": "lg"
+          }
+        }
+      }
     }]
+  }]
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-The `themeSpacing` attribute is should be used for all space settings like padding, margins, gaps, translate, and positioning.
+The `themeSpacing` attribute should be used for all space settings like padding, margins, gaps, translate, and positioning.
 
 This control allows the user's site to dynamically adapt to any theme updates, changes, or overrides to the spacing scale.
 
@@ -78,30 +78,30 @@ Each one of these modes correspond to the appropriate Tailwind utility classes. 
 
 ```
 {
-    "groups": [{
-        "title": "Theme Spacing Example",
-        "properties": [{
-            "title": "Padding",
-            "id": "themeSpacing",
-            "themeSpacing": {
-                "mode": "padding",
-                "default": {
-                    "base": {
-                        "left": "sm",
-                        "right": "sm",
-                        "top": "sm",
-                        "bottom": "sm"
-                    },
-                    "md": {
-                        "left": "md",
-                        "right": "md",
-                        "top": "md",
-                        "bottom": "md"
-                    }
-                }
-            }
-        }]
+  "groups": [{
+    "title": "Section Spacing",
+    "properties": [{
+      "title": "Section Padding",
+      "id": "sectionPadding",
+      "themeSpacing": {
+        "mode": "padding",
+        "default": {
+          "base": {
+            "left": "md",
+            "right": "md",
+            "top": "xl",
+            "bottom": "xl"
+          },
+          "md": {
+            "left": "2xl",
+            "right": "2xl",
+            "top": "2xl",
+            "bottom": "2xl"
+          }
+        }
+      }
     }]
+  }]
 }
 ```
 
@@ -111,17 +111,17 @@ The single mode allows you to access the spacing scale from the Theme Studio in 
 
 ```json
 {
-    "title": "Top",
-    "id": "top",
-    "format": "top-{{value}}",
-    "themeSpacing": {
-        "mode": "single",
-        "default": {
-            "base": {
-                "value": "2"
-            }
-        }
+  "title": "Badge Offset",
+  "id": "badgeOffsetTop",
+  "format": "top-{{value}}",
+  "themeSpacing": {
+    "mode": "single",
+    "default": {
+      "base": {
+        "value": "2"
+      }
     }
+  }
 }
 ```
 

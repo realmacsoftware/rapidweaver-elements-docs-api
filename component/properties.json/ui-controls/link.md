@@ -6,11 +6,11 @@ The Link control allows users to input a URL or link to another page within thei
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Link",
-    "id": "link",
-    "link": {
-        "subtitle": "Link to another page"
-    }
+  "title": "CTA Link",
+  "id": "ctaLink",
+  "link": {
+    "subtitle": "Link to a product or signup page"
+  }
 }
 ```
 {% endtab %}
@@ -18,16 +18,16 @@ The Link control allows users to input a URL or link to another page within thei
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Link Example",
-        "properties": [{
-            "title": "Link",
-            "id": "link",
-            "link": {
-                "subtitle": "Link to another page"
-            }
-        }]
+  "groups": [{
+    "title": "CTA Button",
+    "properties": [{
+      "title": "CTA Link",
+      "id": "ctaLink",
+      "link": {
+        "subtitle": "Link to a product or signup page"
+      }
     }]
+  }]
 }
 ```
 {% endtab %}
@@ -38,7 +38,7 @@ The Link control allows users to input a URL or link to another page within thei
 The following will give you access to the link object in your template file(s).
 
 ```html
-<a href="{{link.href}}" target="{{link.target}}">Click Me</a>
+<a href="{{ctaLink.href}}" target="{{ctaLink.target}}">Get Started</a>
 ```
 
 ### Getting the Absolute URL
@@ -46,18 +46,18 @@ The following will give you access to the link object in your template file(s).
 By default the link attribute will return a relative URL. To get the full URL add the absoluteURL property.
 
 ```json
-        {
-          "title": "Link",
-          "id": "globalLink",
-          "link": {
-            "absoluteURL": true
-          }
-        }
+{
+  "title": "CTA Link",
+  "id": "ctaLink",
+  "link": {
+    "absoluteURL": true
+  }
+}
 ```
 
 Corresponding template example using the absoluteURL.
 
 ```html
-<a href="{{redirectURL.href}}">Click Me</a>
+<a href="{{ctaLink.href}}">Get Started</a>
 ```
 

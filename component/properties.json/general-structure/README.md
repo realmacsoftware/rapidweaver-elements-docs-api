@@ -6,13 +6,22 @@ All properties have the same general structure using the following object keys.
 
 ### Code Example
 
+This example shows a real-world control for a hero overlay. The slider only appears when the overlay is enabled and it outputs a Tailwind class.
+
 ```json
 {
-  "title": "Example Title",
-  "id": "unique-id-here",
-  "format": "pt-{{value}}",
-  "visible": "myOtherControl == 'someValue'",
-  "enabled": "anotherControl == 'anotherValue'",
-  "responsive": false
+  "title": "Overlay Opacity",
+  "id": "overlayOpacity",
+  "format": "bg-opacity-[{{value}}%]",
+  "visible": "showOverlay == true",
+  "enabled": "overlayStyle != 'none'",
+  "responsive": false,
+  "slider": {
+    "default": 60,
+    "min": 0,
+    "max": 100,
+    "round": true,
+    "units": "%"
+  }
 }
 ```

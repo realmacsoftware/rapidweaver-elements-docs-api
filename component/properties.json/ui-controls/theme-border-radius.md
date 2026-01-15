@@ -6,8 +6,8 @@ Displays the Theme Studio Border Radius control.
 {% tab title="Control Example" %}
 ```json
 {
-  "title": "Radius",
-  "id": "borderRadius",
+  "title": "Card Radius",
+  "id": "cardRadius",
   "themeBorderRadius": {
     "default": {
       "base": {
@@ -25,23 +25,23 @@ Displays the Theme Studio Border Radius control.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Theme Border Radius Example",
-        "properties": [{
-            "title": "Radius",
-            "id": "borderRadius",
-            "themeBorderRadius": {
-                "default": {
-                    "base": {
-                        "topRight": "lg",
-                        "topLeft": "lg",
-                        "bottomRight": "lg",
-                        "bottomLeft": "lg"
-                    }
-                }
-            }
-        }]
+  "groups": [{
+    "title": "Card Styles",
+    "properties": [{
+      "title": "Card Radius",
+      "id": "cardRadius",
+      "themeBorderRadius": {
+        "default": {
+          "base": {
+            "topRight": "lg",
+            "topLeft": "lg",
+            "bottomRight": "lg",
+            "bottomLeft": "lg"
+          }
+        }
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

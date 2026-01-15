@@ -6,15 +6,15 @@ Displays the Theme Studio Text Style control.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Text Style",
-    "id": "headingTextStyles",
-    "themeTextStyle": {
-        "default": {
-            "base": {
-                "name": "3xl"
-            }
-        }
+  "title": "Heading Size",
+  "id": "headingTextStyle",
+  "themeTextStyle": {
+    "default": {
+      "base": {
+        "name": "3xl"
+      }
     }
+  }
 }
 ```
 {% endtab %}
@@ -22,20 +22,20 @@ Displays the Theme Studio Text Style control.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Theme Text Style Example",
-        "properties": [{
-            "title": "Text Style",
-            "id": "headingTextStyles",
-            "themeTextStyle": {
-                "default": {
-                    "base": {
-                        "name": "3xl"
-                    }
-                }
-            }
-        }]
+  "groups": [{
+    "title": "Typography",
+    "properties": [{
+      "title": "Heading Size",
+      "id": "headingTextStyle",
+      "themeTextStyle": {
+        "default": {
+          "base": {
+            "name": "3xl"
+          }
+        }
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

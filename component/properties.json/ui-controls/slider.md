@@ -6,98 +6,67 @@ A slider can be used for choosing from a range of values.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Contrast",
-    "id": "contrast",
-    "slider": {
-        "default": "contrast-70",
-        "items": [
-            { "value": "contrast-0", "title": "0" },
-            { "value": "contrast-50", "title": "50" },
-            { "value": "contrast-70", "title": "75" },
-            { "value": "contrast-100", "title": "100" },
-            { "value": "contrast-125", "title": "125" },
-            { "value": "contrast-150", "title": "150" },
-            { "value": "contrast-200", "title": "200" }
-        ]
-    }
+  "title": "Overlay Opacity",
+  "id": "overlayOpacity",
+  "format": "bg-opacity-[{{value}}%]",
+  "slider": {
+    "default": 60,
+    "min": 0,
+    "max": 100,
+    "round": true,
+    "units": "%"
+  }
 }
 ```
 {% endtab %}
 
 {% tab title="Group Example" %}
-The following example displays a stepped slider with seven pre-defined values.
+The following example shows an opacity control for a hero overlay.
 
 ```json
 {
-    "groups": [{
-        "title": "Slider Example",
-        "properties": [{
-            "title": "Contrast",
-            "id": "contrast",
-            "slider": {
-                "default": "contrast-70",
-                "items": [
-                    { "value": "contrast-0", "title": "0" },
-                    { "value": "contrast-50", "title": "50" },
-                    { "value": "contrast-70", "title": "75" },
-                    { "value": "contrast-100", "title": "100" },
-                    { "value": "contrast-125", "title": "125" },
-                    { "value": "contrast-150", "title": "150" },
-                    { "value": "contrast-200", "title": "200" }
-                ]
-            }
-        }]
+  "groups": [{
+    "title": "Hero Background",
+    "properties": [{
+      "title": "Overlay Opacity",
+      "id": "overlayOpacity",
+      "format": "bg-opacity-[{{value}}%]",
+      "slider": {
+        "default": 60,
+        "min": 0,
+        "max": 100,
+        "round": true,
+        "units": "%"
+      }
     }]
+  }]
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-The following example displays a stepped slider with seven pre-defined values.
+The following example displays a stepped slider for image brightness.
 
 ```json
 {
-    "groups": [{
-        "title": "Slider Example",
-        "properties": [{
-            "title": "Contrast",
-            "id": "contrast",
-            "slider": {
-                "default": "contrast-70",
-                "items": [
-                    { "value": "contrast-0", "title": "0" },
-                    { "value": "contrast-50", "title": "50" },
-                    { "value": "contrast-70", "title": "75" },
-                    { "value": "contrast-100", "title": "100" },
-                    { "value": "contrast-125", "title": "125" },
-                    { "value": "contrast-150", "title": "150" },
-                    { "value": "contrast-200", "title": "200" }
-                ]
-            }
-        }]
+  "groups": [{
+    "title": "Image Effects",
+    "properties": [{
+      "title": "Brightness",
+      "id": "imageBrightness",
+      "format": "brightness-[{{value}}%]",
+      "slider": {
+        "default": 100,
+        "items": [
+          { "value": "50", "title": "50" },
+          { "value": "75", "title": "75" },
+          { "value": "100", "title": "100" },
+          { "value": "125", "title": "125" },
+          { "value": "150", "title": "150" }
+        ]
+      }
     }]
-}
-```
-
-The following example has a minimum value of 0 and maximum of 100. The units are set to round, and display in the UI with a "%" after the number.
-
-```json
-{
-    "groups": [{
-        "title": "Slider Example",
-        "properties": [{
-            "title": "Contrast",
-            "id": "contrast",
-            "format": "{{value}}%",
-            "slider": {
-                "default": 50,
-                "min": 0,
-                "max": 100,
-                "units": "%",
-                "round": true
-            }
-        }]
-    }]
+  }]
 }
 ```
 

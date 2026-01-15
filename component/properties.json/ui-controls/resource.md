@@ -6,9 +6,9 @@ Displays a resource dropwell that accepts all file types.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Resource",
-    "id": "resource",
-    "resource": {}
+  "title": "Video File",
+  "id": "promoVideo",
+  "resource": {}
 }
 ```
 {% endtab %}
@@ -16,15 +16,15 @@ Displays a resource dropwell that accepts all file types.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Resource Example",
-        "icon": "folder",
-        "properties": [{
-            "title": "Resource",
-            "id": "resource",
-            "resource": {}
-        }]
+  "groups": [{
+    "title": "Media",
+    "icon": "film",
+    "properties": [{
+      "title": "Video File",
+      "id": "promoVideo",
+      "resource": {}
     }]
+  }]
 }
 ```
 {% endtab %}

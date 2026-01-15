@@ -6,12 +6,12 @@ Displays a number field with a stepper.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Number",
-    "id": "myNumber",
-    "number": {
-        "default": 100,
-        "subtitle": "a simple number input"
-    }
+  "title": "Max Items",
+  "id": "maxItems",
+  "number": {
+    "default": 6,
+    "subtitle": "Number of cards to show"
+  }
 }
 ```
 {% endtab %}
@@ -19,17 +19,17 @@ Displays a number field with a stepper.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Number Example",
-        "properties": [{
-            "title": "Number",
-            "id": "myNumber",
-            "number" : {
-                "default" : 100,
-                "subtitle" : "a simple number input",
-            }
-        }]
+  "groups": [{
+    "title": "Collection Settings",
+    "properties": [{
+      "title": "Max Items",
+      "id": "maxItems",
+      "number": {
+        "default": 6,
+        "subtitle": "Number of cards to show"
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

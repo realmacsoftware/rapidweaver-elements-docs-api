@@ -6,18 +6,18 @@ Displays the Theme Studio Border Width control.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Border",
-    "id": "borderWidth",
-    "themeBorderWidth": {
-        "default": {
-            "base": {
-                "top": "2",
-                "right": "2",
-                "bottom": "2",
-                "left": "2"
-            }
-        }
+  "title": "Card Border",
+  "id": "cardBorderWidth",
+  "themeBorderWidth": {
+    "default": {
+      "base": {
+        "top": "1",
+        "right": "1",
+        "bottom": "1",
+        "left": "1"
+      }
     }
+  }
 }
 ```
 {% endtab %}
@@ -25,23 +25,23 @@ Displays the Theme Studio Border Width control.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Theme Border Example",
-        "properties": [{
-            "title": "Border",
-            "id": "borderWidth",
-            "themeBorderWidth": {
-                "default": {
-                    "base": {
-                        "top": "2",
-                        "right": "2",
-                        "bottom": "2",
-                        "left": "2"
-                    }
-                }
-            }
-        }]
+  "groups": [{
+    "title": "Card Styles",
+    "properties": [{
+      "title": "Card Border",
+      "id": "cardBorderWidth",
+      "themeBorderWidth": {
+        "default": {
+          "base": {
+            "top": "1",
+            "right": "1",
+            "bottom": "1",
+            "left": "1"
+          }
+        }
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

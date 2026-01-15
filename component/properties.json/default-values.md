@@ -1,6 +1,6 @@
 # Default Values
 
-Here's an example of setting Default Properites on various UI controls.
+Here's an example of setting default values on various UI controls for a hero section.
 
 ```json
 {
@@ -121,7 +121,7 @@ Here's an example of setting Default Properites on various UI controls.
             "title": "Slider",
             "id": "slider",
             "slider": {
-                "default": "45",
+                "default": 45,
                 "min": 20,
                 "max": 60,
                 "round": true,
@@ -141,7 +141,7 @@ Here's an example of setting Default Properites on various UI controls.
             "title": "Slider 3",
             "id": "slider3",
             "slider": {
-                "default": "3",
+                "default": 3,
                 "content": [
                     { "title": "a", "value": "2" },
                     { "title": "b", "value": "3" },
@@ -158,7 +158,7 @@ Here's an example of setting Default Properites on various UI controls.
                 },
                 "items": [
                     { "value": "w-full", "icon": "text.alignleft" },
-                    { "value": "w-asdf", "icon": "text.alignleft" },
+                    { "value": "w-fit", "icon": "text.alignleft" },
                     { "value": "w-auto", "icon": "text.aligncenter" },
                     { "value": "custom", "icon": "text.alignright", "title": "Custom" }
                 ]

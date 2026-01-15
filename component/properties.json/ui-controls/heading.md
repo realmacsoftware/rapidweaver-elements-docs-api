@@ -6,8 +6,8 @@ Displays a heading in the inspector interface.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Border",
-    "heading": {}
+  "title": "Typography",
+  "heading": {}
 }
 ```
 {% endtab %}
@@ -15,13 +15,23 @@ Displays a heading in the inspector interface.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Heading Example",
-        "properties": [{
-            "title": "Border",
-            "heading" : {}
-        }]
+  "groups": [{
+    "title": "Text Styles",
+    "properties": [{
+      "title": "Typography",
+      "heading": {}
+    }, {
+      "title": "Text Style",
+      "id": "textStyle",
+      "themeTextStyle": {
+        "default": {
+          "base": {
+            "name": "lg"
+          }
+        }
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

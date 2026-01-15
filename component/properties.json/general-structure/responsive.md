@@ -6,9 +6,9 @@ By default all properties in Elements are responsive, allowing users to override
 
 #### Responsive Example
 
-In this example, a select control uses Tailwind’s text transform utility classes. The user can customize the control’s value across device breakpoints by clicking the responsive icon (dot) to the left of the control title in Elements.
+In this example, a select control uses Tailwind’s text transform utility classes for a call-to-action label. The user can customize the control’s value across device breakpoints by clicking the responsive icon (dot) to the left of the control title in Elements.
 
-Initially, the `headingTextTransform` property output is set to normal-case. However, once the user customizes this setting in Elements, it may look something like this: `normal-case sm:uppercase md:lowercase lg:capitalize`.
+Initially, the `ctaTextTransform` property output is set to normal-case. However, once the user customizes this setting in Elements, it may look something like this: `normal-case sm:uppercase md:lowercase lg:capitalize`.
 
 Elements automatically applies and manages these responsive modifiers, saving you the effort of manually setting values for each device size and applying the appropriate modifier.
 
@@ -16,29 +16,29 @@ Elements automatically applies and manages these responsive modifiers, saving yo
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Case",
-    "id": "headingTextTransform",
-    "select": {
-        "default": "normal-case",
-        "items": [
-            {
-                "value": "normal-case",
-                "title": "None"
-            },
-            {
-                "value": "uppercase",
-                "title": "Uppercase"
-            },
-            {
-                "value": "lowercase",
-                "title": "Lowercase"
-            },
-            {
-                "value": "capitalize",
-                "title": "Capitalize"
-            }
-        ]
-    }
+  "title": "CTA Case",
+  "id": "ctaTextTransform",
+  "select": {
+    "default": "normal-case",
+    "items": [
+      {
+        "value": "normal-case",
+        "title": "None"
+      },
+      {
+        "value": "uppercase",
+        "title": "Uppercase"
+      },
+      {
+        "value": "lowercase",
+        "title": "Lowercase"
+      },
+      {
+        "value": "capitalize",
+        "title": "Capitalize"
+      }
+    ]
+  }
 }
 ```
 {% endtab %}
@@ -46,29 +46,29 @@ Elements automatically applies and manages these responsive modifiers, saving yo
 
 ### Multi Value Responsive
 
-This even works for controls that require multiple classes as the value. So given the following control:
+This even works for controls that require multiple classes as the value. So given the following control for a badge position:
 
 ```
 {
-  "title": "Position",
-  "id": "position",
-   "select": {
-     "default": "bottom-0 left-0",
-     "items": [
-       {
-         "title": "Top Right",
-         "value": "top-0 left-auto right-0"
-       },
-       {
-         "title": "Bottom Left",
-         "value": "bottom-0 left-0 right-auto"
-       }
-     ]
-   }
+  "title": "Badge Position",
+  "id": "badgePosition",
+  "select": {
+    "default": "bottom-0 left-0",
+    "items": [
+      {
+        "title": "Top Right",
+        "value": "top-0 left-auto right-0"
+      },
+      {
+        "title": "Bottom Left",
+        "value": "bottom-0 left-0 right-auto"
+      }
+    ]
+  }
 }
 ```
 
-You can expect the output of `position` to be `bottom-0 left-0 right-auto md:top-0 md:left-auto md: right-0`
+You can expect the output of `badgePosition` to be `bottom-0 left-0 right-auto md:top-0 md:left-auto md:right-0`
 
 ### Disable Responsive Controls
 

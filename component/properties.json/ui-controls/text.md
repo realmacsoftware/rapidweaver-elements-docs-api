@@ -6,12 +6,12 @@ Displays a text field in the inspector.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Text Field",
-    "id": "MyTextField",
-    "text": {
-    "default": "Hello World",
-        "subtitle": "one"
-    }
+  "title": "Button Label",
+  "id": "buttonLabel",
+  "text": {
+    "default": "Get Started",
+    "subtitle": "Short call-to-action"
+  }
 }
 ```
 {% endtab %}
@@ -19,17 +19,17 @@ Displays a text field in the inspector.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Text Field Example",
-        "properties": [{
-            "title": "Text Field",
-            "id": "MyTextField",
-            "text": {
-                "default" : "Hello World",
-                "subtitle" : "one",
-            }
-        }]
+  "groups": [{
+    "title": "Button",
+    "properties": [{
+      "title": "Button Label",
+      "id": "buttonLabel",
+      "text": {
+        "default": "Get Started",
+        "subtitle": "Short call-to-action"
+      }
     }]
+  }]
 }
 ```
 {% endtab %}

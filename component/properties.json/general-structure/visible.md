@@ -4,81 +4,85 @@ The `visible` key in an object's properties can be set using a logical expressio
 
 * **Boolean Logic**: Use logical operators (`&&`, `||`) to combine multiple conditions.
 * **Comparison Operators**: Use `==`, `!=`, `>`, `<`, `>=`, `<=` to compare values.
-* Regex Match: Use `matches` to perform a regex comparison.
+* **Regex Match**: Use `matches` to perform a regex comparison.
 
 ## Examples
 
 1.  **Complex Condition**
 
     ```json
-    "visible": "(backgroundType == 'custom' || backgroundType == 'image') && textColor == 'white'"
+    "visible": "(heroStyle == 'image' || heroStyle == 'video') && showOverlay == true"
     ```
 
-    This makes the property visible only if the backgroundType is either custom' or 'image', and the textColor is 'white'.
+    This makes the property visible only when a hero background is set and the overlay is enabled.
 2.  **Visibility Based on Numeric Ranges**
 
     ```json
-    "visible": "opacity > 20 && opacity < 30"
+    "visible": "overlayOpacity > 20 && overlayOpacity < 80"
     ```
 
-    Useful for showing elements that should only be visible within a specific range, e.g., showing a message if the opacity is not between 20-30.
+    Useful for showing fine-tuning controls only when the opacity is in a middle range.
 3.  **Negation to Hide Elements**
 
     ```json
-    "visible": "mySwitchControl != true"
+    "visible": "showBadge != true"
     ```
 
-    The property is visible when `mySwitchControl` is `false`.
+    The property is visible when `showBadge` is `false`.
 4.  **Match a regex**
 
     ```json
-    "visible": "name matches /rapid|weaver|elements/"
+    "visible": "couponCode matches /^SAVE[0-9]{2}$/"
     ```
 
-    The property is visible when `name` contains `rapid` or `weaver` or `elements`.
+    The property is visible when `couponCode` looks like `SAVE10` or `SAVE25`.
 
-The following example code toggles the visibility of controls based on the value of the switch.
+The following example toggles visibility based on a switch and a regex match.
 
 ```
 {
-    "groups": [{
-        "title": "SWITCH TEST",
-        "icon": "switch.2",
-        "properties": [{
-            "title": "Test Switch",
-            "id": "testSwitch",
-            "responsive": false,
-            "switch": {
-                "default": false
-            }
-        }, {
-            "information": {},
-            "title": "Let's Slide…",
-            "visible": "testSwitch == true"
-        }, {
-            "title": "slider",
-            "id": "slider",
-            "visible": "testSwitch != false",
-            "slider": {
-                "default": 5,
-                "min": 1,
-                "max": 50,
-                "round": true
-            }
-        }]
+  "groups": [{
+    "title": "CTA Badge",
+    "icon": "tag",
+    "properties": [{
+      "title": "Show Badge",
+      "id": "showBadge",
+      "responsive": false,
+      "switch": {
+        "default": false
+      }
     }, {
-        "title": "MATCHES",
-        "icon": "equal",
-        "properties": [{
-            "title": "Name",
-            "id": "name",
-            "responsive": false,
-            "input": {}
-        }, {
-            "information": {},
-            "title": "Name contains rapid or weaver or elements",
-            "visible": "name matches /rapid|weaver|elements/"
-        }]
+      "title": "Badge Text",
+      "id": "badgeText",
+      "visible": "showBadge == true",
+      "text": {
+        "default": "Limited Offer"
+      }
+    }, {
+      "title": "Badge Offset",
+      "id": "badgeOffset",
+      "visible": "showBadge == true",
+      "slider": {
+        "default": 8,
+        "min": 0,
+        "max": 24,
+        "round": true,
+        "units": "px"
+      }
     }]
+  }, {
+    "title": "Coupon Rules",
+    "icon": "ticket",
+    "properties": [{
+      "title": "Coupon Code",
+      "id": "couponCode",
+      "responsive": false,
+      "text": {}
+    }, {
+      "information": {},
+      "title": "Valid format: SAVE10, SAVE25",
+      "visible": "couponCode matches /^SAVE[0-9]{2}$/"
+    }]
+  }]
 }
 ```

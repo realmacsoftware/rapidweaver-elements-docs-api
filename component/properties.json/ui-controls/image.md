@@ -10,9 +10,9 @@ Displays an image dropwell in the inspector.
 {% tab title="Control Example" %}
 ```json
 {
-    "title": "Image",
-    "id": "image",
-    "image": {}
+  "title": "Hero Image",
+  "id": "heroImage",
+  "image": {}
 }
 ```
 {% endtab %}
@@ -20,14 +20,14 @@ Displays an image dropwell in the inspector.
 {% tab title="Group Example" %}
 ```json
 {
-    "groups": [{
-        "title": "Image Resource Example",
-        "properties": [{
-            "title": "Image",
-            "id": "image",
-            "image": {}
-        }]
+  "groups": [{
+    "title": "Hero Media",
+    "properties": [{
+      "title": "Hero Image",
+      "id": "heroImage",
+      "image": {}
     }]
+  }]
 }
 ```
 {% endtab %}
