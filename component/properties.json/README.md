@@ -8,7 +8,7 @@ Component properties (User Interface controls) are defined in the `properties.js
 
 An example `properties.json` file that creates a single group named "Hero Layout" with a few real-world controls.
 
-```
+```json
 {
   "groups": [{
     "title": "Hero Layout",

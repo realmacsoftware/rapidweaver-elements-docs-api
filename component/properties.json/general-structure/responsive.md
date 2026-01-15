@@ -48,7 +48,7 @@ Elements automatically applies and manages these responsive modifiers, saving yo
 
 This even works for controls that require multiple classes as the value. So given the following control for a badge position:
 
-```
+```json
 {
   "title": "Badge Position",
   "id": "badgePosition",

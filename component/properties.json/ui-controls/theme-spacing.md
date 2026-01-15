@@ -76,7 +76,7 @@ The themeSpacing control has the following modes:
 
 Each one of these modes correspond to the appropriate Tailwind utility classes. This means both developers and users can manage one single spacing scale that help promote consistency across all sites built in RapidWeaver Elements. See the examples below for more information.
 
-```
+```json
 {
   "groups": [{
     "title": "Section Spacing",

@@ -8,7 +8,7 @@ The **icon** property uses SF Symbols. Please refer to the [SF Symbol app](https
 
 Here is an example empty group:
 
-```
+```json
 {
   "groups": [
     {
@@ -28,7 +28,7 @@ You can specify an icon to appear next to the title of your group. The **Icon** 
 
 Controls should be placed inside the properties array. The following example has a heading, a text field, and an image dropwell inside the group.
 
-```
+```json
 {
   "groups": [
     {
@@ -62,7 +62,7 @@ Controls should be placed inside the properties array. The following example has
 
 The following example has two groups, one for content and one for media.
 
-```
+```json
 {
   "groups": [{
     "title": "Content",

@@ -39,7 +39,7 @@ The `visible` key in an object's properties can be set using a logical expressio
 
 The following example toggles visibility based on a switch and a regex match.
 
-```
+```json
 {
   "groups": [{
     "title": "CTA Badge",
