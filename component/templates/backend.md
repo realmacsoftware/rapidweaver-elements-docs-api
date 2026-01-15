@@ -1,93 +1,80 @@
 ---
-description: Deploy extra files to the backend.
+description: Deploy server-side files to the backend directory
 ---
 
-# Backend
+# Backend Directory
+
+The `templates/backend/` directory contains server-side files that are deployed to the page's backend directory during publish. Unlike files in the root templates directory, backend files are not included in the page output—they are deployed as separate files that can be accessed via server-side requests.
+
+## Purpose
+
+Use the backend directory for:
+- Form submission handlers
+- API endpoints
+- Server-side data processing
+- AJAX request handlers
+- File upload processors
 
 {% hint style="info" %}
-Sub-directories are not supported in the backend directory. Instead, use the shared assets directory for the bulk of your code and reference it from backend scripts, passing in the values from properties. [See more](backend.md#subdirectories-are-not-supported)
+Subdirectories are not supported in the backend directory. For large PHP libraries, use the [shared assets](../shared-files/assets.md) directory and reference them from backend scripts.
 {% endhint %}
 
-Files added to the backend directory are processed in the same context as other template files. However, instead of forming part of the page, they will be deployed as extra files to the page's backend directory during publish.
-
-To ensure there are no conflicts with other components, all backend files are stored in a subdirectory corresponding to the current node id. For example, a published site might contain a contact page with the following structure:
+## Directory Location
 
 ```
-contact/
-├── index.html
-└── backend
-    └── rw29BB9A86_0D4A_4E46_9BF5_CD5041A9ECE2/
-        └── submit.php
+com.yourcompany.component/
+├── templates/
+│   ├── index.html
+│   └── backend/              # Backend directory
+│       ├── submit.php
+│       └── api.php
 ```
 
-The following file types are supported:
+## How It Works
 
-* html
-* php
-* js
-* css
+### 1. Deployment Structure
 
-#### Example Usage
+Backend files are deployed to a unique subdirectory based on the page's node ID to prevent conflicts:
 
-A good use-case for this would be to process a contact form. Create a new component and add the following code to the `templates/backend/submit.php` file.
+```
+published-site/
+└── contact/
+    ├── index.html
+    └── backend/
+        └── rw29BB9A86_0D4A_4E46_9BF5_CD5041A9ECE2/
+            └── submit.php
+```
+
+### 2. Template Processing
+
+Backend files are processed through the Elements template engine before deployment, allowing you to use component properties:
 
 ```php
+<!-- templates/backend/submit.php -->
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitize input data
-    $name = htmlspecialchars(strip_tags(trim($_POST["name"])));
-    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    $message = htmlspecialchars(strip_tags(trim($_POST["message"])));
-    
-    // Process data (e.g., validate, send email, save to database)
-    
-    echo "Thank you, $name. Your message has been received.";
-}
+$componentId = '{{id}}';
+$maxUploadSize = {{maxUploadSize}};
+$notificationEmail = '{{notificationEmail}}';
+
+// Your PHP code here
 ?>
 ```
 
-Then place this in the `templates/form.html` frontend file.
+### 3. Supported File Types
 
-```php
-<script>
-    function submitForm(event) {
-        event.preventDefault();
-        let formData = new FormData(document.getElementById("contactForm"));
-        
-        fetch("{{node.backendPath}}/submit.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("messageDisplay").innerText = data;
-        })
-        .catch(error => {
-            document.getElementById("messageDisplay").innerText = "An error occurred.";
-        });
-    }
-</script>
+- `.php` - PHP scripts
+- `.html` - HTML files
+- `.js` - JavaScript files
+- `.css` - Stylesheets
 
-<form id="contactForm" onsubmit="submitForm(event)">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
-    <br>
-    <button type="submit">Submit</button>
-</form>
-<p id="messageDisplay"></p>
-```
+## Accessing Backend Files
 
-When the submit button is pressed in the above form, the form sends all the form values to the `{{node.backendPath/submit.php` file on the server. The `node.backendPath` property will be replaced with the node's unique id.
+### Using node.backendPath
 
-To use the `node.backendPath` property, we'll need to use the hooks.js file to [pass data to your template](../hooks.js/passing-data-to-templates.md). Create a hooks.js file in your component and add this.
+To reference backend files from your component templates, use the `node.backendPath` property. This property must be passed from `hooks.js`:
 
 ```javascript
+// hooks.js
 const transformHook = (rw) => {
     rw.setProps({
         node: rw.node
@@ -97,21 +84,132 @@ const transformHook = (rw) => {
 exports.transformHook = transformHook;
 ```
 
-### Subdirectories are not supported
+Then in your HTML template, reference the backend file:
 
-Elements monitors every file in the backend directory for changes. This can cause problems when adding large php libraries with hundreds of files. A better solution is to add the php library to the Element pack's [shared assets](../shared-files/assets.md) directory.
+```html
+<script>
+fetch('{{node.backendPath}}/submit.php', {
+    method: 'POST',
+    body: formData
+});
+</script>
+```
 
-The assets are deployed only once after a component from the pack is added to the page. Use the hooks file to find the site assets path and pass it to the backend file.
+See [Passing data to templates](../hooks.js/passing-data-to-templates.md) for more details.
+
+## Example: Contact Form
+
+A typical use case is processing form submissions. Create a backend PHP file to handle the form:
+
+```php
+<!-- templates/backend/submit.php -->
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars(strip_tags(trim($_POST["name"])));
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    
+    // Process form data
+    mail('{{notificationEmail}}', 'Form Submission', "Name: $name\nEmail: $email");
+    
+    echo json_encode(['success' => true]);
+}
+?>
+```
+
+Reference it from your HTML template:
+
+```html
+<!-- templates/index.html -->
+<form id="form-{{id}}">
+    <input type="text" name="name" required>
+    <input type="email" name="email" required>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById('form-{{id}}').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const response = await fetch('{{node.backendPath}}/submit.php', {
+        method: 'POST',
+        body: new FormData(e.target)
+    });
+    const result = await response.json();
+});
+</script>
+```
+
+## No Subdirectories
+
+{% hint style="warning" %}
+The backend directory does **not** support subdirectories. All backend files must be placed directly in `templates/backend/`.
+{% endhint %}
+
+Elements monitors every file in the backend directory for changes. Adding subdirectories with large PHP libraries can cause performance issues.
+
+### Solution: Use Shared Assets
+
+For large PHP libraries, place them in the Element Pack's [shared assets](../shared-files/assets.md) directory and reference them from backend files:
 
 ```javascript
+// hooks.js - Pass the asset path to templates
 const transformHook = (rw) => {
     rw.setProps({
         siteAssetPath: rw.component.siteAssetPath,
         node: rw.node
     });
 };
-
-exports.transformHook = transformHook;
 ```
 
-We've found it good practice to keep the backend php files to a minimum and use them to build a minimal config object using the properties from the component. Then call a method included from a php file within site assets, passing in the config object.
+```php
+<!-- templates/backend/handler.php -->
+<?php
+require_once('{{siteAssetPath}}/php-library/autoload.php');
+
+// Use the library with component properties
+$handler = new Handler([
+    'api_key' => '{{apiKey}}',
+    'timeout' => {{timeout}}
+]);
+
+echo $handler->process($_POST);
+?>
+```
+
+This keeps backend files minimal and places complex logic in shared assets where it can be reused across components.
+
+## Best Practices
+
+### Always Validate Input
+
+Sanitize and validate all user input to prevent security vulnerabilities:
+
+```php
+<?php
+$email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+$name = htmlspecialchars(strip_tags(trim($_POST['name'])));
+?>
+```
+
+### Return JSON Responses
+
+Use structured JSON responses for consistency:
+
+```php
+<?php
+header('Content-Type: application/json');
+echo json_encode(['success' => true, 'message' => 'Data processed']);
+?>
+```
+
+### Keep Backend Files Minimal
+
+Use backend files primarily for configuration and routing. Place complex logic in [shared assets](../shared-files/assets.md) where it can be reused across components.
+
+## Related Documentation
+
+- [PHP Templates](php-templates.md) - Using PHP files at the template root level
+- [Templates Overview](README.md) - Understanding the templates directory
+- [Shared Assets](../shared-files/assets.md) - Storing large PHP libraries
+- [Hooks.js](../hooks.js/README.md) - Passing data to backend files
+- [Elements Language](../language/README.md) - Template syntax in PHP
+- [Properties](../properties.json/README.md) - Defining configuration properties
