@@ -134,11 +134,11 @@ The most common use case for PHP in components is form handling in the backend d
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get component ID from template
     $componentId = '{{id}}';
-    
+
     // Sanitize input
     $name = htmlspecialchars(strip_tags(trim($_POST["name"])));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    
+
     @if(enableValidation)
     // Conditional validation
     if (empty($name) || empty($email)) {
@@ -147,15 +147,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
     @endif
-    
+
     // Process form
     $result = processFormData($name, $email);
-    
+
     @if(sendEmail)
     // Send notification email
     mail('{{notificationEmail}}', 'Form Submission', $result);
     @endif
-    
+
     echo json_encode(['success' => true, 'message' => 'Form submitted']);
 }
 ?>
@@ -175,12 +175,12 @@ Then reference it from your HTML template:
 document.getElementById('contact-form-{{id}}').addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    
+
     const response = await fetch('{{node.backendPath}}/submit.php', {
         method: 'POST',
         body: formData
     });
-    
+
     const result = await response.json();
     console.log(result);
 });
@@ -228,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $componentId = '{{id}}';
     $maxFileSize = {{maxFileSize}};
     $allowedTypes = ['{{allowedTypes}}'];
-    
+
     // Process uploaded file
     if (isset($_FILES['file'])) {
         if ($_FILES['file']['size'] > $maxFileSize) {
@@ -236,11 +236,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode(['error' => 'File too large']);
             exit;
         }
-        
+
         // Handle file upload
         // ...
     }
-    
+
     echo json_encode(['success' => true]);
 }
 ?>
@@ -373,24 +373,24 @@ try {
     @else
     error_reporting(0);
     @endif
-    
+
     // Process request
     $result = processRequest($_POST);
-    
+
     echo json_encode([
         'success' => true,
         'data' => $result
     ]);
-    
+
 } catch (Exception $e) {
     http_response_code(500);
-    
+
     @if(debugMode)
     $message = $e->getMessage();
     @else
     $message = 'An error occurred';
     @endif
-    
+
     echo json_encode([
         'success' => false,
         'error' => $message
