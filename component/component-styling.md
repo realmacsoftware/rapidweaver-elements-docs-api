@@ -1,93 +1,213 @@
 ---
-description: A standardised approach to building components
+description: A standardized approach to building components with Tailwind CSS
 icon: paintbrush
 ---
 
 # Component Styling
 
-We use Tailwind for all our components, and highly recommend everyone using and building for Elements does the same.
-
-If everyone is using Tailwind (and the built-in Theme UI Controls) we can **ensure consistency across all components**, making it easier for end users to build sites that are consistent and easy to update.
-
-It also makes collaboration smoother, as everyone follows the same styling method.
+Elements uses Tailwind CSS for all component styling. Following this approach ensures consistency across all components—whether built-in, third-party, or custom-made—and makes it easier for users to build sites that are cohesive and simple to update.
 
 **Your main goal should always be to make a component that feels native to Elements.**
 
-### Consistency for the User
+## Why Tailwind?
 
-In Elements, all styling configurations—such as colors, fonts, and sizes—are controlled by the Theme (which anyone can create) and managed through the Theme Studio (where users can customize the styling to their needs).
+Tailwind offers a utility-first approach to styling. Instead of writing custom CSS, you apply small, reusable utility classes directly to your HTML elements. This approach provides several benefits:
 
-Components shouldn't dictate custom styling; instead, they inherit styles from the Tailwind themes. **The theme informs the components how they should look, ensuring consistency across all components, whether they are built-in, third-party, or custom-made.** This approach ensures that users can switch themes seamlessly without breaking their site’s design.
+- **Consistency**: All components share the same styling vocabulary
+- **No style leakage**: Styles applied via utility classes stay within each component's HTML structure
+- **Optimized output**: Elements generates only the CSS your page actually uses, resulting in smaller, more efficient stylesheets
+- **Theme integration**: Utility classes map directly to Theme Studio values
 
-Allowing components to dictate their own styles will lead to inconsistencies, making it unclear whether a component will “just work” within a given project. That’s why components rely on the values defined in the Theme Studio as their defaults, ensuring uniformity. They are not opinionated about the actual values—they just need to know that a value exists for each style.
+## Theme-Driven Design
 
-For example, let’s say you have a Heading component. You want to set a default font family and font size. In your properties.json, you would define the default font family as heading and the default font size as 3xl.
+In Elements, styling configurations—colors, fonts, spacing, and more—are controlled by the Theme and managed through the Theme Studio. Components inherit styles from the theme rather than dictating their own.
 
-The component doesn’t concern itself with the specific values of these properties; it only cares that they exist. This allows themes and users to fully customize the styles while ensuring that all components “just work” in any project.
+This means:
 
-### Important: Use Theme Controls
+- Users can switch themes without breaking their site's design
+- All components "just work" within any project
+- Styling remains consistent across the entire site
 
-When designing your Component, you should always use the Theme-based UI Controls wherever possible; these include the following:
+For example, a Heading component might define its default font family as `heading` and font size as `3xl`. The component doesn't care what specific font or pixel size these represent—it only needs to know the values exist. The Theme Studio handles the actual values, allowing full customization while maintaining compatibility.
 
-* [Theme Border Width](properties.json/ui-controls/theme-border-width.md)
-* [Theme Border Radius](properties.json/ui-controls/theme-border-radius.md)
-* [Theme Color](properties.json/ui-controls/theme-color.md)
-* [Theme Font](properties.json/ui-controls/theme-font.md)
-* [Theme Spacing](properties.json/ui-controls/theme-spacing.md)
-* [Theme Shadow](properties.json/ui-controls/theme-shadow.md)
-* [Theme Text Style](properties.json/ui-controls/theme-text-style.md)
-* [Theme Typography](properties.json/ui-controls/theme-typography.md)
+## Theme UI Controls
 
-### Default Colours
+When designing your component, use Theme-based UI Controls wherever possible. These controls integrate directly with the Theme Studio, ensuring your component respects the user's theme settings.
 
-Tailwind (and Elements) includes an expertly-crafted default color palette out-of-the-box - you should take advantage of that and use it.
+| Control | Purpose |
+|---------|---------|
+| [Theme Border Width](properties.json/ui-controls/theme-border-width.md) | Border thickness values |
+| [Theme Border Radius](properties.json/ui-controls/theme-border-radius.md) | Corner rounding values |
+| [Theme Color](properties.json/ui-controls/theme-color.md) | Color palette selection |
+| [Theme Font](properties.json/ui-controls/theme-font.md) | Font family selection |
+| [Theme Spacing](properties.json/ui-controls/theme-spacing.md) | Margin and padding values |
+| [Theme Shadow](properties.json/ui-controls/theme-shadow.md) | Box shadow styles |
+| [Theme Text Style](properties.json/ui-controls/theme-text-style.md) | Text size presets |
+| [Theme Typography](properties.json/ui-controls/theme-typography.md) | Typography class selection |
 
-All components **need to work out of the box**. A good guide is to use "Brand" for things like buttons, and "Text" for the text colours, and "Surface" for background colours.
+## Default Colors
 
-### Utility-First Approach
+All components need to work out of the box. Use semantic color names that map to Theme Studio values:
 
-Tailwind offers a utility-first approach to styling. This means you apply small, reusable utility classes directly to your HTML elements. Instead of writing a lot of custom CSS, you can compose styles using these predefined classes.
+| Color | Usage |
+|-------|-------|
+| `brand` | Interactive elements like buttons and links |
+| `text` | Text content |
+| `surface` | Background colors |
 
-### Direct Application in Templates
+## Generating Tailwind Classes with Format
 
-Instead of writing custom CSS you should use Tailwind utilities directly in your template. This means adding classes like `bg-blue-500`, `text-center`, or `mt-4` right on your HTML elements. This way, you remove the need for scoped CSS because each component’s styles are already self-contained.
+Use the `format` key in your `properties.json` to transform property values into Tailwind utility classes. This keeps your templates clean and ensures proper class output.
 
-### Preventing Style Leakage
+```json
+{
+  "title": "Button Color",
+  "id": "buttonColor",
+  "format": "bg-{{value}}",
+  "themeColor": {
+    "default": {
+      "name": "brand",
+      "brightness": 500
+    }
+  }
+}
+```
 
-Because Tailwind styles are applied directly to DOM elements using utility classes we prevent style leakage between components. Each component’s styles stay within its HTML structure meaning they don’t affect other components or pages on your site.
+In your template, reference the property directly:
 
-### Customization with Properties
+```html
+<button class="{{buttonColor}} px-4 py-2">Click Me</button>
+```
 
-For customization, you can use properties to generate Tailwind classes ready to use within your templates. This way, you keep flexibility while sticking to the utility-first approach.
+This outputs:
 
-### Optimized CSS Generation
+```html
+<button class="bg-brand-500 px-4 py-2">Click Me</button>
+```
 
-In summary, the custom CSS in your component templates should use Tailwind classes. This change removes the need for scoped CSS and keeps all styling within Tailwind. Elements can then generate only the CSS your page uses, since it builds Tailwind locally and includes just the necessary utilities. This results in a smaller, more efficient CSS file(s).
+The `format` key works with any control type. See [Format](properties.json/general-structure/format.md) for more examples.
 
-***
+## Responsive Styling
 
-### I really NEED to scope my CSS
+Elements supports responsive styling out of the box. Theme controls can define different values for each breakpoint using the standard Tailwind breakpoint prefixes.
 
-If you’ve read all too the above and are still saying to yourself “great…but I really need to use custom/scoped CSS!” then there is a way but only use this as a last resort!
+```json
+{
+  "title": "Heading Size",
+  "id": "headingSize",
+  "themeTextStyle": {
+    "default": {
+      "base": { "name": "2xl" },
+      "md": { "name": "3xl" },
+      "lg": { "name": "4xl" }
+    }
+  }
+}
+```
 
-You can manually “scope” your CSS classes by using the component’s ID in your Template and Styles. Ahiwl this is not strictly “scoped CSS”, it will encapsulate the CSS to each individual component instance.
+This outputs responsive classes that apply at each breakpoint:
 
-In your styles you can do something like:
+```html
+<h1 class="text-2xl md:text-3xl lg:text-4xl">...</h1>
+```
 
-```bash
+Supported breakpoints follow Tailwind's defaults:
+
+| Prefix | Minimum Width |
+|--------|---------------|
+| `base` | 0px (default) |
+| `sm` | 640px |
+| `md` | 768px |
+| `lg` | 1024px |
+| `xl` | 1280px |
+| `2xl` | 1536px |
+
+## Direct Application in Templates
+
+Apply Tailwind utilities directly in your template files:
+
+```html
+<div class="flex items-center gap-4 p-6 bg-surface-50 rounded-lg shadow-md">
+  <h2 class="text-xl font-heading text-text-900">{{title}}</h2>
+  <p class="text-text-600">{{description}}</p>
+</div>
+```
+
+This approach eliminates the need for scoped CSS—each component's styles are self-contained within its HTML structure.
+
+---
+
+## Custom CSS (When Necessary)
+
+While Tailwind is the recommended approach, there are situations where custom CSS may be required. Use these techniques sparingly, as custom CSS will not be controllable from the Theme Studio.
+
+### Using the Component ID for Scoping
+
+You can scope CSS to a specific component instance using the `{{id}}` variable, which outputs a unique identifier for each component:
+
+**In your CSS template file:**
+
+```css
 .{{id}} {
-    ...
+  /* styles scoped to this component instance */
 }
 
 .{{id}} .child-element {
-    ...
+  /* styles for child elements */
 }
 ```
 
-And in your Template file:
+**In your HTML template:**
 
-```perl
-<div class="{{id}} ...">...</div>
+```html
+<div class="{{id}} ...">
+  <span class="child-element">...</span>
+</div>
 ```
 
-Remember; If you add custom CSS it will not be controllable from the Theme Studio, thus resulting in a worse user experiance.
+### BEM Naming Convention
+
+If you need multiple custom classes, use BEM (Block Element Modifier) naming with a unique prefix to avoid conflicts:
+
+```css
+.mycomponent-card {
+  /* block styles */
+}
+
+.mycomponent-card__title {
+  /* element styles */
+}
+
+.mycomponent-card--featured {
+  /* modifier styles */
+}
+```
+
+### CSS Custom Properties
+
+For values that need to be dynamic, use CSS custom properties set via inline styles:
+
+```json
+{
+  "title": "Animation Duration",
+  "id": "animationDuration",
+  "format": "--animation-duration: {{value}}ms;",
+  "slider": {
+    "default": 300,
+    "min": 100,
+    "max": 1000
+  }
+}
+```
+
+```html
+<div class="animated-element" style="{{animationDuration}}">...</div>
+```
+
+```css
+.animated-element {
+  transition: transform var(--animation-duration, 300ms) ease;
+}
+```
+
+This approach lets users control CSS values through the inspector while keeping the styling logic in CSS.
