@@ -20,11 +20,11 @@ With additional parameters:
 
 ## Parameters
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `name` | Yes | A unique identifier for the dropzone within the component |
-| `title` | No | The label displayed in the editor interface |
-| `horizontal` | No | When `true`, displays dropped items in a horizontal layout in the editor |
+| Parameter    | Required | Description                                                              |
+| ------------ | -------- | ------------------------------------------------------------------------ |
+| `name`       | Yes      | A unique identifier for the dropzone within the component                |
+| `title`      | No       | The label displayed in the editor interface                              |
+| `horizontal` | No       | When `true`, displays dropped items in a horizontal layout in the editor |
 
 ## Examples
 
@@ -61,18 +61,6 @@ Components can have multiple named dropzones for different content areas:
 <div class="accordion-content">
     @dropzone("content", title: "Content")
 </div>
-```
-
-### Conditional Dropzones
-
-Show different dropzones based on component state. Note that multiple dropzones can share the same name, but only one should be visible at a time:
-
-```html
-@if(edit)
-    @dropzone("extraItems")
-@elseif(preview)
-    @dropzone("extraItems")
-@endif
 ```
 
 ### Navbar with Multiple Dropzones
@@ -171,11 +159,7 @@ This requires a corresponding resource control in the Properties file:
 ## Best Practices
 
 1. **Use descriptive names** - Choose names that clearly indicate the purpose of the dropzone (e.g., `"header"`, `"content"`, `"sidebar"`).
-
 2. **Add meaningful titles** - The `title` parameter helps users understand where to add content in the editor.
-
 3. **Use `horizontal` for layout components** - Enable horizontal layout for flex/grid containers to match the visual layout in the editor.
-
 4. **Avoid duplicate visible dropzones** - While multiple dropzones can share a name, only show one at a time to prevent confusion.
-
 5. **Combine with @portal for overlays** - For modals and off-canvas menus, use `@portal` to position the dropzone content appropriately in the DOM.

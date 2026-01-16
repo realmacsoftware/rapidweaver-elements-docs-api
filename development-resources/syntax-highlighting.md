@@ -48,9 +48,9 @@ It’s designed to help both beginners and experts feel confident in an Elements
 
 The RW Elements VSCode Extension is ideal for:
 
-* **Developers building or maintaining Elements packs**
-* **Teams using VSCode for Elements development**
-* **Learners exploring Elements component creation**
+* Developers building or maintaining Elements packs
+* Teams using VSCode for Elements development
+* Learners exploring Elements component creation
 * Anyone working with Elements code in Visual Studio Code
 
 If you use VSCode to build Elements sites or components, this extension makes your editor work smarter.
@@ -80,7 +80,7 @@ You can help by:
 * Sharing workflow tips
 * Participating in discussions with other developers
 
-Contribution and support links are provided via the Marketplace listing.
+Contribution and support links are provided via the [Marketplace listing](https://marketplace.visualstudio.com/items?itemName=elements-platform.rwelements).
 
 ***
 
@@ -89,4 +89,4 @@ Contribution and support links are provided via the Marketplace listing.
 * **Visual Studio Marketplace**\
   [https://marketplace.visualstudio.com/items?itemName=elements-platform.rwelements](https://marketplace.visualstudio.com/items?itemName=elements-platform.rwelements)
 * **Install & Details**\
-  See the extension page on the Marketplace
+  See the [extension page](https://marketplace.visualstudio.com/items?itemName=elements-platform.rwelements) on the Visual Studio Marketplace.
