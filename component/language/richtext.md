@@ -64,6 +64,20 @@ Or with a default value:
 </section>
 ```
 
+### Using @richtext Inside an @each Loop
+
+You can use the `@richtext` directive inside an `@each` loop to create unique editable rich text areas for each iteration. The loop index is automatically appended to the identifier, ensuring each rich text area remains distinct:
+
+```html
+@each(item in items)
+    <div class="card">
+        <h3>@richtext("cardTitle", default: "Card Title")</h3>
+    </div>
+@endeach
+```
+
+In this example, if the loop iterates three times, it will create three unique rich text areas, each independently editable with full Typography support.
+
 ## Typography Integration
 
 The `@richtext` directive integrates with the Elements Typography system, allowing users to:
