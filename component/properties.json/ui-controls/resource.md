@@ -6,8 +6,8 @@ Displays a resource dropwell that accepts all file types.
 {% tab title="Control Example" %}
 ```json
 {
-  "title": "Video File",
-  "id": "promoVideo",
+  "title": "Image",
+  "id": "image",
   "resource": {}
 }
 ```
@@ -17,11 +17,11 @@ Displays a resource dropwell that accepts all file types.
 ```json
 {
   "groups": [{
-    "title": "Media",
-    "icon": "film",
+    "title": "Content",
+    "icon": "photo",
     "properties": [{
-      "title": "Video File",
-      "id": "promoVideo",
+      "title": "Image",
+      "id": "image",
       "resource": {}
     }]
   }]
@@ -30,29 +30,133 @@ Displays a resource dropwell that accepts all file types.
 {% endtab %}
 {% endtabs %}
 
-### Restricting File Types
+## Restricting File Types
 
-You can restrict the file types allowed in a dropwell, by using the `accepts` property.
-
-```json
-"resource": {
-    "accepts": "svg"
-}
-```
-
-Support for multiple file types can be added using comma seperated values.
+You can restrict the file types allowed in a dropwell using the `types` property.
 
 ```json
 "resource": {
-    "accepts": "zip, pdf"
+    "types": ["svg"]
 }
 ```
 
-### Getting the Resource Path
+Support for multiple file types can be added using an array:
 
-To get the path to a resource, append the `path` prop to the `{{resource}}` object, i.e. `{{resource.path}}`. This is important if you want to link to anything other than an image.
+```json
+"resource": {
+    "types": ["image", "svg"]
+}
+```
+
+## Using Resources in Templates
+
+### Resource Properties
+
+When you define a resource control, you can access its properties in your template:
+
+| Property | Description |
+|----------|-------------|
+| `{{resource.image}}` | The URL/path to the image |
+| `{{resource.path}}` | The file path (use for non-image files like video, PDF) |
+| `{{resource.width}}` | Original width in pixels (images only) |
+| `{{resource.height}}` | Original height in pixels (images only) |
+| `{{resource.aspect}}` | Aspect ratio, e.g. `16/9` (images only) |
+
+### Displaying an Image
 
 ```html
-<source src="{{myVideo.path}}" type="video/mp4">
+<img
+  src="{{photo.image}}"
+  alt="{{altText}}"
+  width="{{photo.width}}"
+  height="{{photo.height}}"
+/>
+```
+
+### Displaying a Video
+
+For non-image resources like video files, use the `.path` property:
+
+```html
+<video controls>
+  <source src="{{myVideo.path}}" type="video/mp4">
+</video>
+```
+
+### Checking if a Resource Exists
+
+Use a conditional to handle cases where no resource has been selected:
+
+```html
+@if(photo.image)
+  <img src="{{photo.image}}" alt="{{altText}}" />
+@else
+  <p>No image selected</p>
+@endif
+```
+
+## Resource Dropzones
+
+You can enable drag-and-drop directly onto an element in the editor by adding the `rwResourceDropZone` attribute. The value should match the `id` of your resource control.
+
+```html
+<div rwResourceDropZone="photo">
+  @if(photo.image)
+    <img src="{{photo.image}}" alt="{{altText}}" />
+  @else
+    <p>Drop an image here</p>
+  @endif
+</div>
+```
+
+This can also be set via `hooks.js` using `rw.setRootElement()`:
+
+```javascript
+rw.setRootElement({
+  as: "div",
+  class: "image-wrapper",
+  args: {
+    rwResourceDropZone: "photo"
+  }
+})
+```
+
+## Complete Example
+
+**properties.json:**
+
+```json
+{
+  "groups": [{
+    "title": "Image",
+    "icon": "photo",
+    "properties": [{
+      "title": "Photo",
+      "id": "photo",
+      "resource": {}
+    }, {
+      "title": "Alt Text",
+      "id": "altText",
+      "text": { "default": "" }
+    }]
+  }]
+}
+```
+
+**templates/index.html:**
+
+```html
+<div rwResourceDropZone="photo">
+  @if(photo.image)
+    <img
+      src="{{photo.image}}"
+      alt="{{altText}}"
+      width="{{photo.width}}"
+      height="{{photo.height}}"
+    />
+  @else
+    <p>Drop an image here</p>
+  @endif
+</div>
 ```
 
