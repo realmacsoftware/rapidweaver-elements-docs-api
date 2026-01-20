@@ -30,24 +30,6 @@ Displays a resource dropwell that accepts all file types.
 {% endtab %}
 {% endtabs %}
 
-## Restricting File Types
-
-You can restrict the file types allowed in a dropwell using the `types` property.
-
-```json
-"resource": {
-    "types": ["svg"]
-}
-```
-
-Support for multiple file types can be added using an array:
-
-```json
-"resource": {
-    "types": ["image", "svg"]
-}
-```
-
 ## Using Resources in Templates
 
 ### Resource Properties
@@ -107,18 +89,6 @@ You can enable drag-and-drop directly onto an element in the editor by adding th
     <p>Drop an image here</p>
   @endif
 </div>
-```
-
-This can also be set via `hooks.js` using `rw.setRootElement()`:
-
-```javascript
-rw.setRootElement({
-  as: "div",
-  class: "image-wrapper",
-  args: {
-    rwResourceDropZone: "photo"
-  }
-})
 ```
 
 ## Complete Example
