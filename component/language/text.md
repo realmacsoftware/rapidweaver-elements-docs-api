@@ -81,6 +81,20 @@ Combine `@text` with conditionals to show text only when enabled:
 </nav>
 ```
 
+### Using @text Inside an @each Loop
+
+You can use the `@text` directive inside an `@each` loop to create unique editable text areas for each iteration. The loop index is automatically appended to the identifier, ensuring each text area remains distinct:
+
+```html
+@each(item in items)
+    <div class="card">
+        <h3>@text("cardTitle", default: "Card Title")</h3>
+    </div>
+@endeach
+```
+
+In this example, if the loop iterates three times, it will create three unique text areas, each independently editable.
+
 ## Best Practices
 
 1. **Use descriptive identifiers** - Choose names that clearly indicate the text's purpose (e.g., `"heading"`, `"buttonLabel"`, `"siteTitle"`).
