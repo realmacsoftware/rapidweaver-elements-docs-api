@@ -183,9 +183,7 @@ This requires a corresponding resource control in the Properties file:
         "properties": [{
             "title": "Images",
             "property": "images",
-            "resource": {
-                "types": ["image"]
-            }
+            "resource": {}
         }]
     }]
 }
