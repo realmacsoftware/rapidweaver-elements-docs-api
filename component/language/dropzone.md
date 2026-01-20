@@ -109,6 +109,41 @@ A navigation component with separate areas for logo, menu items, and mobile cont
 @endif
 ```
 
+## Dropzones Inside Loops
+
+Dropzones can be placed inside `@each` loops to create dynamic, repeating content areas. This is useful for components like tab panels, accordion sections, or multi-column layouts where each iteration needs its own dropzone.
+
+The dropzone name and title must be static text—you cannot use dynamic values like `{{index}}` or template variables inside the dropzone declaration. Elements automatically handles creating unique dropzones for each loop iteration.
+
+### Basic Loop Dropzone
+
+Place a dropzone inside a loop with a static name:
+
+```html
+@each(tab in tabs)
+    <div class="tab-panel">
+        @dropzone("panel", title: "Panel")
+    </div>
+@endeach
+```
+
+### Accordion with Dynamic Panels
+
+Create an accordion where each panel has its own content dropzone:
+
+```html
+@each(section in sections)
+    <div class="accordion-item">
+        <button class="accordion-header">
+            {{section.title}}
+        </button>
+        <div class="accordion-body">
+            @dropzone("content", title: "Section Content")
+        </div>
+    </div>
+@endeach
+```
+
 ## Resource Dropzones
 
 In addition to component dropzones, you can allow users to drop resources (like images) directly into the editor using the `rwResourceDropZone` HTML attribute.
