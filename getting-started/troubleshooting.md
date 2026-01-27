@@ -1,6 +1,6 @@
 ---
 description: Common issues solved
-icon: circle-question
+icon: screwdriver-wrench
 ---
 
 # Troubleshooting
