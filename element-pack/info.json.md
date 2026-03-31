@@ -11,6 +11,7 @@ The info.json file at the root of your Element Pack defines important informatio
 * author: The author of the pack
 * version: (Integer) The major version number, ie v1, v2
 * build: (Integer) A number identifying a particular build within the current version. This should increase with each release.
+* Categories should be an array, and can include; Templates, Components, Projects, Themes, and Resources.
 
 ```json
 {
