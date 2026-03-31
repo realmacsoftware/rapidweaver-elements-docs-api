@@ -14,11 +14,12 @@ The info.json file at the root of your Element Pack defines important informatio
 
 ```json
 {
-  "title": "Pack Name",
+  "name": "Pack Name",
   "identifier": "com.companyname.packname",
   "author": "Realmac Software",
   "version": 1,
-  "build": 31
+  "build": 31,
+   "categories": ["components"]
 }
 ```
 
