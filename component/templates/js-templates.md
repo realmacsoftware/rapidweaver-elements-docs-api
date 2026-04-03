@@ -9,10 +9,11 @@ JavaScript files placed in the `templates/` directory are processed through the 
 ## Overview
 
 JavaScript template files provide:
-- **Property insertion** - Use component properties in JavaScript code
-- **Conditional code** - Include or exclude JavaScript based on conditions
-- **Per-instance configuration** - Each component instance gets its own configuration
-- **Portal injection** - Place scripts in specific page locations using `@portal`
+
+* **Property insertion** - Use component properties in JavaScript code
+* **Conditional code** - Include or exclude JavaScript based on conditions
+* **Per-instance configuration** - Each component instance gets its own configuration
+* **Portal injection** - Place scripts in specific page locations using `@portal`
 
 ## File Location
 
@@ -245,12 +246,13 @@ Choose the right location for your JavaScript:
 
 ### Use `templates/` JavaScript When:
 
-- Code needs component property values
-- Code is instance-specific
-- Code needs conditional logic
-- Configuration varies per instance
+* Code needs component property values
+* Code is instance-specific
+* Code needs conditional logic
+* Configuration varies per instance
 
 **Example:**
+
 ```javascript
 const instance = new Component('{{id}}', {
     color: '{{userColor}}',
@@ -261,12 +263,13 @@ const instance = new Component('{{id}}', {
 
 ### Use `assets/` JavaScript When:
 
-- Code is static library code
-- Code is shared across all instances
-- Code is a large framework (Alpine.js, GSAP, etc.)
-- You want better caching and performance
+* Code is static library code
+* Code is shared across all instances
+* Code is a large framework (Alpine.js, GSAP, etc.)
+* You want better caching and performance
 
 **Example:**
+
 ```javascript
 // Reusable component class
 class Component {
@@ -338,6 +341,7 @@ const title = {{titleJSON}};
 ```
 
 In `hooks.js`:
+
 ```javascript
 rw.setProps({
     titleJSON: JSON.stringify(rw.props.title)
@@ -489,8 +493,8 @@ Template JavaScript runs in the page context, not in a controlled environment. E
 
 ## Related Documentation
 
-- [Elements Language](../language/README.md) - Template syntax reference
-- [`@portal` Directive](../language/portal.md) - Injecting scripts to page locations
-- [Templates Overview](README.md) - Understanding templates
-- [Assets](../assets.md) - Static JavaScript files
-- [Hooks.js](../hooks.js/README.md) - Preparing data for JavaScript
+* [Elements Language](../language/) - Template syntax reference
+* [`@portal` Directive](../language/portal.md) - Injecting scripts to page locations
+* [Templates Overview](./) - Understanding templates
+* [Assets](../assets.md) - Static JavaScript files
+* [Hooks.js](../hooks.js/) - Preparing data for JavaScript

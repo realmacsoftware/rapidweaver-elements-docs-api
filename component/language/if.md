@@ -219,15 +219,12 @@ For conditional template includes, consider using [@includeIf](include.md#condit
 
 ## Best Practices
 
-1. **Keep conditions simple** - For complex logic like string comparisons, use the [hooks file](../hooks.js/README.md) to compute boolean values and pass them to the template.
-
+1. **Keep conditions simple** - For complex logic like string comparisons, use the [hooks file](../hooks.js/) to compute boolean values and pass them to the template.
 2. **Use meaningful property names** - Boolean properties should have clear names like `showIcon`, `enableLazyLoading`, or `hasImage`.
-
 3. **Prefer @includeIf for conditional includes** - Instead of wrapping `@include` in `@if`, use `@includeIf` for cleaner templates.
-
 4. **Only non-responsive controls work in conditionals** - Responsive controls cannot be used directly in `@if` statements.
 
 ## Related
 
-- [@includeIf](include.md#conditional-includes) - Conditional template includes
-- [Hooks File](../hooks.js/README.md) - For complex conditional logic
+* [@includeIf](include.md#conditional-includes) - Conditional template includes
+* [Hooks File](../hooks.js/) - For complex conditional logic

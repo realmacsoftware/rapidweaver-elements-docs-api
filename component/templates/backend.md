@@ -2,18 +2,19 @@
 description: Deploy server-side files to the backend directory
 ---
 
-# Backend Directory
+# Backend
 
 The `templates/backend/` directory contains server-side files that are deployed to the page's backend directory during publish. Unlike files in the root templates directory, backend files are not included in the page output—they are deployed as separate files that can be accessed via server-side requests.
 
 ## Purpose
 
 Use the backend directory for:
-- Form submission handlers
-- API endpoints
-- Server-side data processing
-- AJAX request handlers
-- File upload processors
+
+* Form submission handlers
+* API endpoints
+* Server-side data processing
+* AJAX request handlers
+* File upload processors
 
 ## Directory Location
 
@@ -58,10 +59,10 @@ $notificationEmail = '{{notificationEmail}}';
 
 ### 3. Supported File Types
 
-- `.php` - PHP scripts
-- `.html` - HTML files
-- `.js` - JavaScript files
-- `.css` - Stylesheets
+* `.php` - PHP scripts
+* `.html` - HTML files
+* `.js` - JavaScript files
+* `.css` - Stylesheets
 
 ## Accessing Backend Files
 
@@ -199,9 +200,9 @@ Use backend files primarily for configuration and routing. Place complex logic i
 
 ## Related Documentation
 
-- [PHP Templates](php-templates.md) - Using PHP files at the template root level
-- [Templates Overview](README.md) - Understanding the templates directory
-- [Shared Assets](../shared-files/assets.md) - Storing large PHP libraries
-- [Hooks.js](../hooks.js/README.md) - Passing data to backend files
-- [Elements Language](../language/README.md) - Template syntax in PHP
-- [Properties](../properties.json/README.md) - Defining configuration properties
+* [PHP Templates](php-templates.md) - Using PHP files at the template root level
+* [Templates Overview](./) - Understanding the templates directory
+* [Shared Assets](../shared-files/assets.md) - Storing large PHP libraries
+* [Hooks.js](../hooks.js/) - Passing data to backend files
+* [Elements Language](../language/) - Template syntax in PHP
+* [Properties](../properties.json/) - Defining configuration properties

@@ -28,35 +28,35 @@ Access nested properties using dot notation:
 
 ### Content Areas
 
-| Directive | Description | Documentation |
-|-----------|-------------|---------------|
-| `@dropzone` | Container for child elements | [Dropzones](dropzone.md) |
-| `@text` | Editable plain text area | [Text](text.md) |
+| Directive   | Description                          | Documentation            |
+| ----------- | ------------------------------------ | ------------------------ |
+| `@dropzone` | Container for child elements         | [Dropzones](dropzone.md) |
+| `@text`     | Editable plain text area             | [Text](text.md)          |
 | `@richtext` | Editable styled text with Typography | [Rich Text](richtext.md) |
-| `@markdown` | Editable Markdown text area | [Markdown](markdown.md) |
+| `@markdown` | Editable Markdown text area          | [Markdown](markdown.md)  |
 
 ### Control Flow
 
-| Directive | Description | Documentation |
-|-----------|-------------|---------------|
-| `@if` / `@elseif` / `@else` | Conditional rendering | [Conditionals](if.md) |
-| `@each` | Iterate over collections | [Looping](each.md) |
+| Directive                   | Description              | Documentation         |
+| --------------------------- | ------------------------ | --------------------- |
+| `@if` / `@elseif` / `@else` | Conditional rendering    | [Conditionals](if.md) |
+| `@each`                     | Iterate over collections | [Looping](each.md)    |
 
 ### Code Organization
 
-| Directive | Description | Documentation |
-|-----------|-------------|---------------|
-| `@include` | Include external template file | [Includes](include.md) |
-| `@includeIf` | Conditional template include | [Includes](include.md#conditional-includes) |
-| `@template` | Define inline reusable template | [Inline Templates](template.md) |
+| Directive    | Description                     | Documentation                               |
+| ------------ | ------------------------------- | ------------------------------------------- |
+| `@include`   | Include external template file  | [Includes](include.md)                      |
+| `@includeIf` | Conditional template include    | [Includes](include.md#conditional-includes) |
+| `@template`  | Define inline reusable template | [Inline Templates](template.md)             |
 
 ### Page Integration
 
-| Directive | Description | Documentation |
-|-----------|-------------|---------------|
+| Directive | Description                         | Documentation        |
+| --------- | ----------------------------------- | -------------------- |
 | `@portal` | Transport content to page locations | [Portals](portal.md) |
-| `@anchor` | Create linkable anchor points | [Anchors](anchor.md) |
-| `@raw` | Disable template processing | [Raw Output](raw.md) |
+| `@anchor` | Create linkable anchor points       | [Anchors](anchor.md) |
+| `@raw`    | Disable template processing         | [Raw Output](raw.md) |
 
 ## Quick Examples
 
@@ -171,12 +171,8 @@ Access nested properties using dot notation:
 
 ## Best Practices
 
-1. **Keep templates focused on HTML** - Use the [hooks file](../hooks.js/README.md) for complex logic, string manipulation, and data processing.
-
+1. **Keep templates focused on HTML** - Use the [hooks file](../hooks.js/) for complex logic, string manipulation, and data processing.
 2. **Use meaningful property names** - Choose descriptive names that indicate purpose: `showHeader`, `buttonLabel`, `heroImage`.
-
 3. **Extract repeated patterns** - Use `@include` or `@template` for reusable markup.
-
 4. **Leverage conditionals for modes** - Use `edit` and `preview` variables to show appropriate content in each mode.
-
 5. **Organize portal content** - Use `includeOnce` and consistent `id` values to prevent duplicate script/style injection.

@@ -43,9 +43,10 @@ Access component properties using double curly braces:
 ```
 
 Properties can come from:
-- `properties.json` - User-defined properties
-- `hooks.js` - Data passed via `rw.setProps()`
-- Built-in properties like `id`, `edit`, `preview`
+
+* `properties.json` - User-defined properties
+* `hooks.js` - Data passed via `rw.setProps()`
+* Built-in properties like `id`, `edit`, `preview`
 
 ### Content Areas
 
@@ -65,7 +66,7 @@ Define editable regions using content directives:
 @dropzone("items", title: "Content Area")
 ```
 
-See the [Elements Language](../language/README.md) documentation for all available directives.
+See the [Elements Language](../language/) documentation for all available directives.
 
 ### Conditional Rendering
 
@@ -249,9 +250,10 @@ The Gallery component combines conditionals, loops, and includes:
 ### Keep It Focused
 
 If your `index.html` becomes large and complex:
-- Extract repeated markup into includes
-- Move complex logic to `hooks.js`
-- Consider breaking the component into smaller components
+
+* Extract repeated markup into includes
+* Move complex logic to `hooks.js`
+* Consider breaking the component into smaller components
 
 ### Use Semantic HTML
 
@@ -297,8 +299,8 @@ Include proper ARIA attributes and semantic markup:
 
 ## Related Documentation
 
-- [Elements Language](../language/README.md) - Complete template syntax reference
-- [Include Directory](include.md) - Reusable template partials
-- [Templates Overview](README.md) - Understanding the templates directory
-- [Properties](../properties.json/README.md) - Defining component properties
-- [Hooks.js](../hooks.js/README.md) - Passing data to templates
+* [Elements Language](../language/) - Complete template syntax reference
+* [Include Directory](include.md) - Reusable template partials
+* [Templates Overview](./) - Understanding the templates directory
+* [Properties](../properties.json/) - Defining component properties
+* [Hooks.js](../hooks.js/) - Passing data to templates

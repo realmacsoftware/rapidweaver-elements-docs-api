@@ -13,7 +13,7 @@ The only thing you need to start building your own custom Elements is a copy of 
 
 ### Open Source Components 🛠️&#x20;
 
-The Core Components built into Elements are now open source 🎉 You can learn more about our [Open Source Core Components that power Elements here](development-resources/open-source-components.md). You may also want to take a look at the associated [Build Tools](development-resources/build-tools.md).
+The Core Components built into Elements are now open source 🎉 You can learn more about our [Open Source Core Components that power Elements here](development-resources/open-source-components.md). You may also want to take a look at the associated [Build Tools](development-resources/build-tools/).
 
 We also offer a simpler collection of [example Element Components](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) to help you get started. These simple component packs provide ready-to-use Components and configuration files you can explore, modify, and build upon to create your own custom Components for Elements.It’s the best place to learn by example and understand how a complete Dev Pack is structured.
 

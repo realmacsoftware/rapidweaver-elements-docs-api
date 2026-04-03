@@ -339,4 +339,4 @@
 
 ## Project
 
-* [What are Projects?](project/what-are-projects.md)
+* [What is a Project?](project/what-are-projects.md)

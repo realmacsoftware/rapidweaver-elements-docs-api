@@ -9,10 +9,11 @@ PHP files can be placed in the `templates/` directory and are processed through 
 ## Overview
 
 PHP template files provide:
-- **Server-side processing** - Execute PHP code on the server
-- **Property insertion** - Use component properties in PHP code
-- **Template directives** - Combine Elements Language with PHP
-- **Backend deployment** - PHP files are deployed to the published site
+
+* **Server-side processing** - Execute PHP code on the server
+* **Property insertion** - Use component properties in PHP code
+* **Template directives** - Combine Elements Language with PHP
+* **Backend deployment** - PHP files are deployed to the published site
 
 {% hint style="info" %}
 For most server-side functionality, you should use the [Backend directory](backend.md) which is specifically designed for PHP files that need to be deployed to the server's backend directory.
@@ -36,8 +37,9 @@ com.yourcompany.component/
 Root-level PHP templates are processed and included in the page output. This is rarely needed, as most PHP functionality belongs in the backend directory.
 
 **Use root-level PHP when:**
-- You need to generate HTML with server-side logic during page rendering
-- The PHP output should be part of the page's normal HTML flow
+
+* You need to generate HTML with server-side logic during page rendering
+* The PHP output should be part of the page's normal HTML flow
 
 ### Backend PHP (Recommended)
 
@@ -52,11 +54,12 @@ templates/
 ```
 
 **Use backend PHP for:**
-- Form processing
-- API endpoints
-- Database operations
-- Server-side data manipulation
-- AJAX request handlers
+
+* Form processing
+* API endpoints
+* Database operations
+* Server-side data manipulation
+* AJAX request handlers
 
 See the [Backend directory documentation](backend.md) for detailed information about backend PHP files.
 
@@ -404,21 +407,23 @@ try {
 Choose the right location for PHP files:
 
 ### Use `templates/backend/` When:
-- PHP needs component property values
-- PHP is component-specific functionality
-- PHP handles form submissions or AJAX requests
-- Configuration varies per component
+
+* PHP needs component property values
+* PHP is component-specific functionality
+* PHP handles form submissions or AJAX requests
+* Configuration varies per component
 
 ### Use Shared Assets When:
-- PHP is a reusable library
-- PHP doesn't need component properties
-- Code is shared across multiple components
-- You want to minimize deployed files
+
+* PHP is a reusable library
+* PHP doesn't need component properties
+* Code is shared across multiple components
+* You want to minimize deployed files
 
 ## Related Documentation
 
-- [Backend Directory](backend.md) - Detailed backend PHP documentation
-- [Shared Assets](../shared-files/assets.md) - Shared PHP libraries
-- [Elements Language](../language/README.md) - Template syntax in PHP
-- [Hooks.js](../hooks.js/README.md) - Passing data to PHP templates
-- [Properties](../properties.json/README.md) - Defining configuration properties
+* [Backend Directory](backend.md) - Detailed backend PHP documentation
+* [Shared Assets](../shared-files/assets.md) - Shared PHP libraries
+* [Elements Language](../language/) - Template syntax in PHP
+* [Hooks.js](../hooks.js/) - Passing data to PHP templates
+* [Properties](../properties.json/) - Defining configuration properties

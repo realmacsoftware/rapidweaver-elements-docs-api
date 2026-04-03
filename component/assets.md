@@ -33,7 +33,7 @@ To link to an asset in a single component you'll need to do the following;
 </strong>@endportal
 </code></pre>
 
-2. Include the following code in the [hooks.js](hooks.js/README.md) to return the assetPath to the page template:
+2. Include the following code in the [hooks.js](hooks.js/) to return the assetPath to the page template:
 
 ```
 const transformHook = (rw) => {
@@ -49,5 +49,3 @@ const transformHook = (rw) => {
 
 exports.transformHook = transformHook;
 ```
-
-<figure><img src="../.gitbook/assets/CleanShot%202024-12-01%20at%203%E2%80%AF.12.28@2x.png" alt=""><figcaption></figcaption></figure>

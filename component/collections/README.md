@@ -54,10 +54,10 @@ The `info.json` file identifies your collection to RapidWeaver:
 }
 ```
 
-| Property | Required | Description |
-|----------|----------|-------------|
-| `identifier` | Yes | Unique identifier using reverse domain notation |
-| `title` | Yes | Display name shown in the Elements interface |
+| Property     | Required | Description                                     |
+| ------------ | -------- | ----------------------------------------------- |
+| `identifier` | Yes      | Unique identifier using reverse domain notation |
+| `title`      | Yes      | Display name shown in the Elements interface    |
 
 ### Step 3: Define properties.json
 
@@ -97,7 +97,7 @@ The `properties.json` file describes the fields for each item in your collection
 }
 ```
 
-All UI controls available to components are also available within collections. See the [properties.json documentation](../properties.json/README.md) for the complete reference.
+All UI controls available to components are also available within collections. See the [properties.json documentation](../properties.json/) for the complete reference.
 
 ### Step 4: Define defaults.json (Optional)
 
@@ -120,11 +120,11 @@ The `defaults.json` file pre-populates your collection with default items when a
 }
 ```
 
-| Property | Required | Description |
-|----------|----------|-------------|
-| `items` | Yes | Array of objects, each representing a default collection item |
+| Property | Required | Description                                                   |
+| -------- | -------- | ------------------------------------------------------------- |
+| `items`  | Yes      | Array of objects, each representing a default collection item |
 
-Each object in the `items` array should contain property keys that match the `property` names defined in your `properties.json`. 
+Each object in the `items` array should contain property keys that match the `property` names defined in your `properties.json`.
 
 **How defaults are applied:** The default values from `properties.json` are used first, then any values specified in `defaults.json` override them. This means you only need to include properties in `defaults.json` where you want to set a different value than what's defined in `properties.json`.
 
@@ -135,6 +135,7 @@ Each object in the `items` array should contain property keys that match the `pr
 A simple collection for filtering tags used in Grid, Flex, and Container components:
 
 **collections/tags/info.json**
+
 ```json
 {
     "identifier": "com.realmacsoftware.grid.collections.tags",
@@ -143,6 +144,7 @@ A simple collection for filtering tags used in Grid, Flex, and Container compone
 ```
 
 **collections/tags/properties.json**
+
 ```json
 {
     "groups": [
@@ -168,6 +170,7 @@ A simple collection for filtering tags used in Grid, Flex, and Container compone
 A tabbed interface collection that includes default items:
 
 **collections/tabs/info.json**
+
 ```json
 {
     "identifier": "com.yourcompany.tabs.collections.tabs",
@@ -176,6 +179,7 @@ A tabbed interface collection that includes default items:
 ```
 
 **collections/tabs/properties.json**
+
 ```json
 {
     "groups": [
@@ -201,6 +205,7 @@ A tabbed interface collection that includes default items:
 ```
 
 **collections/tabs/defaults.json**
+
 ```json
 {
     "items": [
@@ -225,6 +230,7 @@ When a user adds this component, the collection will automatically contain three
 A more complex collection for an audio playlist with multiple fields:
 
 **collections/tracks/info.json**
+
 ```json
 {
     "identifier": "com.realmacsoftware.audioPlaylist.collections.tracks",
@@ -233,6 +239,7 @@ A more complex collection for an audio playlist with multiple fields:
 ```
 
 **collections/tracks/properties.json**
+
 ```json
 {
     "groups": [
@@ -273,20 +280,15 @@ A more complex collection for an audio playlist with multiple fields:
 
 Once you've created your collection structure, you need to:
 
-1. **[Add the collection to properties.json](collections-in-properties.json.md)** - Make the collection appear in the component inspector
-2. **[Access data in templates](accessing-data-in-templates.md)** - Display collection items in your HTML
-3. **[Manipulate data in hooks.js](data-collections-in-hooks.js.md)** - Process collection data before rendering
+1. [**Add the collection to properties.json**](collections-in-properties.json.md) - Make the collection appear in the component inspector
+2. [**Access data in templates**](accessing-data-in-templates.md) - Display collection items in your HTML
+3. [**Manipulate data in hooks.js**](data-collections-in-hooks.js.md) - Process collection data before rendering
 
 ## Best Practices
 
 1. **Use descriptive identifiers** - Follow the pattern `com.company.component.collections.name` for clear organization.
-
 2. **Keep properties focused** - Only include fields that users need for each collection item.
-
 3. **Set appropriate defaults** - Provide sensible defaults to give users a starting point.
-
 4. **Use defaults.json for pre-populated content** - Include a `defaults.json` file to give users example items when they first add your component. This helps users understand the expected content structure immediately.
-
 5. **Mark properties as non-responsive** - Collection properties typically don't need responsive values, so set `"responsive": false`.
-
 6. **Group related properties** - Use property groups to organize complex collection items.

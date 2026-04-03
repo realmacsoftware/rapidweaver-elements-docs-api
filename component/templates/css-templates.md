@@ -9,10 +9,11 @@ CSS files placed in the `templates/` directory are processed through the Element
 ## Overview
 
 CSS template files provide:
-- **Property insertion** - Use component properties in CSS values
-- **Conditional styles** - Include or exclude CSS based on conditions
-- **Dynamic selectors** - Generate class names from properties
-- **Per-instance processing** - Each component instance gets its own processed CSS
+
+* **Property insertion** - Use component properties in CSS values
+* **Conditional styles** - Include or exclude CSS based on conditions
+* **Dynamic selectors** - Generate class names from properties
+* **Per-instance processing** - Each component instance gets its own processed CSS
 
 ## File Location
 
@@ -182,12 +183,13 @@ Choose the right location for your CSS:
 
 ### Use `templates/` CSS When:
 
-- Styles depend on component properties
-- Styles need conditional logic
-- Styles are instance-specific
-- You need dynamic selectors or values
+* Styles depend on component properties
+* Styles need conditional logic
+* Styles are instance-specific
+* You need dynamic selectors or values
 
 **Example:**
+
 ```css
 .component-{{id}} {
     color: {{userSelectedColor}};
@@ -197,12 +199,13 @@ Choose the right location for your CSS:
 
 ### Use `assets/` CSS When:
 
-- Styles are static and don't change
-- Styles are shared across all instances
-- You want better caching and performance
-- Styles are large frameworks or libraries
+* Styles are static and don't change
+* Styles are shared across all instances
+* You want better caching and performance
+* Styles are large frameworks or libraries
 
 **Example:**
+
 ```css
 /* Static base styles */
 .component-base {
@@ -313,6 +316,7 @@ Remember that each component instance generates CSS. For components that might a
 ```
 
 In your HTML template:
+
 ```html
 <div class="item" style="background: {{itemColor}}">
 ```
@@ -361,6 +365,7 @@ Integrate with theme colors:
 ```
 
 Set up in `hooks.js`:
+
 ```javascript
 rw.setProps({
     themeColors: rw.theme.colors
@@ -407,8 +412,8 @@ Dynamic animations based on user settings:
 
 ## Related Documentation
 
-- [Elements Language](../language/README.md) - Template syntax reference
-- [Templates Overview](README.md) - Understanding templates
-- [Assets](../assets.md) - Static CSS files
-- [Hooks.js](../hooks.js/README.md) - Computing values for CSS
-- [Properties](../properties.json/README.md) - Defining CSS properties
+* [Elements Language](../language/) - Template syntax reference
+* [Templates Overview](./) - Understanding templates
+* [Assets](../assets.md) - Static CSS files
+* [Hooks.js](../hooks.js/) - Computing values for CSS
+* [Properties](../properties.json/) - Defining CSS properties
