@@ -35,7 +35,7 @@ You can use the following code as a starting point for your own projects.json fi
 
 The Project thumbnail should represent your project, ideally a screenshot of the home page.
 
-* Dimension: 1080x1920
+* Dimension: 1920(w)x1080(h)
 * Format: jpg
 
 The New Projects window below will give you some guidance on how your thumbnail should look. Do not include extra type, logos, or watermarks. Try to keep the thumbnail as close as possible to the actual look of the project.
