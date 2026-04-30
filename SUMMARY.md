@@ -249,7 +249,7 @@
     * [ID](component/properties.json/general-structure/id.md)
     * [Format](component/properties.json/general-structure/format.md)
     * [Visible](component/properties.json/general-structure/visible.md)
-    * [Enabled](component/properties.json/general-structure/enabled.md)
+    * [Enable](component/properties.json/general-structure/enabled.md)
     * [Responsive](component/properties.json/general-structure/responsive.md)
   * [UI Controls](component/properties.json/ui-controls/README.md)
     * [Divider](component/properties.json/ui-controls/divider.md)
