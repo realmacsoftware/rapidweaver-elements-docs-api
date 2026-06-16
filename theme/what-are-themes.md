@@ -27,6 +27,17 @@ The icon for your theme should be a PNG, and sized at 440x280px. Ideally it will
 
 The info file stores basic information about your theme, including the required Google Fonts.
 
+| Key | Type | Notes |
+|---|---|---|
+| `author` | string | The name of the author or publishing company. |
+| `title` | string | The display name of the theme shown inside RapidWeaver. |
+| `subTitle` | string | A short descriptor shown below the title. |
+| `helpURL` | string | A URL to the online help documentation. |
+| `infoURL` | string | A URL to the marketing page. |
+| `googleFontNames` | array | Font family names loaded from Google Fonts. Must match the families used in `theme.json`. |
+| `deprecated` | boolean | Marks the theme as deprecated. Default `false`. |
+| `deploy` | boolean | Should this theme be included when deploying a pack, true or false. Default `true`. Set to `false` to keep a theme for local development only — it will still appear in Theme Studio but will be excluded from the built `.rwpack`. |
+
 ```
 {
   "author": "Awesome Company",
