@@ -102,6 +102,10 @@ Access nested properties using dot notation:
 @endif
 ```
 
+{% hint style="warning" %}
+A template `@if` accepts a **single** condition (optionally negated with `!`). Boolean operators (`&&`, `||`) and comparisons (`==`, `>`, etc.) are **not** allowed and cause a lexer error. See [Combining Conditions](if.md#combining-conditions) for the supported alternatives.
+{% endhint %}
+
 ### Looping Over Collections
 
 ```html

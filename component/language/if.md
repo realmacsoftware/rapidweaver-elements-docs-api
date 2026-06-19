@@ -26,6 +26,12 @@ With else if and else branches:
 @endif
 ```
 
+{% hint style="warning" %}
+**Template `@if` accepts a single condition only.** You can negate it with `!` (e.g. `@if(!edit)`), but you **cannot** use boolean operators (`&&`, `||`) or comparison operators (`==`, `!=`, `>`, `<`, `>=`, `<=`) inside a template `@if`. Doing so triggers a lexer error (`invalid syntax`). See [Combining Conditions](#combining-conditions) for the supported alternatives.
+
+This restriction applies **only** to template `@if`. The `visible` and `enabled` expressions in [`properties.json`](../properties.json/general-structure/visible.md) **do** support boolean and comparison operators.
+{% endhint %}
+
 ## Block-Level Conditionals
 
 ### Basic If Statement
@@ -217,14 +223,68 @@ For conditional template includes, consider using [@includeIf](include.md#condit
 @includeIf(wantsLightbox, template: "lightbox")
 ```
 
+## Combining Conditions
+
+Because a template `@if` only accepts a single condition, you cannot write expressions like `@if(edit && hidePreview)` or `@if(count > 0)`. Use one of the following approaches instead.
+
+### Nest separate `@if` directives
+
+For "AND" logic, nest one `@if` inside another:
+
+```html
+@if(hidePreview)
+    @if(!edit)
+        <!-- Shown only when hidePreview is on AND we're not in edit mode -->
+    @endif
+@endif
+```
+
+### Push the logic into CSS
+
+Emit marker classes from independent `@if` directives, then combine them with a CSS selector. This is the recommended pattern for show/hide behaviour, as it works reliably in edit, preview, and published modes:
+
+```html
+<div class="preview-bar @if(hidePreview) is-hideable @endif @if(!edit) is-live @endif">
+    <!-- bar content -->
+</div>
+```
+
+```css
+/* Hide the bar only when both markers are present
+   (hide-preview switch is on AND we're outside the editor) */
+.preview-bar.is-hideable.is-live {
+    display: none;
+}
+```
+
+### Compute a boolean in `hooks.js`
+
+For comparisons or more complex logic, calculate a single boolean in the [hooks file](../hooks.js/) and pass it to the template, then test that one value:
+
+```javascript
+// hooks.js
+rw.setProps({
+    hasManyItems: rw.element.props.items.length > 2,
+});
+```
+
+```html
+@if(hasManyItems)
+    <!-- Shown when there are more than two items -->
+@endif
+```
+
 ## Best Practices
 
-1. **Keep conditions simple** - For complex logic like string comparisons, use the [hooks file](../hooks.js/) to compute boolean values and pass them to the template.
-2. **Use meaningful property names** - Boolean properties should have clear names like `showIcon`, `enableLazyLoading`, or `hasImage`.
-3. **Prefer @includeIf for conditional includes** - Instead of wrapping `@include` in `@if`, use `@includeIf` for cleaner templates.
-4. **Only non-responsive controls work in conditionals** - Responsive controls cannot be used directly in `@if` statements.
+1. **One condition per `@if`** - Template `@if` takes a single condition (optionally negated with `!`). For combined or comparison logic, nest `@if` directives, combine marker classes in CSS, or compute a boolean in the [hooks file](../hooks.js/). See [Combining Conditions](#combining-conditions).
+2. **Keep conditions simple** - For complex logic like string comparisons, use the [hooks file](../hooks.js/) to compute boolean values and pass them to the template.
+3. **Use meaningful property names** - Boolean properties should have clear names like `showIcon`, `enableLazyLoading`, or `hasImage`.
+4. **Prefer @includeIf for conditional includes** - Instead of wrapping `@include` in `@if`, use `@includeIf` for cleaner templates.
+5. **Only non-responsive controls work in conditionals** - Responsive controls cannot be used directly in `@if` statements.
 
 ## Related
 
+* [Combining Conditions](#combining-conditions) - Working around the single-condition limit
 * [@includeIf](include.md#conditional-includes) - Conditional template includes
 * [Hooks File](../hooks.js/) - For complex conditional logic
+* [properties.json `visible`](../properties.json/general-structure/visible.md) - Where boolean and comparison operators *are* supported
