@@ -186,19 +186,30 @@ Use the unique component ID for JavaScript targeting:
 
 ### Alpine.js Integration
 
-Integrate with Alpine.js for interactive components:
+Integrate with Alpine.js for interactive components. Pass structured data through a `data-*` attribute rather than interpolating it directly into the `x-data` expression — see [Data Attributes](js-templates.md#data-attributes) in the JavaScript Templates guide.
+
+```javascript
+// hooks.js - serialise structured options at build time
+exports.transformHook = (rw) => {
+    rw.setProps({ optionsJson: JSON.stringify(rw.props.options ?? {}) });
+};
+```
 
 ```html
-<div x-data="myComponent('{{id}}', {{options}})">
-    <button @click="toggle">
+<div x-data="myComponent('{{id}}')" data-options='{{optionsJson}}'>
+    <button x-on:click="toggle">
         {{buttonLabel}}
     </button>
-    
+
     <div x-show="isOpen" x-collapse>
         @dropzone("content", title: "Content")
     </div>
 </div>
 ```
+
+{% hint style="warning" %}
+**Do not write `x-data="myComponent('{{id}}', {{options}})"`.** The JSON's double-quotes terminate the HTML attribute; Alpine fails to parse the expression and the component silently renders blank. Use a single-quoted `data-*` attribute as shown above.
+{% endhint %}
 
 ## Examples from Core Components
 

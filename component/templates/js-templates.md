@@ -451,6 +451,12 @@ Define Alpine components with property-based configuration:
 </div>
 ```
 
+Registering inside `alpine:init` is required for browser/publish parity. In the edit canvas Alpine may already be initialised when the script runs, so a bare `Alpine.data(...)` call can appear to work — but in a browser the factory must exist before Alpine parses `x-data` attributes, which means it must be registered before `alpine:init` fires. Always use this pattern.
+
+{% hint style="warning" %}
+**Never interpolate JSON objects or arrays into the `x-data` expression** (e.g. `x-data="factory('{{id}}', {{dataJson}})"`). The JSON's double-quotes terminate the HTML attribute, Alpine fails to parse the expression, and the component silently renders blank. Pass structured data through a `data-*` attribute and read it with `JSON.parse` in the factory `init()` instead — see [Data Attributes](#data-attributes).
+{% endhint %}
+
 ### GSAP Animations
 
 Configure GSAP animations with user properties:
@@ -479,6 +485,45 @@ element.dataset.enabled = '{{enabled}}';
 // Later access
 const variant = element.dataset.variant;
 ```
+
+**Passing structured data (objects/arrays) from `hooks.js`**
+
+For structured data, serialise it in `hooks.js` and embed it in a single-quoted `data-*` attribute. A single-quoted attribute keeps JSON's double-quotes intact; putting them inside a double-quoted `x-data` attribute breaks the HTML parse.
+
+```javascript
+// hooks.js
+exports.transformHook = (rw) => {
+    rw.setProps({ scheduleJson: JSON.stringify(rw.props.schedule ?? {}) });
+};
+```
+
+```html
+<!-- templates/index.html: single-quoted attribute keeps JSON's double-quotes intact -->
+<div x-data="openStatus('{{id}}')" data-schedule='{{scheduleJson}}'></div>
+```
+
+```javascript
+// templates/script.js: read and parse inside factory init()
+@portal(bodyEnd, includeOnce: true, id: "com.yourname.openstatus.alpine")
+<script>
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("openStatus", (id) => ({
+            id,
+            schedule: null,
+            init() {
+                try {
+                    this.schedule = JSON.parse(this.$el.dataset.schedule || "null");
+                } catch (e) {
+                    console.warn("openStatus: invalid schedule JSON", e);
+                }
+            }
+        }));
+    });
+</script>
+@endportal
+```
+
+Because `{{ }}` inserts values verbatim (see [Escape String Values](#escape-string-values)), entity-encode `'`, `&`, and `<` in `hooks.js` if the data may contain those characters.
 
 ## Limitations
 
