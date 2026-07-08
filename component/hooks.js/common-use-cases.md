@@ -260,7 +260,7 @@ exports.transformHook = transformHook;
 
 ## Alpine.js Integration
 
-Set up Alpine.js data and bindings:
+Set up Alpine.js data and bindings via `rw.setRootElement()`. Pass structured config through a `data-*` attribute — do not interpolate JSON into the `x-data` expression (the JSON's double-quotes break the HTML attribute parse).
 
 ```javascript
 const transformHook = (rw) => {
@@ -277,7 +277,8 @@ const transformHook = (rw) => {
         as: 'div',
         class: `group/${id}`,
         args: {
-            'x-data': `accordion('${id}', ${JSON.stringify(config).replace(/"/g, "'")})`,
+            'x-data': `accordion('${id}')`,
+            'data-config': JSON.stringify(config),
             'x-bind': 'details',
             'data-open': 'false',
             'role': 'group',
