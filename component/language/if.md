@@ -263,9 +263,11 @@ For comparisons or more complex logic, calculate a single boolean in the [hooks 
 
 ```javascript
 // hooks.js
-rw.setProps({
-    hasManyItems: rw.element.props.items.length > 2,
-});
+exports.transformHook = (rw) => {
+    rw.setProps({
+        hasManyItems: rw.props.items.length > 2,
+    });
+};
 ```
 
 ```html

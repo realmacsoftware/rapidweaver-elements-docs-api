@@ -196,20 +196,28 @@ templates/include/
 └── youtube.html        # YouTube background
 ```
 
-Usage with conditionals:
+Usage with conditionals. Template `@if` accepts a single condition only, so compute the background-type booleans in `hooks.js` and use `@includeIf` for the branch. See [Combining Conditions](../language/if.md#combining-conditions).
+
+```javascript
+// hooks.js
+exports.transformHook = (rw) => {
+    const { backgroundType } = rw.props;
+    rw.setProps({
+        bgIsColor: backgroundType === "color",
+        bgIsGradient: backgroundType === "gradient",
+        bgIsImage: backgroundType === "image",
+        bgIsVideo: backgroundType === "video",
+    });
+};
+```
 
 ```html
 <div class="container">
-    @if(backgroundType == "color")
-        @include("color")
-    @elseif(backgroundType == "gradient")
-        @include("gradient")
-    @elseif(backgroundType == "image")
-        @include("image")
-    @elseif(backgroundType == "video")
-        @include("video")
-    @endif
-    
+    @includeIf(bgIsColor, template: "color")
+    @includeIf(bgIsGradient, template: "gradient")
+    @includeIf(bgIsImage, template: "image")
+    @includeIf(bgIsVideo, template: "video")
+
     @if(hasOverlay)
         @include("overlay")
     @endif

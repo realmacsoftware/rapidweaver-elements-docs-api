@@ -191,7 +191,18 @@ The Gallery component includes lightbox functionality:
 
 ## Conditional JavaScript
 
-Use `@if` directives to conditionally include code:
+Use `@if` directives to conditionally include code. Template `@if` accepts a single condition only — boolean properties like `enableLogging` work directly, but comparisons must be computed in `hooks.js` first. See [Combining Conditions](../language/if.md#combining-conditions).
+
+```javascript
+// hooks.js
+exports.transformHook = (rw) => {
+    const { animation } = rw.props;
+    rw.setProps({
+        animationIsFade: animation === "fade",
+        animationIsSlide: animation === "slide",
+    });
+};
+```
 
 ```javascript
 const component = document.getElementById('{{id}}');
@@ -211,9 +222,9 @@ analytics.track('component_loaded', {
 });
 @endif
 
-@if(animation == "fade")
+@if(animationIsFade)
 component.classList.add('fade-animation');
-@elseif(animation == "slide")
+@elseif(animationIsSlide)
 component.classList.add('slide-animation');
 @else
 component.classList.add('no-animation');

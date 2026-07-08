@@ -142,10 +142,18 @@ The processed HTML from `index.html` is inserted directly where the component is
 
 ### Edit Mode Placeholders
 
-Provide helpful UI when users are editing:
+Provide helpful UI when users are editing. Template `@if` accepts a single condition, so compute the combined check in `hooks.js` first. See [Combining Conditions](../language/if.md#combining-conditions).
+
+```javascript
+// hooks.js
+exports.transformHook = (rw) => {
+    const { hasContent } = rw.props;
+    rw.setProps({ showEmptyState: rw.project.mode === "edit" && !hasContent });
+};
+```
 
 ```html
-@if(edit && !hasContent)
+@if(showEmptyState)
     <div class="empty-state">
         <p>Add content to this component</p>
     </div>

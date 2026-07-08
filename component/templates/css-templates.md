@@ -70,16 +70,27 @@ Insert component properties directly into CSS values:
 
 ## Conditional Styles
 
-Use `@if` directives to conditionally include CSS rules:
+Use `@if` directives to conditionally include CSS rules. Template `@if` accepts a single condition only — compute comparisons in `hooks.js` first, then test the resulting boolean. See [Combining Conditions](../language/if.md#combining-conditions).
+
+```javascript
+// hooks.js
+exports.transformHook = (rw) => {
+    const { variant } = rw.props;
+    rw.setProps({
+        variantIsPrimary: variant === "primary",
+        variantIsSecondary: variant === "secondary",
+    });
+};
+```
 
 ```css
 /* Show different styles based on a property */
-@if(variant == "primary")
+@if(variantIsPrimary)
 .button {
     background: blue;
     color: white;
 }
-@elseif(variant == "secondary")
+@elseif(variantIsSecondary)
 .button {
     background: gray;
     color: white;
@@ -390,7 +401,18 @@ Generate utility classes based on properties:
 
 ### Animation Properties
 
-Dynamic animations based on user settings:
+Dynamic animations based on user settings. Compute the animation booleans in `hooks.js` first:
+
+```javascript
+// hooks.js
+exports.transformHook = (rw) => {
+    const { animation } = rw.props;
+    rw.setProps({
+        animationIsFade: animation === "fade",
+        animationIsSlide: animation === "slide",
+    });
+};
+```
 
 ```css
 .component-{{id}} .animated {
@@ -399,11 +421,11 @@ Dynamic animations based on user settings:
     animation-delay: {{delay}}s;
 }
 
-@if(animation == "fade")
+@if(animationIsFade)
 .component-{{id}} .animated {
     animation-name: fadeIn;
 }
-@elseif(animation == "slide")
+@elseif(animationIsSlide)
 .component-{{id}} .animated {
     animation-name: slideIn;
 }
