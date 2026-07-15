@@ -254,7 +254,6 @@
     * [AI](component/properties.json/general-structure/ai.md)
   * [UI Controls](component/properties.json/ui-controls/README.md)
     * [Color](component/properties.json/ui-controls/color.md)
-    * [Description](component/properties.json/ui-controls/description.md)
     * [Divider](component/properties.json/ui-controls/divider.md)
     * [Heading](component/properties.json/ui-controls/heading.md)
     * [Image](component/properties.json/ui-controls/image.md)

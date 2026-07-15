@@ -100,10 +100,6 @@ Display controls don't store a value — they add structure and help text to the
 [information.md](information.md)
 {% endcontent-ref %}
 
-{% content-ref url="description.md" %}
-[description.md](description.md)
-{% endcontent-ref %}
-
 ### Collections
 
 The `collection` control binds a repeating set of fields (for example the tabs of a Tabs component) and is documented in its own section:
