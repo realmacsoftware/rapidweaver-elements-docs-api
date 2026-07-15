@@ -22,7 +22,7 @@ An example `properties.json` file that creates a single group named "Hero Layout
     }, {
       "title": "Background Image",
       "id": "heroImage",
-      "image": {}
+      "resource": {}
     }, {
       "title": "Overlay Opacity",
       "id": "overlayOpacity",

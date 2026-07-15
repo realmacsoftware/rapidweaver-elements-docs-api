@@ -62,6 +62,36 @@ For consistency and integration with the Theme Studio in RapidWeaver Elements, u
 }
 ```
 
+### Supported Options
+
+The themeColor control supports the following options.
+
+| Key       | Type   | Notes                                                                                                                              |
+| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `default` | object | The default color. Supports `name` and `brightness`, plus `darkName` and `darkBrightness` for a separate dark-mode color.            |
+| `mode`    | string | Set to `"single"` to display a single color selection without the separate dark-mode variant.                                        |
+| `hover`   | object | Use in place of `default` when the property controls a hover-state color. Same shape as `default` (`name`, `brightness`).            |
+
+A hover-state color is typically paired with a `hover:` prefixed [format](../general-structure/format.md):
+
+```json
+{
+  "title": "Color",
+  "id": "menuItemHoverColor",
+  "format": "hover:text-{{value}}",
+  "themeColor": {
+    "hover": {
+      "name": "brand",
+      "brightness": 500
+    }
+  }
+}
+```
+
+### Value
+
+In templates, `{{id}}` returns the selected color token — the color name and brightness joined with a hyphen, for example `brand-500`. Combine it with [format](../general-structure/format.md) to build the utility class or CSS value you need.
+
 ### Using Tailwind 4 CSS Custom Properties
 
 Tailwind 4 exposes every theme colour as a CSS custom property under the `--color-*` namespace (for example, `--color-brand-500`). This means the Theme Color control isn't limited to generating utility classes — you can format its value as a `var()` reference and use the selected colour directly in your CSS.

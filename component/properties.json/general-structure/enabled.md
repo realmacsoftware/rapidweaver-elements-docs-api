@@ -1,5 +1,5 @@
 ---
-description: Show and hide controls based on another control's value.
+description: Enable and disable controls based on another control's value.
 ---
 
 # Enable
@@ -32,3 +32,26 @@ The `enable` key in an object's properties can be set using a logical expression
     ```
 
     The property is enabled when `useCustomColors` is `false`.
+
+## Disabled
+
+The `disabled` key is the inverse shorthand: instead of an expression, it takes an object with an `id` and a `value`. The control is disabled whenever the referenced property equals the given value.
+
+```json
+{
+  "title": "Text Shadow",
+  "id": "textShadow",
+  "disabled": {
+    "id": "bgType",
+    "value": "image"
+  },
+  "themeShadow": {
+    "mode": "text",
+    "default": {
+      "name": "none"
+    }
+  }
+}
+```
+
+In this example the Text Shadow control is greyed out while the `bgType` property is set to `image`.

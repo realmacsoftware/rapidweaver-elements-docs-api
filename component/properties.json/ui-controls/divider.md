@@ -1,6 +1,6 @@
 # Divider
 
-Display a divider between content.
+Display a divider between content. Use it to visually separate runs of related controls within a [group](../grouping-controls.md). The control takes no options, stores no value, and needs no `id` or `title`.
 
 {% tabs %}
 {% tab title="Control Example" %}

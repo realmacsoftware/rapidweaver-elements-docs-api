@@ -1,6 +1,6 @@
 # Information
 
-Display some informational static text.
+Display some informational static text. The message comes from the property's `title` — the control itself takes no options, stores no value, and needs no `id`. For longer explanatory paragraphs, use the [Description](description.md) control instead.
 
 {% tabs %}
 {% tab title="Control Example" %}

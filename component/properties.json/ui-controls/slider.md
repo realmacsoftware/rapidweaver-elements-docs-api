@@ -138,12 +138,17 @@ The slider control supports the following options.
 | `title`   | string  | The name of the Slider. This will be displayed beside the UI element of RapidWeaver                                                                                                         |
 | `id`      | string  | The id for this control.                                                                                                                                                                    |
 | `format`  | string  | Can be used to apply additional formatting to the value. `{{value}}` will be replaced with the selected value. See [value formatting](../general-structure/format.md) for more information. |
-| `default` | string  | The default value the slider should be set to.                                                                                                                                              |
+| `default` | number  | The default value the slider should be set to. A string when using `items`, an object when setting per-breakpoint defaults (see [Default Values](../default-values.md)).                   |
 | `items`   | array   | Can be used to specify an array of values to the slider. See [code example](slider.md#slider-example) below.                                                                                |
 | `min`     | number  | The minimum value for the slider.                                                                                                                                                           |
 | `max`     | number  | The maximum value for the slider.                                                                                                                                                           |
+| `step`    | number  | The amount the value changes per increment as the slider is dragged.                                                                                                                        |
 | `units`   | string  | The units string appears alongside the slider value in the user interface, but it is not included in the template output value.                                                             |
 | `round`   | boolean | If true an integer will be used instead of a floating point.                                                                                                                                |
 | `ticks`   | number  | the number of ticks that will appear beneath the slider.                                                                                                                                    |
 | `snap`    | boolean | is set to true, slider will snap to `ticks`.                                                                                                                                                |
+
+### Value
+
+In templates, `{{id}}` returns the selected number (or the matching item's `value` when using `items`), with [format](../general-structure/format.md) applied if set. In the opacity example above the default renders as `bg-opacity-[60%]`.
 

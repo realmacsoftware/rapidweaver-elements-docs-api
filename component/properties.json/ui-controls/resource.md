@@ -30,6 +30,25 @@ Displays a resource dropwell that accepts all file types.
 {% endtab %}
 {% endtabs %}
 
+### Supported Options
+
+The resource control accepts all file types by default. Use the following options to restrict it.
+
+| Key       | Type   | Notes                                                   |
+| --------- | ------ | -------------------------------------------------------- |
+| `accepts` | string | Restrict the dropwell to a file type, e.g. `"svg"`.      |
+| `types`   | array  | Restrict the dropwell to a list of file types, e.g. `["svg"]`. |
+
+```json
+{
+  "title": "Icon",
+  "id": "icon",
+  "resource": {
+    "accepts": "svg"
+  }
+}
+```
+
 ## Using Resources in Templates
 
 ### Resource Properties

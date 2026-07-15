@@ -4,31 +4,16 @@ hidden: true
 
 # Image
 
-Displays an image dropwell in the inspector.
+There is no `image` control in properties.json. To let users add an image (or any other file) to a component, use the [Resource](resource.md) control:
 
-{% tabs %}
-{% tab title="Control Example" %}
 ```json
 {
   "title": "Hero Image",
   "id": "heroImage",
-  "image": {}
+  "resource": {}
 }
 ```
-{% endtab %}
 
-{% tab title="Group Example" %}
-```json
-{
-  "groups": [{
-    "title": "Hero Media",
-    "properties": [{
-      "title": "Hero Image",
-      "id": "heroImage",
-      "image": {}
-    }]
-  }]
-}
-```
-{% endtab %}
-{% endtabs %}
+{% content-ref url="resource.md" %}
+[resource.md](resource.md)
+{% endcontent-ref %}

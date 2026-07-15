@@ -111,3 +111,24 @@ In the Template file you can do the following to display different html based on
     <div class="p-sm text-lg text-center text-primary-500">I'm False!</div>
 @endif
 ```
+
+### Supported Options
+
+The switch control supports the following options.
+
+| Key          | Type    | Notes                                                                                                        |
+| ------------ | ------- | ------------------------------------------------------------------------------------------------------------ |
+| `default`    | boolean | The default state of the switch. An object of per-breakpoint booleans when `responsive` is `true`.            |
+| `trueValue`  | string  | The value returned when the switch is on. Use a Tailwind class when the control is responsive.                |
+| `falseValue` | string  | The value returned when the switch is off. Use a Tailwind class when the control is responsive.               |
+| `subtitle`   | string  | Helper text displayed underneath the switch.                                                                  |
+
+### Value
+
+The returned value depends on the configuration:
+
+| Configuration                           | Return Value                                              |
+| --------------------------------------- | --------------------------------------------------------- |
+| `responsive: false`, no true/false values | `true` or `false`                                        |
+| `responsive: false`, with true/false values | The `trueValue` or `falseValue` string                  |
+| `responsive: true`, with true/false values | Tailwind classes prefixed per breakpoint, e.g. `hidden md:block` |
