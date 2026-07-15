@@ -26,7 +26,7 @@ You can specify an icon to appear next to the title of your group. The **Icon** 
 
 ### Group Controls
 
-Controls should be placed inside the properties array. The following example has a heading, a text field, and an image dropwell inside the group.
+Controls should be placed inside the properties array. The following example has a heading, a text field, and a resource dropwell inside the group.
 
 ```json
 {
@@ -52,7 +52,7 @@ Controls should be placed inside the properties array. The following example has
         {
           "title": "Background Image",
           "id": "heroImage",
-          "image": {}
+          "resource": {}
         }
       ]
     }
@@ -80,8 +80,30 @@ The following example has two groups, one for content and one for media.
     "properties": [{
       "title": "Image",
       "id": "cardImage",
-      "image": {}
+      "resource": {}
     }]
   }]
 }
 ```
+
+### Conditional Groups
+
+Groups support the same [visible](general-structure/visible.md) key as individual controls, so an entire section can be shown or hidden based on another property's value:
+
+```json
+{
+  "groups": [{
+    "title": "Footer Cells",
+    "icon": "tablecells",
+    "visible": "showFooter == true",
+    "properties": [{
+      "title": "Footer Text",
+      "id": "footerText",
+      "text": {
+        "default": ""
+      }
+    }]
+  }]
+}
+```
+

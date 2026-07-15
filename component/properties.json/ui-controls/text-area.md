@@ -34,3 +34,16 @@ Displays a multiline text area in the inspector.
 ```
 {% endtab %}
 {% endtabs %}
+
+### Supported Options
+
+The textArea control supports the following options.
+
+| Key       | Type   | Notes                                        |
+| --------- | ------ | -------------------------------------------- |
+| `default` | string | The default value for the text area.         |
+| `size`    | number | The height of the text area, in rows.        |
+
+### Value
+
+In templates, `{{id}}` returns the entered text, with [format](../general-structure/format.md) applied if set. For single-line values use the [Text](text.md) control.

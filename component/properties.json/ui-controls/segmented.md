@@ -80,3 +80,24 @@ You can also use the following title key to display text instead of icons.
 }
 ```
 
+### Supported Options
+
+The segmented control supports the following options.
+
+| Key       | Type   | Notes                                                                                                       |
+| --------- | ------ | ----------------------------------------------------------------------------------------------------------- |
+| `default` | string | Value of the segment selected by default. An object of per-breakpoint values when the control is responsive. |
+| `items`   | array  | The segments to display. See the item schema below.                                                          |
+
+Each item in `items` supports these keys:
+
+| Key       | Type    | Notes                                                                                       |
+| --------- | ------- | -------------------------------------------------------------------------------------------- |
+| `value`   | string  | The value to be returned when this segment is selected.                                      |
+| `title`   | string  | The text label for the segment.                                                              |
+| `icon`    | string  | An [SF Symbol](https://developer.apple.com/sf-symbols/) name to display instead of a label.  |
+| `default` | boolean | Alternative way to mark this item as the default selection.                                  |
+
+### Value
+
+The segmented control works like [Select](select.md): when responsive it returns Tailwind classes prefixed per breakpoint, and when `responsive` is `false` it returns the selected item's raw `value`. [Format](../general-structure/format.md) is applied if set.

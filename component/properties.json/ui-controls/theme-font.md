@@ -43,6 +43,14 @@ Displays the Theme Studio Font control.
 
 For effective theme integration in RapidWeaver Elements, it is recommended to use the `themeFont` attribute to define all font family settings for your elements. This approach ensures that font preferences are coordinated with the overall theme settings, providing a consistent user experience.
 
-Here’s a structured example for defining a font property:
+### Supported Options
 
-**Output Example:** In your template files, referencing `{{headlineFont}}` with the example configuration above would output: `font-heading sm:font-heading md:font-display`.
+The themeFont control supports the following options.
+
+| Key       | Type   | Notes                                                                                                             |
+| --------- | ------ | -------------------------------------------------------------------------------------------------------------------- |
+| `default` | object | Per-breakpoint defaults (`base`, `sm`, `md`, …). Each breakpoint holds the `name` of a font from the theme, e.g. `{ "name": "heading" }`. |
+
+### Value
+
+In templates, `{{id}}` outputs the font utility classes for the selected theme font, prefixed for each breakpoint the user has configured. With the example configuration above, referencing `{{headlineFont}}` would output: `font-heading sm:font-heading md:font-display`.

@@ -113,7 +113,6 @@ Here's an example of setting default values on various UI controls for a hero se
         }, {
             "title": "Shadow",
             "id": "themeShadow",
-            "mode": "shadow",
             "themeShadow": {
                 "default": { "base": { "name": "sm" }, "sm": { "name": "lg" }, "md": { "name": "xl" } }
             }
@@ -142,7 +141,7 @@ Here's an example of setting default values on various UI controls for a hero se
             "id": "slider3",
             "slider": {
                 "default": 3,
-                "content": [
+                "items": [
                     { "title": "a", "value": "2" },
                     { "title": "b", "value": "3" },
                     { "title": "c", "value": "4" }

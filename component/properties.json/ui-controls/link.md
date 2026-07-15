@@ -61,3 +61,32 @@ Corresponding template example using the absoluteURL.
 <a href="{{ctaLink.href}}">Get Started</a>
 ```
 
+### Supported Options
+
+The link control supports the following options.
+
+| Key           | Type    | Notes                                                                                     |
+| ------------- | ------- | ------------------------------------------------------------------------------------------ |
+| `default`     | object  | The default link. Supports the keys `href`, `text`, `target`, `title`, and `rel`.          |
+| `subtitle`    | string  | Helper text displayed underneath the control.                                              |
+| `absoluteURL` | boolean | When `true`, `href` returns the full URL instead of a relative one.                        |
+
+```json
+{
+  "title": "Page Link",
+  "id": "pageLink",
+  "link": {
+    "default": {
+      "href": "",
+      "text": "",
+      "target": "_self",
+      "title": "",
+      "rel": ""
+    }
+  }
+}
+```
+
+### Value
+
+The control returns a link object. Access its properties in templates with dot notation — for example `{{pageLink.href}}` and `{{pageLink.target}}` as shown above.
