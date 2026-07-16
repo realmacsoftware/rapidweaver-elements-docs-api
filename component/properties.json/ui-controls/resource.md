@@ -34,20 +34,55 @@ Displays a resource dropwell that accepts all file types.
 
 The resource control accepts all file types by default. Use the following options to restrict it.
 
-| Key       | Type   | Notes                                                   |
-| --------- | ------ | -------------------------------------------------------- |
-| `accepts` | string | Restrict the dropwell to a file type, e.g. `"svg"`.      |
-| `types`   | array  | Restrict the dropwell to a list of file types, e.g. `["svg"]`. |
+| Key        | Type   | Notes                                                                                          |
+| ---------- | ------ | ---------------------------------------------------------------------------------------------- |
+| `accepts`  | string | HTML `<input accept>`-style comma-separated list restricting which file types can be assigned. |
+| `excludes` | string | Same token grammar as `accepts`, but subtracts matching types.                                 |
+
+An empty or omitted `accepts` accepts any file type.
+
+#### `accepts`
+
+`accepts` uses the same token grammar as the HTML [`<input accept>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) attribute:
+
+| Token          | Matches                          | Example      |
+| -------------- | -------------------------------- | ------------ |
+| `.ext`         | A file extension                 | `.svg`       |
+| `type/*`       | A MIME major type                | `image/*`    |
+| `type/subtype` | An exact MIME type               | `video/mp4`  |
+
+Combine multiple tokens with commas, e.g. `".png,.jpg"`.
 
 ```json
 {
   "title": "Icon",
   "id": "icon",
   "resource": {
-    "accepts": "svg"
+    "accepts": ".svg"
   }
 }
 ```
+
+#### `excludes`
+
+`excludes` uses the same token grammar and subtracts specific types from `accepts`. A file matching any `excludes` token is rejected even if an `accepts` token matches. `excludes` without `accepts` means "accept everything except the excluded types".
+
+```json
+{
+  "title": "Photo",
+  "id": "photo",
+  "resource": {
+    "accepts": "image/*",
+    "excludes": ".svg"
+  }
+}
+```
+
+Restrictions are enforced when a resource is assigned in the inspector, the canvas editor, and via the API, and also filter which drop targets accept a dragged file.
+
+{% hint style="info" %}
+The legacy `"types": ["svg"]` array shorthand is still supported and folded in alongside `accepts`, but new components should use `accepts`.
+{% endhint %}
 
 ## Using Resources in Templates
 
