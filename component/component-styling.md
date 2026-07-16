@@ -12,7 +12,7 @@ Elements compiles Tailwind for you: it scans your templates and the class string
 **Your main goal should always be to make a component that feels native to Elements.**
 
 {% hint style="info" %}
-The examples on this page use Tailwind 3 syntax, which is what the built-in components use today. Themes can opt into Tailwind 4 by setting `tailwindVersion` to `v4` in their `info.json`—see [What are Themes?](../theme/what-are-themes.md)
+The built-in components are Tailwind 4 ready, and every example on this page works with Tailwind 4. Themes declare the Tailwind version they use by setting `tailwindVersion` to `v4` in their `info.json`—see [What are Themes?](../theme/what-are-themes.md)
 {% endhint %}
 
 ## Why Tailwind?
