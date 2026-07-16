@@ -15,6 +15,10 @@ CSS template files provide:
 * **Dynamic selectors** - Generate class names from properties
 * **Per-instance processing** - Each component instance gets its own processed CSS
 
+{% hint style="info" %}
+In the core components, most production styling is done with Tailwind utility classes generated in `hooks.js` and inserted into HTML with `{{classes.*}}` — see [Component Styling](../component-styling.md). Template CSS files are used sparingly — mostly small editor-focused helpers, often gated by `@if(edit)` (see the [Tabs example](#tabs-component-edit-mode-styles) below).
+{% endhint %}
+
 ## File Location
 
 ```
@@ -25,6 +29,8 @@ com.yourcompany.component/
 │   └── include/
 │       └── ...
 ```
+
+Any `.css` file at the root of `templates/` is processed — the filename is up to you. The core components use names like `styles.css` (Reveal), `edit.css` (Grid), and `editor-ui.css` (Tabs, Container, Shapes).
 
 ## Basic Usage
 
@@ -138,6 +144,28 @@ The Reveal component uses property insertion for dynamic group styling:
 ```
 
 This creates group selectors scoped to each component instance.
+
+### Tabs Component (Edit-Mode Styles)
+
+Several core CSS templates are small edit-mode helpers gated by `@if(edit)`. The Tabs component's `templates/editor-ui.css` hides every tab panel except the one being edited:
+
+```css
+@if (edit)
+
+/* Tab panels in editor - show the one being edited */
+[role="tabpanel"] {
+    display: none;
+}
+
+/* The active panel should be visible */
+[role="tabpanel"][data-tab-panel="{{editorActiveTabIndex}}"] {
+    display: block;
+}
+
+@endif
+```
+
+`editorActiveTabIndex` is computed in `hooks.js` from the tab currently selected in the editor. Because the whole file is wrapped in `@if(edit)`, it produces no output at all on the published site.
 
 ### Responsive Styles
 
@@ -304,6 +332,7 @@ const transformHook = (rw) => {
         computedWidth: calculatedWidth
     });
 };
+exports.transformHook = transformHook;
 ```
 
 ```css
@@ -366,22 +395,23 @@ Generated CSS still needs to be valid CSS. Template directives don't add vendor 
 
 ### Theme Integration
 
-Integrate with theme colors:
-
-```css
-.component-{{id}} {
-    color: {{themeColors.primary}};
-    background: {{themeColors.surface}};
-}
-```
-
-Set up in `hooks.js`:
+There is no hooks API for reading theme colors — [`rw.theme`](../hooks.js/available-data/rw.theme.md) exposes breakpoints, not colors. Core components apply theme colors with Tailwind utility classes instead: a [Theme Color control](../properties.json/ui-controls/theme-color.md) with `format: "bg-{{value}}"` delivers a ready-made class such as `bg-brand-500`, which `hooks.js` merges into the component's class strings:
 
 ```javascript
-rw.setProps({
-    themeColors: rw.theme.colors
-});
+// hooks.js
+const transformHook = (rw) => {
+    const { backgroundColor } = rw.props; // already formatted, e.g. "bg-brand-500"
+
+    const classes = {
+        container: ["p-4", "rounded-lg", backgroundColor].join(" "),
+    };
+
+    rw.setProps({ classes });
+};
+exports.transformHook = transformHook;
 ```
+
+If you need a theme color **inside** a CSS template (gradient stops, SVG fills), Tailwind 4 themes expose every theme color as a `--color-*` CSS custom property — format a Theme Color control as `var(--color-{{value}})` and interpolate that. See [Component Styling](../component-styling.md) for the full approach.
 
 ### Utility Classes
 

@@ -44,7 +44,11 @@ Include files are referenced using the `@include()` directive from any template 
 </div>
 ```
 
-The include filename is specified **without the `.html` extension** and is relative to the `templates/include/` directory.
+The include filename is specified **without the `.html` extension** and is resolved relative to the `templates/include/` directory.
+
+{% hint style="warning" %}
+`@include()` only resolves files in `templates/include/` — it does **not** resolve root-level template files, and a call that doesn't match a file **fails silently**. Root-level templates never need including: every file at the root of `templates/` is [processed automatically](./#root-level-templates). (You may spot `@include("alpine")` in some core components — those calls are silent no-ops; the root-level `alpine.html` is included by the automatic processing.)
+{% endhint %}
 
 ## Creating Include Files
 
@@ -152,32 +156,29 @@ templates/include/
 └── title.html
 ```
 
-Usage pattern:
+Usage in `templates/index.html` — the logo area picks an include based on the inspector settings, and the mobile menu branches per page type:
 
 ```html
-<!-- Desktop navigation -->
-<nav class="desktop-nav">
+<!-- Logo area: logo image, site title, or a dropzone fallback -->
+@if(wantsLogo)
     @include("logo")
-    @each(item in menuItems)
-        @if(item.isFolder)
-            @include("desktop_folder")
-        @else
-            @include("desktop_item")
-        @endif
-    @endeach
-</nav>
+@elseif(wantsTitle)
+    @include("title")
+@else
+    @dropzone("logo", title: "Logo")
+@endif
 
-<!-- Mobile navigation -->
-<nav class="mobile-nav">
-    @include("logo")
-    @each(item in menuItems)
-        @if(item.isFolder)
-            @include("mobile_folder")
-        @else
-            @include("mobile_item")
-        @endif
-    @endeach
-</nav>
+<!-- Desktop navigation: desktop_item handles folders internally -->
+@each(page in pages) @include("desktop_item") @endeach
+
+<!-- Mobile navigation: branch per page type -->
+@each(page in pages)
+    @if(page.isFolder)
+        @include("mobile_folder")
+    @else
+        @include("mobile_item")
+    @endif
+@endeach
 ```
 
 ### Container Component
@@ -196,33 +197,48 @@ templates/include/
 └── youtube.html        # YouTube background
 ```
 
-Usage with conditionals. Template `@if` accepts a single condition only, so compute the background-type booleans in `hooks.js` and use `@includeIf` for the branch. See [Combining Conditions](../language/if.md#combining-conditions).
+Usage with conditionals. Template `@if` accepts a single condition only, so the Container computes a `bgVideo` object with format booleans in `hooks.js` and uses `@includeIf` for each branch (the hooks below are simplified — the real Container derives these from its background controls). See [Combining Conditions](../language/if.md#combining-conditions).
 
 ```javascript
 // hooks.js
-exports.transformHook = (rw) => {
-    const { backgroundType } = rw.props;
+const transformHook = (rw) => {
+    const { backgroundType, videoFormat, overlayType } = rw.props;
+
+    const bgVideo =
+        backgroundType === "video"
+            ? {
+                  isYoutube: videoFormat === "youtube",
+                  isVimeo: videoFormat === "vimeo",
+                  isMP4: videoFormat === "mp4",
+              }
+            : false;
+
     rw.setProps({
-        bgIsColor: backgroundType === "color",
-        bgIsGradient: backgroundType === "gradient",
-        bgIsImage: backgroundType === "image",
-        bgIsVideo: backgroundType === "video",
+        bgVideo,
+        hasBgVideo: bgVideo ? true : false,
+        wantsOverlay: overlayType !== "none",
     });
 };
+exports.transformHook = transformHook;
 ```
+
+From `templates/index.html`:
 
 ```html
-<div class="container">
-    @includeIf(bgIsColor, template: "color")
-    @includeIf(bgIsGradient, template: "gradient")
-    @includeIf(bgIsImage, template: "image")
-    @includeIf(bgIsVideo, template: "video")
-
-    @if(hasOverlay)
-        @include("overlay")
+<div class="{{classes.content}}">@dropzone("Content", title: "Container")</div>
+<div class="{{classes.background}}">
+    @if(hasBgVideo)
+        <div class="fixed w-full h-full">
+            @includeIf(bgVideo.isYoutube, template:"youtube")
+            @includeIf(bgVideo.isVimeo, template:"vimeo")
+            @includeIf(bgVideo.isMP4, template:"mp4")
+        </div>
     @endif
 </div>
+@includeIf(wantsOverlay, template:"overlay")
 ```
+
+Note that `@includeIf` conditions can test **nested properties** like `bgVideo.isYoutube` — only the top-level combining of conditions needs to happen in `hooks.js`.
 
 ### Accordion Component
 
@@ -230,9 +246,11 @@ Simple icon inclusion with fallback:
 
 ```html
 <!-- templates/index.html -->
+@if(showIcon)
 <span class="{{classes.icon}}" aria-hidden="true">
     @include("icon")
 </span>
+@endif
 ```
 
 ```html
@@ -249,26 +267,47 @@ Simple icon inclusion with fallback:
 <svg><!-- Default chevron icon --></svg>
 ```
 
+### Nav Tree Component (Recursive Includes)
+
+An include can include **itself**, which is how the Nav Tree component renders nested pages to any depth. The loop variable is passed down explicitly as a parameter each time:
+
+```html
+<!-- templates/index.html -->
+<ul class="{{classes.list}}">
+    @each(page in pages)
+        @include("item", page: page)
+    @endeach
+</ul>
+```
+
+```html
+<!-- templates/include/item.html -->
+@if(page.hasPages)
+<li role="none" class="group">
+    <div id="{{page.id}}" role="treeitem">{{page.title}}</div>
+    <ul x-show="isOpen('{{page.id}}')" role="group">
+        @each(subPage in page.pages) @include("item", page: subPage) @endeach
+    </ul>
+</li>
+@else
+<li role="none">
+    <a href="{{page.url}}">{{page.title}}</a>
+</li>
+@endif
+```
+
+Each level of nesting re-enters `item.html` with the child page bound to `page`, so the same markup handles the whole tree. See [Recursive Includes](../language/include.md#recursive-includes) in the directive reference.
+
 ## Organization Strategies
 
-### By Feature
-
-Group related includes by feature or functionality:
+The core components keep the `include/` directory flat and group related partials with filename prefixes, as the Navbar does with its `desktop_*` and `mobile_*` files:
 
 ```
 templates/include/
-├── navigation/
-│   ├── menu.html
-│   ├── submenu.html
-│   └── breadcrumb.html
-├── cards/
-│   ├── product-card.html
-│   ├── blog-card.html
-│   └── team-card.html
-└── media/
-    ├── image.html
-    ├── video.html
-    └── gallery.html
+├── desktop_item.html
+├── desktop_folder.html
+├── mobile_item.html
+└── mobile_folder.html
 ```
 
 ### By Component Part

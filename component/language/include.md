@@ -39,6 +39,8 @@ com.yourcompany.component/
 │       └── item.html
 ```
 
+`@include()` resolves **only** files in `templates/include/` — root-level template files can't be included by name, and a call that doesn't match a file in `include/` **fails silently**. Root-level templates never need including: every file at the root of `templates/` is processed automatically (see [Templates](../templates/README.md#root-level-templates)).
+
 ## Examples
 
 ### Basic Include
@@ -211,7 +213,7 @@ Included templates have access to:
 
 4. **Use @includeIf for conditionals** - It's cleaner than wrapping includes in if statements.
 
-5. **Organize complex includes** - For components with many includes, consider subdirectories within `include/`.
+5. **Organize complex includes** - For components with many includes, group related partials with filename prefixes (e.g. `desktop_*`, `mobile_*`), as the core Navbar component does.
 
 ## Related
 

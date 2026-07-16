@@ -208,7 +208,7 @@ exports.transformHook = (rw) => {
 ```
 
 {% hint style="warning" %}
-**Do not write `x-data="myComponent('{{id}}', {{options}})"`.** The JSON's double-quotes terminate the HTML attribute; Alpine fails to parse the expression and the component silently renders blank. Use a single-quoted `data-*` attribute as shown above.
+**Do not interpolate plain `JSON.stringify` output into `x-data`** (e.g. `x-data="myComponent('{{id}}', {{options}})"`). The JSON's double-quotes terminate the HTML attribute; Alpine fails to parse the expression and the component silently renders blank. Use a single-quoted `data-*` attribute as shown above, or the [quote-swap pattern](js-templates.md#the-quote-swap-pattern) used by the core Table and Content Slider components.
 {% endhint %}
 
 ## Examples from Core Components

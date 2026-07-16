@@ -22,6 +22,8 @@ With additional parameters:
 @endportal
 ```
 
+The destination can be written bare (`@portal(bodyEnd)`) or quoted (`@portal("bodyEnd")`) — both forms are equivalent, and both appear in the core components.
+
 ## Portal Destinations
 
 | Destination | Description |
