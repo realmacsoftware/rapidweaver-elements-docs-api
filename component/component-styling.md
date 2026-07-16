@@ -187,33 +187,28 @@ Supported breakpoints follow Tailwind's defaults:
 
 Because formatted controls emit ready-made utility classes, most real components do their styling in [hooks.js](hooks.js/README.md): the hook gathers the class strings from `rw.props`, combines them with static classes and conditional logic, and applies the result to the component's root element. Templates stay clean because they never see the full class list.
 
-Here's the pattern, simplified from the core Button component:
+Here's the pattern, simplified from the core Button component. It uses the `buttonColor` and `dropzoneSpacing` controls defined earlier on this page, and only plain JavaScript—paste it into a new project and it works:
 
 ```javascript
 const transformHook = (rw) => {
-    const { showText, dropzoneType, dropzoneSpacing } = rw.props;
+    const { showText, dropzoneType, dropzoneSpacing, buttonColor } = rw.props;
     const { id } = rw.node;
 
-    const link = globalLink(rw);
     const wantsDropzone = dropzoneType != "false";
 
-    const classes = classnames([
+    const classes = [
         `group/button group/${id}`,
-        `flex items-center cursor-pointer`,
+        "flex items-center cursor-pointer",
+        "px-4 py-2 rounded-lg",
+        buttonColor,
         wantsDropzone && dropzoneSpacing,
-        globalLayout(rw, { defaultDisplay: "flex" }),
-        globalSizing(rw),
-        globalSpacing(rw),
-        globalTransitions(rw),
-        globalBackground(rw),
-        globalBorders(rw),
-        advancedClasses(rw),
-    ]).toString();
+    ]
+        .filter(Boolean)
+        .join(" ");
 
     rw.setRootElement({
-        as: link.hasLink ? "a" : "button",
+        as: "button",
         class: classes,
-        args: { ...link.args },
     });
 
     rw.setProps({
@@ -228,9 +223,9 @@ exports.transformHook = transformHook;
 
 A few things to notice:
 
-- **Static classes** (`flex items-center cursor-pointer`) sit alongside **property-driven classes** (`dropzoneSpacing`, already formatted to `gap-x-2` by the control).
-- **Conditional logic** decides which classes apply—`wantsDropzone && dropzoneSpacing` only includes the gap when the icon dropzone is enabled.
-- [`rw.setRootElement()`](hooks.js/available-functions/rw.setrootelement.md) applies the finished class string to the root element, and can even change the tag (`a` vs `button`) based on whether a link is set.
+- **Static classes** (`flex items-center cursor-pointer`) sit alongside **property-driven classes** (`buttonColor` is already `bg-brand-500` and `dropzoneSpacing` is already `gap-x-2`—formatted by their controls).
+- **Conditional logic** decides which classes apply—`wantsDropzone && dropzoneSpacing` only includes the gap when the icon dropzone is enabled, and `.filter(Boolean)` drops any `false` or empty entries before joining.
+- [`rw.setRootElement()`](hooks.js/available-functions/rw.setrootelement.md) applies the finished class string to the component's root element.
 - Small presentational values pass to the template via [`rw.setProps()`](hooks.js/available-functions/rw.setprops.md).
 
 The template only handles content and the few props it needs—this is the entire Button template:
@@ -247,7 +242,7 @@ The template only handles content and the few props it needs—this is the entir
 ```
 
 {% hint style="info" %}
-`classnames()`, `advancedClasses()`, and the `global*` helpers shown here (`globalLayout`, `globalBorders`, and friends) all ship with the [Build Tools](../development-resources/build-tools/README.md)—the same shared controls and hooks the built-in components are made from. See [classnames](../development-resources/build-tools/shared-hooks/core/classnames.md) and [globalBorders](../development-resources/build-tools/shared-hooks/borders/global-borders.md) for details.
+The built-in components compose their classes exactly this way, but at a larger scale they use shared helpers—`classnames()`, `advancedClasses()`, and the `global*` family (`globalLayout`, `globalBorders`, and friends)—that ship with the [Build Tools](../development-resources/build-tools/README.md) and are bundled into `hooks.js` at build time. Plain arrays and `join(" ")` need no build step; reach for the Build Tools when your pack grows. See [classnames](../development-resources/build-tools/shared-hooks/core/classnames.md) and [globalBorders](../development-resources/build-tools/shared-hooks/borders/global-borders.md) for details.
 {% endhint %}
 
 ### Combining Property Values
@@ -272,33 +267,43 @@ More complex components style several elements, not just the root. The conventio
 Simplified from the core Container component, which renders separate background and content layers stacked in a one-cell grid:
 
 ```javascript
-const classes = {
-    wrapper: classnames([
-        id,
-        `group/container group/${id} grid-cols-1 [&>*]:col-start-1 [&>*]:row-start-1 [&>*]:min-w-0`,
-        globalLayout(rw, { defaultDisplay: "grid" }),
-        spacingEnabled == "true" && margin,
-        advancedClasses(rw),
-    ]).toString(),
-    background: classnames([
-        `z-0 transform-gpu`,
-        globalBorders(rw, { isContainer: true }),
-        globalBackground(rw),
-        `overflow-hidden`,
-    ]).toString(),
-    content: classnames([
-        `relative z-30 flex flex-col peer`,
-        contentGap,
-        spacingEnabled == "true" && padding,
-    ]).toString(),
+const transformHook = (rw) => {
+    const { spacingEnabled, margin, padding, contentGap, backgroundColor, borderRadius } = rw.props;
+    const { id } = rw.node;
+
+    const classes = {
+        wrapper: [
+            `group/container group/${id}`,
+            "grid grid-cols-1 [&>*]:col-start-1 [&>*]:row-start-1 [&>*]:min-w-0",
+            spacingEnabled == "true" && margin,
+        ]
+            .filter(Boolean)
+            .join(" "),
+        background: [
+            "z-0 overflow-hidden",
+            backgroundColor,
+            borderRadius,
+        ]
+            .filter(Boolean)
+            .join(" "),
+        content: [
+            "relative z-30 flex flex-col peer",
+            contentGap,
+            spacingEnabled == "true" && padding,
+        ]
+            .filter(Boolean)
+            .join(" "),
+    };
+
+    rw.setRootElement({
+        as: "div",
+        class: classes.wrapper,
+    });
+
+    rw.setProps({ classes });
 };
 
-rw.setRootElement({
-    as: "div",
-    class: classes.wrapper,
-});
-
-rw.setProps({ classes });
+exports.transformHook = transformHook;
 ```
 
 The template applies each layer's classes where they belong:
@@ -353,15 +358,17 @@ A [Theme Color](properties.json/ui-controls/theme-color.md) control with `darkNa
 
 ## Supporting User-Defined Classes
 
-Give power users an escape hatch. Every core component exposes an Advanced group in the inspector with a free-text CSS Classes control, and appends its value to the root class list via the shared [advancedClasses](../development-resources/build-tools/shared-hooks/core/advanced-classes.md) helper:
+Give power users an escape hatch. Every core component exposes an Advanced group in the inspector with a free-text CSS Classes control, and appends its value to the root class list:
 
 ```javascript
 const advancedClasses = (rw) => {
     const { display, cssClasses, overflow, zIndex } = rw.props;
 
-    return classnames([display, cssClasses, overflow, zIndex]).toString();
+    return [display, cssClasses, overflow, zIndex].filter(Boolean).join(" ");
 };
 ```
+
+The [Build Tools](../development-resources/build-tools/README.md) ship a ready-made version of this helper—see [advancedClasses](../development-resources/build-tools/shared-hooks/core/advanced-classes.md).
 
 Third-party components should follow the same convention so users can add their own utility classes to any component without editing templates.
 
