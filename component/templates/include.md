@@ -46,7 +46,9 @@ Include files are referenced using the `@include()` directive from any template 
 
 The include filename is specified **without the `.html` extension** and is resolved relative to the `templates/include/` directory.
 
-`@include()` can also resolve **root-level template files** by name. Several core components (Tabs, Content Slider, Table) keep their Alpine.js script in `templates/alpine.html` and pull it in with `@include("alpine")` — no `include/` directory required.
+{% hint style="warning" %}
+`@include()` only resolves files in `templates/include/` — it does **not** resolve root-level template files, and a call that doesn't match a file **fails silently**. Root-level templates never need including: every file at the root of `templates/` is [processed automatically](./#root-level-templates). (You may spot `@include("alpine")` in some core components — those calls are silent no-ops; the root-level `alpine.html` is included by the automatic processing.)
+{% endhint %}
 
 ## Creating Include Files
 

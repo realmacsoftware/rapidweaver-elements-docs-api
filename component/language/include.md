@@ -39,7 +39,7 @@ com.yourcompany.component/
 │       └── item.html
 ```
 
-`@include()` also resolves **root-level template files** by name — several core components (Tabs, Content Slider, Table) keep their Alpine.js script in `templates/alpine.html` and pull it in with `@include("alpine")`, with no `include/` directory at all.
+`@include()` resolves **only** files in `templates/include/` — root-level template files can't be included by name, and a call that doesn't match a file in `include/` **fails silently**. Root-level templates never need including: every file at the root of `templates/` is processed automatically (see [Templates](../templates/README.md#root-level-templates)).
 
 ## Examples
 

@@ -139,8 +139,6 @@ Components that output PHP must set [`requiresPhp`](../info.json.md) in `info.js
 `index.php` is processed like any other template — directives, editable areas, and includes work alongside the PHP. PHP can't execute inside the RapidWeaver editor, so the Table renders example rows in edit mode and reserves the PHP for the exported page. The excerpt below is condensed from the file's CSV mode:
 
 ```php
-@include("alpine")
-
 @if(isCSVMode)
     @if(edit)
     <!-- Edit mode: PHP can't run in the editor, so show example rows -->
