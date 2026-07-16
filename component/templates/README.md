@@ -16,6 +16,7 @@ The templates directory is the heart of your component's output. Files placed he
 - **Content areas** with `@dropzone`, `@text`, `@richtext`, and `@markdown`
 - **Template includes** with `@include` for reusable partials
 - **Portal injection** using `@portal` to place content in specific page locations
+- **Literal output** using `@raw` to stop a block being processed — useful when the output itself contains `{{ }}` or `{% %}` syntax for a CMS (see the [`@raw` documentation](../language/raw.md))
 
 {% hint style="info" %}
 Any files that don't require Elements template language processing should be stored in the [assets](../assets.md) directory instead.
@@ -47,6 +48,12 @@ Files placed directly in the `templates/` directory are processed and included f
 - CSS files with template directives (see [CSS Templates](css-templates.md))
 - JavaScript files (see [JavaScript Templates](js-templates.md))
 - PHP files (see [PHP Templates](php-templates.md))
+
+**Naming conventions used by the core components:**
+- `alpine.html` — an HTML template that wraps the component's Alpine.js factory in `@portal(bodyEnd, includeOnce: true, id: "...")` so the script is emitted once per page (see [JavaScript Templates](js-templates.md))
+- `editor-ui.css`, `edit.css` — small editor-focused stylesheets; wrap rules in `@if(edit)` to keep them out of the published site (see [CSS Templates](css-templates.md))
+
+These names are conventions, not requirements — every root-level file is processed regardless of its name.
 
 ### Subdirectories
 

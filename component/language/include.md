@@ -39,6 +39,8 @@ com.yourcompany.component/
 │       └── item.html
 ```
 
+`@include()` also resolves **root-level template files** by name — several core components (Tabs, Content Slider, Table) keep their Alpine.js script in `templates/alpine.html` and pull it in with `@include("alpine")`, with no `include/` directory at all.
+
 ## Examples
 
 ### Basic Include
@@ -211,7 +213,7 @@ Included templates have access to:
 
 4. **Use @includeIf for conditionals** - It's cleaner than wrapping includes in if statements.
 
-5. **Organize complex includes** - For components with many includes, consider subdirectories within `include/`.
+5. **Organize complex includes** - For components with many includes, group related partials with filename prefixes (e.g. `desktop_*`, `mobile_*`), as the core Navbar component does.
 
 ## Related
 

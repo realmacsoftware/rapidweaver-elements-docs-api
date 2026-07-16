@@ -24,22 +24,24 @@ For most server-side functionality, you should use the [Backend directory](backe
 ```
 com.yourcompany.component/
 ├── templates/
-│   ├── index.html
-│   ├── handler.php        # PHP template (rare at root level)
-│   └── backend/           # More common location for PHP
+│   ├── index.html         # Main template (or index.php — see below)
+│   ├── handler.php        # Root-level PHP template
+│   └── backend/           # Server-side request handlers
 │       └── process.php
 ```
 
 ## When to Use PHP Templates
 
-### Root-Level PHP (Uncommon)
+### Root-Level PHP
 
-Root-level PHP templates are processed and included in the page output. This is rarely needed, as most PHP functionality belongs in the backend directory.
+Root-level PHP templates are processed and included in the page output.
 
 **Use root-level PHP when:**
 
 * You need to generate HTML with server-side logic during page rendering
 * The PHP output should be part of the page's normal HTML flow
+
+A component can even use `index.php` **in place of** `index.html` as its main template. This is how the core Table component renders CSV files server-side — see [PHP as the Main Template](#php-as-the-main-template-indexphp) below.
 
 ### Backend PHP (Recommended)
 
@@ -114,6 +116,94 @@ var_dump([
 @endif
 ?>
 ```
+
+## PHP as the Main Template (index.php)
+
+A component's main template can be `templates/index.php` instead of `index.html`. The core Table component uses this to load and render CSV files on the server.
+
+### Declare requiresPhp in info.json
+
+Components that output PHP must set [`requiresPhp`](../info.json.md) in `info.json` so Elements knows the page containing the component must be published with a `.php` filename — otherwise the PHP won't execute. (Child components that only ever appear inside a parent that already requires PHP don't need the flag.)
+
+```json
+{
+    "identifier": "com.realmacsoftware.table",
+    "title": "Table",
+    "group": "Content",
+    "requiresPhp": true
+}
+```
+
+### The Full Template Language Still Works
+
+`index.php` is processed like any other template — directives, editable areas, and includes work alongside the PHP. PHP can't execute inside the RapidWeaver editor, so the Table renders example rows in edit mode and reserves the PHP for the exported page. The excerpt below is condensed from the file's CSV mode:
+
+```php
+@include("alpine")
+
+@if(isCSVMode)
+    @if(edit)
+    <!-- Edit mode: PHP can't run in the editor, so show example rows -->
+    <table class="{{classes.table}}">
+        <!-- ... -->
+    </table>
+    @else
+    <div x-data="elementsTable('{{id}}', {{alpineConfig}})">
+        <?php
+        $csvSource = '{{csvSource}}';
+
+        // Normalise values that may arrive as strings
+        $rawFirstRow = '{{csvFirstRowIsHeader}}';
+        $firstRowIsHeader = in_array($rawFirstRow, ['true', '1', 'yes'], true);
+        ?>
+        <!-- ... -->
+    </div>
+    @endif
+@else
+<!-- Manual mode: rows are edited in the app, no PHP needed -->
+@endif
+```
+
+`alpineConfig` is prepared in `hooks.js` with the [quote-swap pattern](js-templates.md#the-quote-swap-pattern) — `JSON.stringify(config).replace(/"/g, "'")` — so the JSON survives inside the double-quoted `x-data` attribute.
+
+### Patterns from the Table Component
+
+Two details of the real `index.php` are worth copying.
+
+**Use closures, not named functions.** Root-level templates are processed once per instance, so a named function would be declared twice when two tables share a page:
+
+```php
+<?php
+// A closure (not a named function) so multiple table instances on the
+// same page don't trigger "Cannot redeclare function" fatal errors.
+$tableGetColumnMeta = function ($columnMeta, $idx) {
+    return $columnMeta[$idx] ?? [
+        'widthClass' => '',
+        'headerAlignmentClass' => '',
+        'bodyAlignmentClass' => '',
+        'hiddenClass' => '',
+        'extraClasses' => '',
+        'isSortable' => false,
+    ];
+};
+?>
+```
+
+**Pass structured data via heredoc + `json_decode`.** JSON contains quote characters that would break a normal quoted PHP string:
+
+```php
+<?php
+$columnMetaJson = <<<COLUMNMETA
+{{csvColumnMeta}}
+COLUMNMETA;
+$columnMeta = json_decode($columnMetaJson, true);
+if (!is_array($columnMeta)) {
+    $columnMeta = [];
+}
+?>
+```
+
+A heredoc still processes PHP `$variable` interpolation and escape sequences. If the data might contain a `$` or backslashes, use a **nowdoc** (`<<<'COLUMNMETA'`) instead — it treats the body as literal text. Elements interpolates `{{csvColumnMeta}}` before PHP ever sees the file, so a nowdoc doesn't affect template processing.
 
 ## Processing Behavior
 
@@ -230,7 +320,11 @@ Process form submissions with component properties:
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $componentId = '{{id}}';
     $maxFileSize = {{maxFileSize}};
-    $allowedTypes = ['{{allowedTypes}}'];
+
+    $allowedTypesJson = <<<'ALLOWEDTYPES'
+{{allowedTypesJson}}
+ALLOWEDTYPES;
+    $allowedTypes = json_decode($allowedTypesJson, true) ?: [];
 
     // Process uploaded file
     if (isset($_FILES['file'])) {
@@ -247,6 +341,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo json_encode(['success' => true]);
 }
 ?>
+```
+
+Array properties can't be interpolated into PHP source directly — serialise them to JSON in `hooks.js` and receive them through a nowdoc so quote characters and backslashes survive (see [Patterns from the Table Component](#patterns-from-the-table-component)):
+
+```javascript
+// hooks.js
+const transformHook = (rw) => {
+    rw.setProps({
+        allowedTypesJson: JSON.stringify(rw.props.allowedTypes ?? []),
+    });
+};
+exports.transformHook = transformHook;
 ```
 
 ### API Endpoints
@@ -304,9 +410,9 @@ return [
 
 ## Best Practices
 
-### Use Backend Directory
+### Use Backend Directory for Request Handlers
 
-Place PHP files in `templates/backend/` rather than at the root level:
+Place request handlers in `templates/backend/` rather than at the root level — root-level PHP is for page output (like an `index.php` main template), not for handling requests:
 
 ```
 ✓ templates/backend/handler.php
@@ -327,6 +433,7 @@ const transformHook = (rw) => {
         enableCaching: true
     });
 };
+exports.transformHook = transformHook;
 ```
 
 ```php
@@ -342,7 +449,17 @@ $caching = {{enableCaching}};
 
 ### Separate Logic from Configuration
 
-Keep complex PHP logic in shared assets, use templates for configuration:
+Keep complex PHP logic in shared assets, use templates for configuration. Pass the shared-asset path from `hooks.js`:
+
+```javascript
+// hooks.js
+const transformHook = (rw) => {
+    rw.setProps({
+        siteAssetPath: rw.component.siteAssetPath,
+    });
+};
+exports.transformHook = transformHook;
+```
 
 ```php
 <!-- templates/backend/process.php -->

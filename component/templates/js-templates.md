@@ -13,7 +13,11 @@ JavaScript template files provide:
 * **Property insertion** - Use component properties in JavaScript code
 * **Conditional code** - Include or exclude JavaScript based on conditions
 * **Per-instance configuration** - Each component instance gets its own configuration
-* **Portal injection** - Place scripts in specific page locations using `@portal`
+* **Portal injection** - Place scripts in specific page locations using `@portal` (from an HTML template)
+
+{% hint style="info" %}
+**How the core components ship JavaScript:** every core component keeps its script inside an **HTML template** — conventionally `templates/alpine.html` — wrapped in `@portal(bodyEnd, includeOnce: true)` (usually with a reverse-DNS `id`) so the script lands at the end of `<body>` exactly once, no matter how many instances are on the page. Bare `.js` template files are also supported (they're processed and inserted inline within `<script>` tags), but an `.html` template is the right home for anything that needs the `<script>` tag or portal markup itself.
+{% endhint %}
 
 ## File Location
 
@@ -21,7 +25,8 @@ JavaScript template files provide:
 com.yourcompany.component/
 ├── templates/
 │   ├── index.html
-│   ├── script.js         # Component JavaScript
+│   ├── alpine.html       # Portal-wrapped <script> (core convention)
+│   ├── script.js         # Bare JavaScript template (also supported)
 │   └── include/
 │       └── ...
 ```
@@ -71,9 +76,10 @@ const settings = {
 
 ## Portal Injection
 
-A common pattern is to use `@portal` to inject JavaScript into specific page locations, typically `bodyEnd`:
+A common pattern is to use `@portal` to inject JavaScript into specific page locations, typically `bodyEnd`. Because the block contains `<script>` markup, it belongs in an `.html` template file (such as `templates/alpine.html`), not a `.js` file:
 
-```javascript
+```html
+<!-- templates/alpine.html -->
 @portal(bodyEnd, includeOnce: true, id: "my-component-lib")
 <script>
     // This script is included only once per page
@@ -107,9 +113,10 @@ See the [`@portal` documentation](../language/portal.md) for more details.
 
 ### Accordion Component (Alpine.js)
 
-The Accordion uses a portal to define Alpine.js component logic once:
+The Accordion's `templates/alpine.html` uses a portal to define the Alpine.js component logic once:
 
-```javascript
+```html
+<!-- templates/alpine.html -->
 @portal(bodyEnd, includeOnce: true, id: "com.realmacsoftware.accordion.alpine")
 <script>
     document.addEventListener("alpine:init", () => {
@@ -165,29 +172,42 @@ Each accordion instance then uses this component with its own properties:
 </div>
 ```
 
-### Gallery Component (Image Lightbox)
+### Gallery Component (Lightbox)
 
-The Gallery component includes lightbox functionality:
+The Gallery registers its lightbox as an Alpine.js factory in a root-level template, `templates/alpine-gallery-lightbox.html`:
 
-```javascript
-@portal(bodyEnd, includeOnce: true, id: "gallery-lightbox-script")
+```html
+<!-- templates/alpine-gallery-lightbox.html -->
+@portal("bodyEnd", id: "com.realmacsoftware.alpine.gallery-lightbox", includeOnce: true)
 <script>
-    class Lightbox {
-        constructor(galleryId, options) {
-            this.galleryId = galleryId;
-            this.options = options;
-            this.init();
-        }
-        
-        init() {
-            // Lightbox initialization
-        }
-    }
-    
-    window.Lightbox = Lightbox;
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("galleryLightbox", (id = null, options = {}) => ({
+            id,
+            show: false,
+            atBeginning: false,
+            atEnd: false,
+
+            init() {
+                this.setupKeyboardControls();
+                this.setupEventListeners();
+            },
+
+            // Keyboard, scroll, and navigation handling...
+        }));
+    });
 </script>
 @endportal
 ```
+
+The lightbox markup in `templates/include/lightbox.html` then binds each instance to the factory:
+
+```html
+<div x-data="galleryLightbox('{{id}}')">
+    <!-- Lightbox markup -->
+</div>
+```
+
+Note the portal target can be written quoted (`@portal("bodyEnd", ...)`) or bare (`@portal(bodyEnd, ...)`) — both forms appear in the core components.
 
 ## Conditional JavaScript
 
@@ -310,7 +330,8 @@ components/
 
 When defining reusable functions or classes, use `includeOnce`:
 
-```javascript
+```html
+<!-- templates/alpine.html -->
 @portal(bodyEnd, includeOnce: true, id: "my-component-lib")
 <script>
     // Define once for the entire page
@@ -425,7 +446,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Define Alpine components with property-based configuration:
 
-```javascript
+```html
+<!-- templates/alpine.html -->
 @portal(bodyEnd, includeOnce: true, id: "my-alpine-component")
 <script>
     document.addEventListener("alpine:init", () => {
@@ -454,8 +476,47 @@ Define Alpine components with property-based configuration:
 Registering inside `alpine:init` is required for browser/publish parity. In the edit canvas Alpine may already be initialised when the script runs, so a bare `Alpine.data(...)` call can appear to work — but in a browser the factory must exist before Alpine parses `x-data` attributes, which means it must be registered before `alpine:init` fires. Always use this pattern.
 
 {% hint style="warning" %}
-**Never interpolate JSON objects or arrays into the `x-data` expression** (e.g. `x-data="factory('{{id}}', {{dataJson}})"`). The JSON's double-quotes terminate the HTML attribute, Alpine fails to parse the expression, and the component silently renders blank. Pass structured data through a `data-*` attribute and read it with `JSON.parse` in the factory `init()` instead — see [Data Attributes](#data-attributes).
+**Don't interpolate raw JSON into the `x-data` expression** (e.g. `x-data="factory('{{id}}', {{dataJson}})"` where `dataJson` is plain `JSON.stringify` output). The JSON's double-quotes terminate the HTML attribute, Alpine fails to parse the expression, and the component silently renders blank. Two working patterns:
+
+1. **Data attributes (recommended)** — pass the JSON through a single-quoted `data-*` attribute and read it with `JSON.parse` in the factory. See [Data Attributes](#data-attributes).
+2. **Quote-swap** — used by the core Table and Content Slider components: swap the JSON's double-quotes for single-quotes in `hooks.js` before interpolating. See below.
 {% endhint %}
+
+#### The Quote-Swap Pattern
+
+The Content Slider builds its Swiper config in `hooks.js` and swaps the JSON's double-quotes for single-quotes so the value survives inside the double-quoted `x-data` attribute:
+
+```javascript
+// hooks.js
+const transformHook = (rw) => {
+    const swiperOptions = {
+        loop: true,
+        slidesPerView: 1,
+        speed: 400,
+    };
+
+    rw.setProps({
+        swiperOptions: JSON.stringify(swiperOptions).replace(/"/g, "'"),
+    });
+};
+exports.transformHook = transformHook;
+```
+
+```html
+<!-- templates/index.html -->
+<div x-data="elementsContentSlider('{{id}}', {{swiperOptions}})">
+```
+
+This works because Alpine evaluates `x-data` as a JavaScript expression, and the single-quoted output (`{'loop': true, ...}`) is a valid object literal. The Table component defensively handles a string arriving instead, converting the quotes back before parsing:
+
+```javascript
+Alpine.data("elementsTable", (id, config) => ({
+    config: typeof config === "string" ? JSON.parse(config.replace(/'/g, '"')) : config,
+    // ...
+}));
+```
+
+The caveat: the quote-swap corrupts data that itself contains quote characters, so reserve it for config objects whose values you control. For user-entered content, use a `data-*` attribute instead.
 
 ### GSAP Animations
 
@@ -502,8 +563,8 @@ exports.transformHook = (rw) => {
 <div x-data="openStatus('{{id}}')" data-schedule='{{scheduleJson}}'></div>
 ```
 
-```javascript
-// templates/script.js: read and parse inside factory init()
+```html
+<!-- templates/alpine.html: read and parse inside factory init() -->
 @portal(bodyEnd, includeOnce: true, id: "com.yourname.openstatus.alpine")
 <script>
     document.addEventListener("alpine:init", () => {

@@ -151,6 +151,7 @@ const transformHook = (rw) => {
         node: rw.node
     });
 };
+exports.transformHook = transformHook;
 ```
 
 ```php
