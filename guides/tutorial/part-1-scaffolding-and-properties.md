@@ -121,7 +121,7 @@ Styling controls should be theme controls wherever possible, so the component ad
 
 What each control emits:
 
-* **Accent** — a [Theme Color](../../component/properties.json/ui-controls/theme-color.md) returns a `name-brightness` token like `brand-500`; the `format` turns it into `text-brand-500`. It colors the question text, and from Part 3 it also styles the open/close indicator.
+* **Accent** — a [Theme Color](../../component/properties.json/ui-controls/theme-color.md) returns a `name-brightness` token like `brand-500`; the `format` turns it into `text-brand-500`. It colors the question text — and, because the open/close indicator sits inside the question button, the indicator inherits it too.
 * **Item Gap** — a [Theme Spacing](../../component/properties.json/ui-controls/theme-spacing.md) control in `single` mode returns one value from the theme's spacing scale; formatted as `gap-y-{{value}}` it yields `gap-y-4`, the vertical gap between FAQ items.
 * **Corner Radius** — a [Theme Border Radius](../../component/properties.json/ui-controls/theme-border-radius.md) control emits ready-made `rounded-*` classes on its own, so it needs no `format` key.
 * **Question Size** — a [Theme Text Style](../../component/properties.json/ui-controls/theme-text-style.md) control also emits finished utility classes, combining size and line height from Theme Studio.

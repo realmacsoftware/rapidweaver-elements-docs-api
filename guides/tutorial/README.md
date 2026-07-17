@@ -57,8 +57,8 @@ The parts build on each other in order. Each one starts from the exact files the
 
 1. [Part 1: Scaffolding & Properties](part-1-scaffolding-and-properties.md) — create the component folder, describe it in `info.json`, define every inspector control in `properties.json`, compose theme-driven classes in a minimal `hooks.js`, and render a static two-question accordion.
 2. [Part 2: Collections & Dynamic Dropzones](part-2-collections-and-dropzones.md) — replace the hard-coded questions with a `questions` collection, precompute per-item IDs and ARIA attributes in hooks, and let individual answers switch between plain text and a dropzone.
-3. [Part 3: Interactivity](part-3-interactivity.md) — register an Alpine.js factory through `@portal(bodyEnd)`, wire up open/close state with one-open-at-a-time behavior, pass configuration through a data attribute, and add `x-collapse` transitions.
-4. [Part 4: Edit Mode & Polish](part-4-edit-mode-and-polish.md) — keep all answers open on the canvas with `@if(edit)`, show placeholder items while the collection is empty, and emit `FAQPage` JSON-LD via `@portal(headEnd)`.
+3. [Part 3: Interactivity with Alpine.js](part-3-interactivity.md) — register an Alpine.js factory through `@portal(bodyEnd)`, wire up open/close state with one-open-at-a-time behavior, pass configuration through a data attribute, and add `x-collapse` transitions.
+4. [Part 4: Edit Mode, Theming & Polish](part-4-edit-mode-and-polish.md) — keep all answers open on the canvas with `@if(edit)`, show placeholder items while the collection is empty, and emit `FAQPage` JSON-LD via `@portal(headEnd)`.
 
 If you only need one technique—say, collection-driven dropzones—you can read that part on its own. The "files so far" listings at the end of each part let you catch up without retyping every step.
 
