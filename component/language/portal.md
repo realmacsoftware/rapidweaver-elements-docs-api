@@ -159,6 +159,7 @@ Transport modal dialog markup to the end of the body for proper stacking:
 4. **Use reverse domain notation for IDs** - Follow the pattern `com.yourcompany.feature` to avoid ID collisions.
 
 5. **Combine with conditionals** - Use `@if` to conditionally include portal content based on component settings.
+
 ## Related Documentation
 
 * [Modals, Overlays & Portals](../../guides/modals-overlays-and-portals.md) - Overlay components built on @portal
