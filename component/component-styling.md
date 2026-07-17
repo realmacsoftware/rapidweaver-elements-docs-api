@@ -452,3 +452,9 @@ This approach lets users control CSS values through the inspector while keeping 
 ### Theme Colors in Custom CSS
 
 With a Tailwind 4 theme (`tailwindVersion: "v4"`), every theme color is also exposed as a CSS custom property under the `--color-*` namespace. A Theme Color control formatted as `var(--color-{{value}})` can then be used directly in your CSS—ideal for gradient stops, SVG fills, or overriding third-party library styles while keeping the color choice in Theme Studio. See [Using Tailwind 4 CSS Custom Properties](properties.json/ui-controls/theme-color.md#using-tailwind-4-css-custom-properties).
+
+## Related Documentation
+
+* [Building Complex Components](../guides/README.md) - Guides applying these styling patterns in real components
+* [Responsive Images & Media](../guides/responsive-images-and-media.md) - Breakpoint-keyed classes and dynamic CSS
+* [Tutorial: Build an FAQ Component](../guides/tutorial/README.md) - Class composition applied step by step

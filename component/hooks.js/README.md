@@ -172,3 +172,4 @@ exports.transformHook = transformHook;
 - [Working with Collections](working-with-collections.md) - Accessing and transforming collection data
 - [Working with Resources](working-with-resources.md) - Handling images and other resources
 - [Common Use Cases](common-use-cases.md) - Practical recipes and patterns
+- [Building Complex Components](../../guides/README.md) - Guides showing hooks at work in real components

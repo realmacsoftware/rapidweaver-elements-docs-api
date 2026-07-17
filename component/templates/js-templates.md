@@ -615,3 +615,5 @@ Template JavaScript runs in the page context, not in a controlled environment. E
 * [Templates Overview](./) - Understanding templates
 * [Assets](../assets.md) - Static JavaScript files
 * [Hooks.js](../hooks.js/) - Preparing data for JavaScript
+* [Interactive Components with Alpine.js](../../guides/interactive-components-with-alpine.md) - The full guide to Alpine-driven components
+* [Integrating JavaScript Libraries](../../guides/integrating-javascript-libraries.md) - Shipping third-party libraries with components

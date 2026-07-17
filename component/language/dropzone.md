@@ -196,3 +196,8 @@ This requires a corresponding resource control in the Properties file:
 3. **Use `horizontal` for layout components** - Enable horizontal layout for flex/grid containers to match the visual layout in the editor.
 4. **Avoid duplicate visible dropzones** - While multiple dropzones can share a name, only show one at a time to prevent confusion.
 5. **Combine with @portal for overlays** - For modals and off-canvas menus, use `@portal` to position the dropzone content appropriately in the DOM.
+
+## Related Documentation
+
+* [Collection-Driven Dropzones](../../guides/collection-driven-dropzones.md) - Generating a dropzone per collection item
+* [Modals, Overlays & Portals](../../guides/modals-overlays-and-portals.md) - Dropzones inside portal-teleported panels

@@ -17,6 +17,10 @@ The Core Components built into Elements are now open source 🎉 You can learn m
 
 We also offer a simpler collection of [example Element Components](https://github.com/realmacsoftware/RWElementDevPacks/tree/main) to help you get started. These simple component packs provide ready-to-use Components and configuration files you can explore, modify, and build upon to create your own custom Components for Elements.It’s the best place to learn by example and understand how a complete Dev Pack is structured.
 
+### Guides 📚
+
+Ready to go beyond the basics? The [Building Complex Components](guides/README.md) guides show how real Core Pack components combine properties, hooks, collections, and templates — including a complete [four-part tutorial](guides/tutorial/README.md) that builds a production-quality FAQ component from scratch.
+
 ### What's Required?
 
 The following is a list of suggested tools to make developing Elements easier.
