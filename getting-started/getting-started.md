@@ -15,6 +15,10 @@ A [public GitHub repository](https://github.com/realmacsoftware/RWElementDevPack
 
 <a href="https://github.com/realmacsoftware/RWElementDevPacks/tree/main" class="button secondary" data-icon="github">View Code Examples on GitHub</a>
 
+{% hint style="success" %}
+Prefer a written walkthrough? Follow the [FAQ component tutorial](../guides/tutorial/README.md) — a four-part guide that builds a complete component with properties, collections, hooks, and Alpine.js interactivity.
+{% endhint %}
+
 ### Installing an existing Dev Pack into Elements
 
 A growing collection of example Dev Packs are available in our public [GitHub repository](https://github.com/realmacsoftware/RWElementDevPacks/tree/main). These can be downloaded and installed for use in Elements. To load an existing Dev Pack into Elements, follow the steps below.
