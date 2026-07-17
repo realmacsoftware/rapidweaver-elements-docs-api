@@ -207,3 +207,5 @@ Use backend files primarily for configuration and routing. Place complex logic i
 * [Hooks.js](../hooks.js/) - Passing data to backend files
 * [Elements Language](../language/) - Template syntax in PHP
 * [Properties](../properties.json/) - Defining configuration properties
+* [Building Form Components](../../guides/building-form-components.md) - A complete form suite with backend processing
+* [Server-Side PHP Components](../../guides/server-side-php-components.md) - Advanced request-time PHP patterns
