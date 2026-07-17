@@ -542,3 +542,5 @@ Choose the right location for PHP files:
 * [Elements Language](../language/) - Template syntax in PHP
 * [Hooks.js](../hooks.js/) - Passing data to PHP templates
 * [Properties](../properties.json/) - Defining configuration properties
+* [Server-Side PHP Components](../../guides/server-side-php-components.md) - Runtime rendering, @raw tokens, and caching
+* [External Data Sources](../../guides/external-data-sources.md) - CSV and remote data ingestion patterns

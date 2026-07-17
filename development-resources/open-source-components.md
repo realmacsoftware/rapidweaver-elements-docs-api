@@ -52,6 +52,25 @@ If you’re working with Elements, the Core Pack is designed to help you move fa
 
 ***
 
+### Learn from the Core Pack
+
+The [Building Complex Components](../guides/README.md) guides dissect Core Pack components file by file. If you want to understand a particular component, start with the guide that covers it:
+
+| Core component                  | Covered in depth by                                                                              |
+| ------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Accordion, Tabs, Content Slider | [Interactive Components with Alpine.js](../guides/interactive-components-with-alpine.md)         |
+| Modal, Modal Close              | [Modals, Overlays & Portals](../guides/modals-overlays-and-portals.md)                           |
+| Tabs, Table                     | [Collection-Driven Dropzones](../guides/collection-driven-dropzones.md)                          |
+| Filter, Filter Tags, Reveal     | [Component Suites & Cross-Component Communication](../guides/component-suites.md)                |
+| Table, Tabs, Gallery            | [Designing the Edit-Mode Experience](../guides/edit-mode-experience.md)                          |
+| Reveal, Gallery                 | [Integrating JavaScript Libraries](../guides/integrating-javascript-libraries.md)                |
+| Image, Text Wrap, Container     | [Responsive Images & Media](../guides/responsive-images-and-media.md)                            |
+| Gallery                         | [Galleries & Resource Collections](../guides/galleries-and-resource-collections.md)              |
+| Table                           | [Server-Side PHP Components](../guides/server-side-php-components.md), [External Data Sources](../guides/external-data-sources.md) |
+| Tree, Menu                      | [Navigation & Recursive Templates](../guides/navigation-and-recursive-templates.md)              |
+
+***
+
 ### Installing and using the Core Pack
 
 Installation and usage instructions live in the GitHub repository.

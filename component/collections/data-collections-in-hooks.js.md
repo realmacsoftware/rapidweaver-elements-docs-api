@@ -316,3 +316,5 @@ exports.transformHook = transformHook;
 - [rw.collections](../hooks.js/available-data/rw.collections.md) - Full collections API reference
 - [rw.setProps](../hooks.js/available-functions/rw.setprops.md) - Passing data to templates
 - [Accessing Data in Templates](accessing-data-in-templates.md) - Template-side collection usage
+- [Collection-Driven Dropzones](../../guides/collection-driven-dropzones.md) - Pairing collections with per-item dropzones
+- [Designing the Edit-Mode Experience](../../guides/edit-mode-experience.md) - Placeholder items and preview datasets
