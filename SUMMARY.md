@@ -7,6 +7,27 @@
 * [Quickstart](getting-started/getting-started.md)
 * [Troubleshooting](getting-started/troubleshooting.md)
 
+## Guides
+
+* [Building Complex Components](guides/README.md)
+* [Tutorial: Build an FAQ Component](guides/tutorial/README.md)
+  * [Part 1: Scaffolding & Properties](guides/tutorial/part-1-scaffolding-and-properties.md)
+  * [Part 2: Collections & Dynamic Dropzones](guides/tutorial/part-2-collections-and-dropzones.md)
+  * [Part 3: Interactivity with Alpine.js](guides/tutorial/part-3-interactivity.md)
+  * [Part 4: Edit Mode, Theming & Polish](guides/tutorial/part-4-edit-mode-and-polish.md)
+* [Interactive Components with Alpine.js](guides/interactive-components-with-alpine.md)
+* [Modals, Overlays & Portals](guides/modals-overlays-and-portals.md)
+* [Collection-Driven Dropzones](guides/collection-driven-dropzones.md)
+* [Component Suites & Cross-Component Communication](guides/component-suites.md)
+* [Designing the Edit-Mode Experience](guides/edit-mode-experience.md)
+* [Integrating JavaScript Libraries](guides/integrating-javascript-libraries.md)
+* [Responsive Images & Media](guides/responsive-images-and-media.md)
+* [Galleries & Resource Collections](guides/galleries-and-resource-collections.md)
+* [Server-Side PHP Components](guides/server-side-php-components.md)
+* [Building Form Components](guides/building-form-components.md)
+* [External Data Sources](guides/external-data-sources.md)
+* [Navigation & Recursive Templates](guides/navigation-and-recursive-templates.md)
+
 ## Dev Resources
 
 * [Open Source Components](development-resources/open-source-components.md)
@@ -298,6 +319,7 @@
   * [@raw](component/language/raw.md)
   * [@include](component/language/include.md)
   * [@template](component/language/template.md)
+  * [Image Resources](component/language/image-resources.md)
 * [Hooks.js](component/hooks.js/README.md)
   * [Common use cases](component/hooks.js/common-use-cases.md)
   * [Passing data to templates](component/hooks.js/passing-data-to-templates.md)
