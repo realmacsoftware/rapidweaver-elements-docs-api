@@ -164,17 +164,58 @@ PHP doesn't execute in the RapidWeaver editor, so on the canvas the CSV branch r
 
 ## Parsing CSV Honestly
 
-CSV looks trivial and isn't: fields can be quoted, quoted fields can contain commas and quotes, and the first row may or may not be data. Table leans on PHP's built-in `str_getcsv` rather than a hand-rolled `explode`, using it twice — once to split lines, once per line to split fields:
+CSV looks trivial and isn't: fields can be quoted, quoted fields can contain delimiters and quotes, the first row may or may not be data — and the delimiter itself depends on where the file was made. US/UK spreadsheet apps export comma-separated files, but most EU locales use the comma as the decimal separator, so Numbers and Excel there export *semicolon*-separated files; tab-separated exports exist too. Table leans on PHP's built-in `str_getcsv` rather than a hand-rolled `explode`, and sniffs the delimiter before parsing:
 
 ```php
 <!-- templates/index.php (continued) -->
 <?php
+// EU-locale Numbers/Excel exports separate fields with semicolons (and
+// TSVs with tabs), so sniff the delimiter instead of assuming commas.
+// A candidate wins outright when it splits every sampled row into the
+// same number of fields (more than one). Semicolon and tab are checked
+// before comma: a file that consistently splits on them is never a plain
+// comma CSV, while EU decimal commas ("10,5") can fake a comma split.
+$tableDetectDelimiter = function ($lines) {
+    $sample = [];
+    foreach ($lines as $line) {
+        if (trim($line) !== '') {
+            $sample[] = $line;
+            if (count($sample) === 10) {
+                break;
+            }
+        }
+    }
+    $fallback = ',';
+    $fallbackFields = 0;
+    foreach ([';', "\t", ','] as $candidate) {
+        $counts = [];
+        foreach ($sample as $line) {
+            $counts[] = count(str_getcsv($line, $candidate, '"', '\\'));
+        }
+        if (!empty($counts) && $counts[0] > 1 && count(array_unique($counts)) === 1) {
+            return $candidate;
+        }
+        if (array_sum($counts) > $fallbackFields) {
+            $fallbackFields = array_sum($counts);
+            $fallback = $candidate;
+        }
+    }
+    return $fallback;
+};
+
 if (!$csvError) {
+    // Excel's "CSV UTF-8" export prepends a BOM that would otherwise
+    // leak into the first header cell
+    if (strncmp($csvContent, "\xEF\xBB\xBF", 3) === 0) {
+        $csvContent = substr($csvContent, 3);
+    }
+
     // Parse CSV content
     $allRows = [];
-    $lines = str_getcsv($csvContent, "\n");
+    $lines = preg_split('/\r\n|\r|\n/', $csvContent);
+    $delimiter = $tableDetectDelimiter($lines);
     foreach ($lines as $line) {
-        $parsed = str_getcsv($line);
+        $parsed = str_getcsv($line, $delimiter, '"', '\\');
         if ($parsed !== [null]) {
             $allRows[] = $parsed;
         }
@@ -190,11 +231,12 @@ if (!$csvError) {
 
 What this buys and what it costs:
 
-* **Quoted fields work.** Within a line, `str_getcsv` correctly handles `"Smith, Jane"` as one field, including escaped quotes — the cases that break naive `explode(",", $line)` parsers.
+* **Delimiters are detected, not assumed.** The sniffer samples up to ten non-empty lines and asks, for each candidate, whether it splits every sampled line into the same number of fields (more than one). Real spreadsheet exports are rectangular, so the true delimiter passes this test and text noise doesn't: a stray semicolon in one cell of a comma CSV fails the consistency check. Semicolon and tab are tried before comma because the reverse ordering loses on EU numeric data — in a file like `1,5;2,3`, decimal commas produce a perfectly consistent comma split too, and only the priority order picks the right one. When nothing is consistent (a ragged file), the candidate that yields the most fields overall wins, defaulting to comma.
+* **Quoted fields work.** Within a line, `str_getcsv` correctly handles `"Smith, Jane"` as one field — and once the delimiter is known, the same holds for `"x; y"` in a semicolon file — including escaped quotes, the cases that break naive `explode(",", $line)` parsers.
 * **Blank lines are dropped.** `str_getcsv` returns `[null]` for an empty line; the `!== [null]` check filters them out instead of rendering ghost rows.
+* **Line endings and BOMs are normalised.** Splitting on `/\r\n|\r|\n/` keeps Windows Excel's CRLF endings from smuggling a `\r` into the last cell of every row, and stripping the UTF-8 byte-order mark keeps Excel's "CSV UTF-8" export from polluting the first header cell.
 * **Headers are a consumer decision.** The data itself doesn't say whether row one is a header, so Table asks the user (the `csvFirstRowIsHeader` switch) and simply `array_shift`s the first row into `$csvHeaders` when they say yes.
-* **The known limit: multi-line fields.** Splitting on `"\n"` first means a newline *inside* a quoted field breaks that record across two rows. That trade-off is fine for typical spreadsheet exports; if your component must survive full RFC 4180 data, parse the whole stream with `fgetcsv` instead of splitting lines up front.
-* **Delimiters are assumed.** `str_getcsv` defaults to commas. Locales whose spreadsheet apps export semicolon-separated files would need the delimiter passed explicitly — a good candidate for one more select control.
+* **The known limit: multi-line fields.** Splitting into lines first means a newline *inside* a quoted field breaks that record across two rows. That trade-off is fine for typical spreadsheet exports; if your component must survive full RFC 4180 data, parse the whole stream with `fgetcsv` instead of splitting lines up front.
 
 ## Remote JSON in the Browser
 
