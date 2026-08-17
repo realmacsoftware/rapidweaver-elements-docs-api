@@ -8,7 +8,7 @@ icon: circle-question
 An Element Pack is a folder-based “plugin” format for sharing and distributing addons for Elements.
 
 * Development Use Only: An Element Pack ends with a `.elementsdevpack` extension. This format is strictly for development environments and should not be sold or shared in this form.
-* Distributable Version (Coming soon): To share your packs with others you'll use the Elements Store. Distributable packs are non-editable, pre-processed, optimised and encrypted to protect your code. You can [learn more about distributing your addons here](https://docs.realmacsoftware.com/elements-docs/elements-marketplace/pack-distribution).
+* Distributable Version (Coming soon): To share your packs with others you'll use the Elements Store. Distributable packs are non-editable, pre-processed, optimised and encrypted to protect your code. You can [learn more about distributing your addons here](https://docs.realmacsoftware.com/elements-docs/store/partners/pack-distribution).
 
 ### What Can You Include?
 

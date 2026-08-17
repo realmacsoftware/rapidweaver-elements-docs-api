@@ -38,7 +38,7 @@ Dev Packs (.devpack) are for development only. They’re uncompiled and unencryp
 
 ✅ If you want to share or monitise your Dev Packs, they **must be compiled into Element Packs** (.elementpack) via the Elements Platform.&#x20;
 
-[Learn more about distributing Element Packs](https://docs.realmacsoftware.com/elements-docs/store/creators/addon-distribution).
+[Learn more about distributing Element Packs](https://docs.realmacsoftware.com/elements-docs/store/partners/pack-distribution).
 
 ### Developer Community
 
