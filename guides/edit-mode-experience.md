@@ -190,7 +190,7 @@ Sometimes the canvas needs styling the published page must never see. Any `.css`
 @endif
 ```
 
-`{{editorActiveTabIndex}}` is computed in `hooks.js` from an inspector property, so the stylesheet re-targets a different panel every time the user picks a different tab to edit — no JavaScript involved, which matters because component scripts don't run on the canvas.
+`{{editorActiveTabIndex}}` is computed in `hooks.js` from an inspector property, so the stylesheet re-targets a different panel every time the user picks a different tab to edit — no page JavaScript involved. Ordinary component scripts, Alpine factories, and pack `bodyEnd` loaders still do not run on the canvas. If a scene must actually animate while the user edits (Three.js and similar), use the [`rwlivepreview` contract](editor-live-preview.md) instead of relying on those scripts.
 
 Navbar's `templates/editor.css` shows the minimal end of the same idea: a single rule fixing the width of `[data-rwx-droparea]` elements, the drop areas Elements injects into the canvas. Those elements only exist in the editor, so the rule is inert when published — but wrapping editor CSS in `@if(edit)` is still the better habit, because it removes the text from the published output entirely instead of merely leaving it unmatched.
 

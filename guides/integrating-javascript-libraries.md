@@ -338,6 +338,10 @@ The generated `hooks.js` contains the full `slugify` implementation followed by 
 
 Two constraints to respect. First, the Elements hooks runtime is a plain JavaScript sandbox: no `window`, no `document`, and no Node globals (`process`, `Buffer`, `fs`, timers). Prefer pure-computation libraries — slug generators, parsers, formatters, hash functions. `--platform=neutral` keeps esbuild from assuming either environment, but it won't save a library that probes for `process` at load time; for those, either define minimal stubs ahead of the bundled code or pick a dependency-free alternative. Second, bundle per component — each `hooks.js` stands alone, so a package shared by three components is inlined three times. That's the correct trade: build-time file size is cheap, a broken runtime resolution is not.
 
+## Live Preview on the Editing Canvas
+
+Page-level library loaders do not run on the canvas. To show a Three.js (or other ES-module) scene while the user edits, emit an `rwlivepreview` tag in edit mode and export `mount` / `update` / `dispose` from an editor-only module. The editor imports that module, owns lifecycle, and resolves `import * as THREE from 'three'` to a shared copy. See [Editor Live Preview](editor-live-preview.md).
+
 ## Cleanup and Lifecycle Hygiene
 
 A library instance you create is a library instance you own. Give every Alpine factory that wraps a library a `destroy()` that mirrors its `init()` — tear down the instance, cancel animation loops, and remove any `window`-level listeners you added, or removed components leak them. Restore state on `pageshow` when `event.persisted` is true, because browsers revive pages from the back/forward cache with your JavaScript frozen mid-flight. And gate motion-heavy libraries behind `prefers-reduced-motion`, honouring changes mid-session. The [ticker example](interactive-components-with-alpine.md#a-self-contained-animation-component) in the Alpine guide demonstrates the complete checklist line by line — every library integration you ship should pass it.
@@ -349,4 +353,5 @@ A library instance you create is a library instance you own. Give every Alpine f
 * [Shared Templates](../component/shared-files/templates.md) — the four injection points and once-per-page behaviour
 * [The `@portal` Directive](../component/language/portal.md) — destinations, `includeOnce`, and deduplication IDs
 * [Interactive Components with Alpine.js](interactive-components-with-alpine.md) — the factory pattern, configuration passing, and lifecycle discipline
+* [Editor Live Preview](editor-live-preview.md) — running Three.js and other ES modules on the editing canvas
 * [Build Tools](../development-resources/build-tools/README.md) — the `hooks.source.js` → `hooks.js` workflow and shared hooks like `globalReveal`

@@ -20,6 +20,7 @@
 * [Collection-Driven Dropzones](guides/collection-driven-dropzones.md)
 * [Component Suites & Cross-Component Communication](guides/component-suites.md)
 * [Designing the Edit-Mode Experience](guides/edit-mode-experience.md)
+* [Editor Live Preview](guides/editor-live-preview.md)
 * [Integrating JavaScript Libraries](guides/integrating-javascript-libraries.md)
 * [Responsive Images & Media](guides/responsive-images-and-media.md)
 * [Galleries & Resource Collections](guides/galleries-and-resource-collections.md)
