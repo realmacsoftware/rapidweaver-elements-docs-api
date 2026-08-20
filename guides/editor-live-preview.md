@@ -101,6 +101,45 @@ The host rewrites the bare specifier `three` to the editor's vendored module bef
 
 The editor serves Three.js r165 at `/assets/vendor/three/three.module.min.js` and maps the specifier `three` to that URL. URL-loaded pack modules resolve the specifier through the import map. Blob-loaded custom-component modules have the specifier rewritten to the same absolute URL. Either path shares one module instance.
 
+## Troubleshooting: a Dropped Image Doesn't Update
+
+If your module textures a user-supplied resource image (a WebGL image effect, for example), you may find the first drop works but *replacing* the image doesn't — the scene keeps showing the old picture until the user switches pages and back.
+
+This isn't a bug in the editor; it's a consequence of two behaviours that are otherwise working in your favour:
+
+1. **Your scene is kept alive across edits.** When the user changes a property or drops a resource, the editor does not tear down and remount your module — that would destroy the WebGL context and make every edit flicker. It re-renders the surrounding HTML and calls your `update(nextProps)` instead. Any DOM element or texture you captured at `mount` time is now potentially stale.
+2. **The canvas is a React document.** When markup around your host re-renders, React reuses elements where it can. A sibling `<img>` typically survives a resource replace with only its `src` attribute changed — and at the moment `update` runs, that element can still report `complete` with the *previous* bitmap decoded. If you upload the `<img>` element itself as a texture, you upload the old pixels.
+
+The fix is to treat the DOM as a source of *URLs*, never of *pixels*, and to re-query it every time:
+
+```js
+// Wrong — captured at mount; uploads whatever the element currently holds
+const img = el.parentElement.querySelector('.my-source img');
+texture.image = img;
+
+// Right — re-query the live DOM, then load the URL into a fresh Image
+const src = canvas.closest('.my-component')
+    ?.querySelector('.my-source img')
+    ?.getAttribute('src');
+
+if (src && src !== lastLoadedSrc) {
+    lastLoadedSrc = src;
+    const image = new Image();
+    image.onload = () => {
+        texture.image = image;
+        texture.needsUpdate = true;
+    };
+    image.src = src;
+}
+```
+
+Run that check inside `update` — and, if you already have a `requestAnimationFrame` loop, there too, since it costs one `querySelector` per frame and also catches re-renders that don't go through `update`.
+
+Two related pitfalls:
+
+* **Don't pass the resource path from hooks as the image URL.** `rw.props.myImage.image` is the *published* path (`resources/photo.jpg`); the editor serves resources from a different, cache-busted URL. Read the `src` the editor actually rendered into your template's `<img>` instead.
+* **Do include the resource's `width` and `height` in `livePreviewProps`.** The host only calls `update` when the encoded props string changes. If a replaced image happens to keep the same path, dimensions are usually what changes — without them in the props, `update` may never fire (the render-loop check above covers this case too).
+
 ## Limitations
 
 - Ordinary page scripts still do not run on the canvas. Alpine, GSAP, and pack `bodyEnd` loaders remain preview/publish-only.
