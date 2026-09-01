@@ -2,6 +2,10 @@
 
 The `rw.props` object contains all the current values from your component's UI controls defined in `properties.json`.
 
+{% hint style="info" %}
+Values you pass to `rw.setProps()` won't appear in `rw.props` — it always reflects the UI control values. The best pattern is to read everything you need from `rw.props` at the start of your hook, do your work with local variables, and call `rw.setProps()` at the end.
+{% endhint %}
+
 ## Accessing Properties
 
 Use destructuring to access individual property values:

@@ -2,6 +2,8 @@
 
 The `rw.setProps()` function passes data from your hook to your templates. Any data passed becomes available as template variables.
 
+Values you set here go to your templates only — they won't show up back in `rw.props`. Rather than setting a value and reading it back later, keep your working values in local variables and pass the finished results to `rw.setProps()` at the end of your hook.
+
 ## Syntax
 
 ```javascript
