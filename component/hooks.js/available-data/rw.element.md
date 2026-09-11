@@ -8,8 +8,8 @@ The `rw.component` object provides metadata about the component itself, includin
 |----------|------|-------------|
 | `title` | String | The component's name |
 | `group` | String | The component group/category |
-| `version` | Integer | Component version number |
-| `build` | Integer | Component build number |
+| `version` | Integer | Component version number (not the Elements app — see [`rw.system`](rw.system.md)) |
+| `build` | Integer | Component build number (not the Elements app — see [`rw.system`](rw.system.md)) |
 | `assetPath` | String | Path to component-specific assets |
 | `siteAssetPath` | String | Path to site-level component assets |
 | `sharedAssetPath` | String | Path to shared pack assets |

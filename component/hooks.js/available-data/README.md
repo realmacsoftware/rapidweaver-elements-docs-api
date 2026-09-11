@@ -14,6 +14,7 @@ The `rw` object passed to your transform hook provides access to various data so
 | [`rw.responsiveProps`](rw.getresponsivevalues.md) | Responsive property values by breakpoint |
 | [`rw.collections`](rw.collections.md) | Component collections data |
 | [`rw.project`](rw.project.md) | Project-level settings |
+| [`rw.system`](rw.system.md) | Elements app version and build |
 | [`rw.page`](rw.page.md) | Current page information |
 | [`rw.node`](rw.node.md) | Component instance data (always available in templates) |
 | [`rw.component`](rw.element.md) | Component metadata and asset paths |
