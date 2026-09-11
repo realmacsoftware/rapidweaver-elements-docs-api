@@ -53,6 +53,7 @@ The `rw` object is passed to your transform hook and provides access to componen
 | [`rw.responsiveProps`](available-data/rw.getresponsivevalues.md) | Responsive property values by breakpoint |
 | [`rw.collections`](available-data/rw.collections.md) | Component collections data |
 | [`rw.project`](available-data/rw.project.md) | Project-level data (title, mode, siteUrl, etc.) |
+| [`rw.system`](available-data/rw.system.md) | Elements app version and build (not the component) |
 | [`rw.page`](available-data/rw.page.md) | Current page data (id, title, filename, etc.) |
 | [`rw.node`](available-data/rw.node.md) | Component node data (id, title, parent, etc.) |
 | [`rw.component`](available-data/rw.element.md) | Component metadata (title, assetPath, etc.) |
