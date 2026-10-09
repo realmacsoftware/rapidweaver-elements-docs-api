@@ -63,6 +63,26 @@ Follow that `itemIdentifier` and you land on `templates/10DFAB6B-4F4F-408B-8EB4-
 
 Each `template.json` is a machine-generated snapshot of the section as it stood when it was saved: its `title` and `identifier`, a `_rootNode`, and an `_allNodes` map holding every component instance in the section — each node records which component it is (its `elementId`, such as `com.realmacsoftware.flex`), its parent, and the full set of property values the designer chose. Alongside those sit `_globals`, `_customComponents`, and a `_resources` array. These files are written by Elements when you save a template; treat them as generated output, not something to author or edit by hand.
 
+## Generate LLM Descriptions for AI
+
+Template names and categories do not always give an AI enough information to choose between similar variants. An LLM description adds context about a template's purpose, layout, notable features, and responsive behaviour so the Elements AI Assistant and connected MCP clients can select a more appropriate template.
+
+Elements can generate or refresh these descriptions across an entire Template DevPack:
+
+1. Add an API key in **Settings > AI > API Keys**.
+2. Open the **Templates** tab.
+3. Find the heading for your Template DevPack.
+4. Right-click the heading and choose **Update Template LLM Descriptions**.
+5. Leave Elements running while the AI reviews the templates and updates their descriptions.
+
+The command processes every template in the DevPack, so it can take a while for a large library. Review the resulting DevPack changes before shipping an update.
+
+This lets you keep concise names in the Templates browser while giving AI clients richer information for finding and applying the right template. Elements manages the generated metadata, so you do not need to hand-author private description fields inside `templates.json` or each `template.json`.
+
+{% hint style="info" %}
+If **Update Template LLM Descriptions** is not in the context menu, the installed Elements build does not yet include this feature. Update to a newer build when one is available.
+{% endhint %}
+
 ## Templates and Resources
 
 Templates are self-contained. If a section uses an image or an SVG, the file is bundled inside the template's own folder — named by its resource identifier — and catalogued in the `_resources` array of `template.json`, which records metadata such as the resource's `identifier`, `name`, and type. The Core Pack's "List Item" template, for example, ships a `check.svg` right beside its `template.json`, so the section renders complete wherever it is inserted.
