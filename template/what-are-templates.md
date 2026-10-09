@@ -73,9 +73,16 @@ Elements can generate or refresh these descriptions across an entire Template De
 2. Open the **Templates** tab.
 3. Find the heading for your Template DevPack.
 4. Right-click the heading and choose **Update Template LLM Descriptions**.
+
+<figure><img src="../.gitbook/assets/update-template-llm-descriptions-context-menu.png" alt="The Templates browser context menu with Update Template LLM Descriptions selected"><figcaption><p>Right-click the Template DevPack heading and choose <strong>Update Template LLM Descriptions</strong>.</p></figcaption></figure>
+
 5. Leave Elements running while the AI reviews the templates and updates their descriptions.
 
-The command processes every template in the DevPack, so it can take a while for a large library. Review the resulting DevPack changes before shipping an update.
+The command processes every template in the DevPack one at a time. This can take quite a while for a large library, so leave Elements open until the progress window completes.
+
+<figure><img src="../.gitbook/assets/update-template-llm-descriptions-progress.png" alt="Elements showing progress while it generates LLM descriptions for templates"><figcaption><p>Elements shows which template it is processing and the overall progress. Large Template DevPacks may take quite a while to finish.</p></figcaption></figure>
+
+Review the resulting DevPack changes before shipping an update.
 
 This lets you keep concise names in the Templates browser while giving AI clients richer information for finding and applying the right template. Elements manages the generated metadata, so you do not need to hand-author private description fields inside `templates.json` or each `template.json`.
 
